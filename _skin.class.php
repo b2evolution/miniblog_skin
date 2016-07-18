@@ -15,13 +15,13 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  *
  * ATTENTION: if you make a new skin you have to change the class name below accordingly
  */
-class bootstrap_blog_Skin extends Skin
+class miniblog_Skin extends Skin
 {
 	/**
 	 * Skin version
 	 * @var string
 	 */
-	var $version = '6.8.0';
+	var $version = '1.0.0';
 
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
@@ -36,7 +36,7 @@ class bootstrap_blog_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Bootstrap Blog';
+		return 'Miniblog Skin';
 	}
 
 
@@ -117,14 +117,12 @@ class bootstrap_blog_Skin extends Skin
 					'layout' => array(
 						'label' => T_('Layout'),
 						'note' => '',
-						'defaultvalue' => 'right_sidebar',
+						'defaultvalue' => 'single_column',
 						'options' => array(
 								'single_column'              => T_('Single Column Large'),
 								'single_column_normal'       => T_('Single Column'),
 								'single_column_narrow'       => T_('Single Column Narrow'),
 								'single_column_extra_narrow' => T_('Single Column Extra Narrow'),
-								'left_sidebar'               => T_('Left Sidebar'),
-								'right_sidebar'              => T_('Right Sidebar'),
 							),
 						'type' => 'select',
 					),
@@ -300,8 +298,6 @@ class bootstrap_blog_Skin extends Skin
 							array( 'header',   sprintf( T_('"%s" container'), NT_('Header') ),    1 ),
 							array( 'page_top', sprintf( T_('"%s" container'), NT_('Page Top') ),  1 ),
 							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),      0 ),
-							array( 'sidebar',  sprintf( T_('"%s" container'), NT_('Sidebar') ),   0 ),
-							array( 'sidebar2', sprintf( T_('"%s" container'), NT_('Sidebar 2') ), 0 ),
 							array( 'footer',   sprintf( T_('"%s" container'), NT_('Footer') ),    1 ) ),
 						),
 				'section_access_end' => array(
@@ -482,32 +478,6 @@ class bootstrap_blog_Skin extends Skin
 
 
 	/**
-	 * Check if we can display a sidebar for the current layout
-	 *
-	 * @param boolean TRUE to check if at least one sidebar container is visible
-	 * @return boolean TRUE to display a sidebar
-	 */
-	function is_visible_sidebar( $check_containers = false )
-	{
-		$layout = $this->get_setting( 'layout' );
-
-		if( $layout != 'left_sidebar' && $layout != 'right_sidebar' )
-		{ // Sidebar is not displayed for selected skin layout
-			return false;
-		}
-
-		if( $check_containers )
-		{ // Check if at least one sidebar container is visible
-			return ( $this->is_visible_container( 'sidebar' ) ||  $this->is_visible_container( 'sidebar2' ) );
-		}
-		else
-		{ // We should not check the visibility of the sidebar containers for this case
-			return true;
-		}
-	}
-
-
-	/**
 	 * Get value for attbiute "class" of column block
 	 * depending on skin setting "Layout"
 	 *
@@ -519,6 +489,7 @@ class bootstrap_blog_Skin extends Skin
 		{
 			case 'single_column':
 				// Single Column Large
+			default:
 				return 'col-md-12';
 
 			case 'single_column_normal':
@@ -532,17 +503,7 @@ class bootstrap_blog_Skin extends Skin
 			case 'single_column_extra_narrow':
 				// Single Column Extra Narrow
 				return 'col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3';
-
-			case 'left_sidebar':
-				// Left Sidebar
-				return 'col-md-9 pull-right';
-
-			case 'right_sidebar':
-				// Right Sidebar
-			default:
-				return 'col-md-9';
 		}
 	}
 }
-
 ?>
