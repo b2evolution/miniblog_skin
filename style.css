@@ -281,3 +281,30 @@ div.log_container {
 footer.row {
   margin-top: 20px;
 }
+.disp_single .evo_post {
+  margin: 0;
+}
+.special-cover-image-wrapper {
+  padding: 0;
+}
+.special-cover-image-wrapper .special-cover-image {
+  margin: 0;
+}
+.special-cover-image-wrapper .special-cover-image img {
+  border-radius: 0;
+}
+.special-cover-image-wrapper,
+.single-post-content-wrapper {
+  position: absolute;
+}
+.pager {
+  margin: 0;
+}
+.pager li > a {
+  border-radius: 0;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}

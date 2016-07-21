@@ -149,7 +149,28 @@ class miniblog_Skin extends Skin
 				'section_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
-
+				
+				
+				'section_single_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Single Page Settings')
+				),
+					'post_comments' => array(
+						'label' => T_('Post Comments'),
+						'note' => T_('Check to enable post comments on single pages.'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'post_tags' => array(
+						'label' => T_('Post Tags'),
+						'note' => T_('Check to enable post tags.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+				'section_single_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
 
 				'section_color_start' => array(
 					'layout' => 'begin_fieldset',

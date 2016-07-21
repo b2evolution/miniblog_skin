@@ -37,21 +37,43 @@ $params = array_merge( array(
 		'image_size'                 => 'fit-1280x720',
 		'author_link_text'           => 'auto',
 	), $params );
+	
+// Prepare boolean value depending on the result set by the user
+// We use this to enable/disable comments in the back-office of the skin
+$display_comments_bool = false;
+if($Skin->get_setting('post_comments'))
+{
+	$display_comments_bool = true;
+}
 
+$post_before = '';
+	$post_cover_image_class = 'col-lg-5 col-md-4';
+	$post_content_class = 'col-lg-7 col-md-8';
+	$special_cover_image = '';
+$post_after  = '';
 
-echo '<div class="evo_content_block">'; // Beginning of post display
+if( in_array( $disp, array( 'posts', 'single' )) )
+{
+$post_before = '</div></div></div><div class="container-fluid"><div class="row">';
+	$post_cover_image_class = 'col-lg-6 special-cover-image-wrapper';
+	$special_cover_image = 'special-cover-image';
+	$post_content_class = 'col-lg-6 col-lg-offset-6 single-post-content-wrapper';
+$post_after  = '';
+}
+
+echo $post_before . '<div class="evo_content_block">'; // Beginning of post display
 ?>
 
 <article id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>"<?php
 	echo empty( $params['item_style'] ) ? '' : ' style="'.format_to_output( $params['item_style'], 'htmlattr' ).'"' ?>>
 	
 	<?php
-		if( $disp == 'posts' )
+		if( in_array( $disp, array( 'posts', 'single' )) && !$Item->is_intro() )
 		{	// Display images that are linked to this post:
-			echo '<div class="col-lg-5">';
+			echo '<div class="' . $post_cover_image_class . '">';
 			$Item->images( array(
 				'before_images'            => '<div class="evo_post_images">',
-				'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special_teaser_image_pos">',
+				'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block ' . $special_cover_image . '">',
 				'before_image_legend'      => '<figcaption class="evo_image_legend">',
 				'after_image_legend'       => '</figcaption>',
 				'after_image'              => '</figure></div>',
@@ -68,15 +90,26 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 				// We want ONLY cover image to display here
 				'restrict_to_image_position' => 'cover',
 			) );
-			echo '</div>';
+			echo '<div class="clearfix"></div></div>';
 			
-			echo '<div class="col-lg-7">';
+			echo '<div class="' . $post_content_class . '">';
 		}
 	?>
 	
 	<header>
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
+		
+		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+		item_prevnext_links( array(
+			'block_start' => '<nav><ul class="pager">',
+				'prev_start'  => '<li class="previous">',
+				'prev_end'    => '</li>',
+				'next_start'  => '<li class="next">',
+				'next_end'    => '</li>',
+			'block_end'   => '</ul></nav>',
+			) );
+		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 
 		// ------- Title -------
 		if( $params['disp_title'] )
@@ -177,7 +210,7 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	if( $disp == 'single' )
 	{
 		?>
-		<div class="evo_container evo_container__item_single">
+		<div class="evo_container evo_container__item_single">		
 		<?php
 		// ------------------------- "Item Single" CONTAINER EMBEDDED HERE --------------------------
 		// Display container contents:
@@ -191,10 +224,15 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 			'block_title_start' => '<h3>',
 			'block_title_end' => '</h3>',
 			// Template params for "Item Tags" widget
-			'widget_item_tags_before'    => '<div class="small">'.T_('Tags').': ',
+			'widget_item_tags_before'    => '<div class="small post_tags">',
+			'widget_item_tags_separator' => '',
 			'widget_item_tags_after'     => '</div>',
 			// Params for skin file "_item_content.inc.php"
-			'widget_item_content_params' => $params,
+			'widget_item_content_params' => array (
+				'image_limit'              => 0,
+				'gallery_image_limit'      => 0,
+				
+			),
 			// Template params for "Item Attachments" widget:
 			'widget_item_attachments_params' => array(
 					'limit_attach'       => 1000,
@@ -215,7 +253,9 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	{
 	// this will create a <section>
 		// ---------------------- POST CONTENT INCLUDED HERE ----------------------
-		skin_include( '_item_content.inc.php', array( 'content_mode'             => 'excerpt', ) );
+		skin_include( '_item_content.inc.php', array(
+			'content_mode' => 'excerpt',
+		) );
 		// Note: You can customize the default item content by copying the generic
 		// /skins/_item_content.inc.php file into the current skin folder.
 		// -------------------------- END OF POST CONTENT -------------------------
@@ -226,17 +266,20 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	<footer>
 
 		<?php
-			if( ! $Item->is_intro() ) // Do NOT apply tags, comments and feedback on intro posts
+			if( ! $Item->is_intro() && $disp != 'single' ) // Do NOT apply tags, comments and feedback on intro posts AND on disp=single
 			{ // List all tags attached to this post:
+				if( $Skin->get_setting( 'post_tags' ) ) {
 				$Item->tags( array(
 						'before'    => '<nav class="small post_tags">',
 						'after'     => '</nav>',
 						'separator' => ' ',
 					) );
+				}
 		?>
 
-		<nav class="post_comments_link">
 		<?php
+			if( $display_comments_bool == true ) {
+			echo '<nav class="post_comments_link">';
 			// Link to comments, trackbacks, etc.:
 			$Item->feedback_link( array(
 							'type' => 'comments',
@@ -260,8 +303,10 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 							'link_text_more' => '#',
 							'link_title' => '#',
 						) );
+			echo '</nav>';
+			}
 		?>
-		</nav>
+		
 		<?php } ?>
 	</footer>
 	
@@ -278,15 +323,15 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 		skin_include( '_item_feedback.inc.php', array_merge( array(
 				'before_section_title' => '<div class="clearfix"></div><h3 class="evo_comment__list_title">',
 				'after_section_title'  => '</h3>',
-				'disp_comments'         => true,
-				'disp_comment_form'     => true,
-				'disp_trackbacks'       => true,
-				'disp_trackback_url'    => true,
-				'disp_pingbacks'        => true,
-				'disp_meta_comments'    => false,
-				'disp_section_title'    => true,
-				'disp_meta_comment_info' => true,
-				'disp_rating_summary'   => true,
+				'disp_comments'          => $display_comments_bool,
+				'disp_comment_form'      => $display_comments_bool,
+				'disp_trackbacks'        => $display_comments_bool,
+				'disp_trackback_url'     => $display_comments_bool,
+				'disp_pingbacks'         => $display_comments_bool,
+				'disp_meta_comments'     => false,
+				'disp_section_title'     => $display_comments_bool,
+				'disp_meta_comment_info' => $display_comments_bool,
+				'disp_rating_summary'    => $display_comments_bool,
 			), $params ) );
 		// Note: You can customize the default item feedback by copying the generic
 		// /skins/_item_feedback.inc.php file into the current skin folder.
@@ -303,7 +348,7 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	?>
 
 	<?php
-	if( evo_version_compare( $app_version, '6.7' ) >= 0 )
+	if( evo_version_compare( $app_version, '6.7' ) >= 0 && $display_comments_bool == true )
 	{	// We are running at least b2evo 6.7, so we can include this file:
 		// ------------------ META COMMENTS INCLUDED HERE ------------------
 		skin_include( '_item_meta_comments.inc.php', array(
@@ -319,4 +364,4 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	?>
 </article>
 
-<?php echo '</div>'; // End of post display ?>
+<?php echo '</div>' . $post_after; // End of post display ?>

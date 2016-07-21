@@ -134,19 +134,6 @@ siteskin_include( '_site_body_header.inc.php' );
 		?>
 
 		<?php
-			// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
-			item_prevnext_links( array(
-					'block_start' => '<nav><ul class="pager">',
-						'prev_start'  => '<li class="previous">',
-						'prev_end'    => '</li>',
-						'next_start'  => '<li class="next">',
-						'next_end'    => '</li>',
-					'block_end'   => '</ul></nav>',
-				) );
-			// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
-		?>
-
-		<?php
 			// ------------------------ TITLE FOR THE CURRENT REQUEST ------------------------
 			request_title( array(
 					'title_before'      => '<h2>',
@@ -346,9 +333,27 @@ siteskin_include( '_site_body_header.inc.php' );
 	
 </footer><!-- .row -->
 
-
 </div><!-- .container -->
 
+<script>
+var fixmeTop = $('.special-cover-image-wrapper').offset().top;
+$(window).scroll(function() {
+    var currentScroll = $(window).scrollTop();
+    if (currentScroll >= fixmeTop) {
+        $('.special-cover-image-wrapper').css({
+            position: 'fixed',
+            top: '0',
+            left: '0'
+        });
+    } else {
+        $('.special-cover-image-wrapper').css({
+            position: 'absolute',
+            top: 'auto',
+            left: 'auto'
+        });
+    }
+});
+</script>
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------
