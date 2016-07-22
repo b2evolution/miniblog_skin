@@ -285,6 +285,7 @@ footer.row {
   margin: 0;
 }
 .special-cover-image-wrapper {
+  position: absolute;
   padding: 0;
 }
 .special-cover-image-wrapper .special-cover-image {
@@ -292,10 +293,6 @@ footer.row {
 }
 .special-cover-image-wrapper .special-cover-image img {
   border-radius: 0;
-}
-.special-cover-image-wrapper,
-.single-post-content-wrapper {
-  position: absolute;
 }
 .pager {
   margin: 0;

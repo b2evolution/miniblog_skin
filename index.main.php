@@ -353,6 +353,16 @@ $(window).scroll(function() {
         });
     }
 });
+
+$('.special-cover-image img').css({
+	height: $(window).height(),
+	width: 'auto'
+});
+/*
+
+$(window).height();
+
+*/
 </script>
 
 <?php

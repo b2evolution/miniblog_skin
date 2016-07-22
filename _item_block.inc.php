@@ -52,7 +52,7 @@ $post_before = '';
 	$special_cover_image = '';
 $post_after  = '';
 
-if( in_array( $disp, array( 'posts', 'single' )) )
+if( $disp ==  'single' )
 {
 $post_before = '</div></div></div><div class="container-fluid"><div class="row">';
 	$post_cover_image_class = 'col-lg-6 special-cover-image-wrapper';
