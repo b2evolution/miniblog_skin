@@ -305,7 +305,7 @@ footer.row {
 }
 .no-cover-image-container {
   background: #F5F5F5;
-  min-height: 200px;
+  height: 200px;
   border-radius: 4px;
   display: table;
   width: 100%;
@@ -346,4 +346,16 @@ footer.row {
   left: 0;
   z-index: 9999;
   position: relative;
+}
+@media screen and (max-width: 991px) {
+  .disp_single .special-cover-image-wrapper,
+  .disp_single .special-cover-image-wrapper.fixed {
+    position: relative;
+  }
+  .disp_single #single-post-content-wrapper {
+    min-height: auto !important;
+  }
+  .disp_single .pager {
+    margin-top: 20px;
+  }
 }

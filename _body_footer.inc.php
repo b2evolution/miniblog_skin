@@ -95,21 +95,13 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  * 
  * Cover image wrapper gets "position: fixed" when reached --> sticky cover image.
  */
-var fixmeTop = $('.special-cover-image-wrapper').offset().top;
+var fixedTop = $('.special-cover-image-wrapper').offset().top;
 $(window).scroll(function() {
     var currentScroll = $(window).scrollTop();
-    if (currentScroll >= fixmeTop) {
-        $('.special-cover-image-wrapper').css({
-            position: 'fixed',
-            top: '0',
-            left: '0'
-        });
+    if (currentScroll >= fixedTop) {
+        $('.special-cover-image-wrapper').addClass('fixed');
     } else {
-        $('.special-cover-image-wrapper').css({
-            position: 'absolute',
-            top: 'auto',
-            left: 'auto'
-        });
+        $('.special-cover-image-wrapper').removeClass('fixed');
     }
 });
 

@@ -352,7 +352,7 @@ footer.row {
 
 .no-cover-image-container {
     background: #F5F5F5;
-    min-height: 200px;
+    height: 200px;
     border-radius: 4px;
     display: table;
     width: 100%;
@@ -399,5 +399,19 @@ footer.row {
 		left: 0;
 		z-index: 9999;
 		position: relative;
+	}
+	
+	@media screen and (max-width: 991px) {
+		.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
+			position: relative;
+		}
+		
+		#single-post-content-wrapper {
+			min-height: auto !important;
+		}
+		
+		.pager {
+			margin-top: 20px;
+		}
 	}
 }

@@ -74,7 +74,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 		 */
 		if( $disp == 'posts' && !$Item->is_intro() )
 		{ // Display cover images that are linked to this post:
-			echo '<div class="col-lg-5 col-md-4">';
+			echo '<div class="col-lg-5 col-md-4 posts-cover-image-block">';
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				$Item->images( array(
@@ -102,7 +102,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 			}
 			echo '<div class="clearfix"></div></div>';
 			
-			echo '<div class="col-lg-7 col-md-8">';
+			echo '<div class="col-lg-7 col-md-8 posts-content-block">';
 		}
 	?>
 	
@@ -114,7 +114,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 		{
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
-				echo '<div class="col-lg-6 special-cover-image-wrapper">';
+				echo '<div class="col-md-6 special-cover-image-wrapper">';
 				$Item->images( array(
 					'before_images'            => '<div class="evo_post_images">',
 					'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special-cover-image">',
@@ -136,7 +136,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 				) );
 				echo '<div class="clearfix"></div></div>';
 				
-				echo '<div class="col-lg-6 col-lg-offset-6" id="single-post-content-wrapper">';
+				echo '<div class="col-md-6 col-md-offset-6" id="single-post-content-wrapper">';
 				
 			// If there are NO cover images in this post, place post content centered of the page
 			} else {
