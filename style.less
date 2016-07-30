@@ -178,11 +178,6 @@ textarea.message_text {
 			color: inherit;
 		}
 	}
-// MILOS > @fp - This makes both "Comments" and "Full Story" button are displayed inline
-//	.more_link_button, .post_comments_link {
-//		display: inline-block;
-//		margin-right: 5px;
-//	}
 }
 .evo_hasbgimg {
 	background-repeat: no-repeat;
@@ -310,6 +305,10 @@ div.action_messages, div.log_container {
 	margin: 0;
 }
 
+.no-padding {
+	padding: 0;
+}
+
 // Positions on the action buttons near page titles
 .evo_post_title {
 	display: table;
@@ -350,8 +349,55 @@ footer.row {
 		border-radius: 0;
 	}
 }
-.fixed {
-	position:fixed;
-	top:0;
-	left:0;
+
+.no-cover-image-container {
+    background: #F5F5F5;
+    min-height: 200px;
+    border-radius: 4px;
+    display: table;
+    width: 100%;
+    text-align: center;
+	
+	i {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 28px;
+		color: rgba(0,0,0,0.25);	
+	}
+}
+
+.disp_single {
+	.fixed {
+		position:fixed;
+		top:0;
+		left:0;
+	}
+
+	html {
+		height: 100%;
+		box-sizing: border-box;
+	}
+
+	body {
+		position: relative;
+		margin: 0;
+		min-height: 100%;
+	}
+
+	.skin-footer-content {
+		background-color: #fff;
+		padding: 20px 0;
+		.skin-footer-single {
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	.sitewide_footer {
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 9999;
+		position: relative;
+	}
 }

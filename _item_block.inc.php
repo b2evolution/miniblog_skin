@@ -38,27 +38,28 @@ $params = array_merge( array(
 		'author_link_text'           => 'auto',
 	), $params );
 	
-// Prepare boolean value depending on the result set by the user
-// We use this to enable/disable comments in the back-office of the skin
+/**
+ * Prepare boolean value depending on the result set by the user
+ * We use this to enable/disable comments in the back-office of the skin
+ */
 $display_comments_bool = false;
-if($Skin->get_setting('post_comments'))
+if( $Skin->get_setting('post_comments') )
 {
 	$display_comments_bool = true;
 }
-
+/**
+ * Before post, depending on disp
+ */
 $post_before = '';
-	$post_cover_image_class = 'col-lg-5 col-md-4';
-	$post_content_class = 'col-lg-7 col-md-8';
-	$special_cover_image = '';
 $post_after  = '';
-
-if( $disp ==  'single' )
+if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) > 0 )
 {
-$post_before = '</div></div></div><div class="container-fluid"><div class="row">';
-	$post_cover_image_class = 'col-lg-6 special-cover-image-wrapper';
-	$special_cover_image = 'special-cover-image';
-	$post_content_class = 'col-lg-6 col-lg-offset-6 single-post-content-wrapper';
-$post_after  = '';
+	$post_before = '</div></div></div><div class="container-fluid"><div class="row">';
+	$post_after  = '';
+} if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
+{
+	$post_before = '';
+	$post_after  = '';
 }
 
 echo $post_before . '<div class="evo_content_block">'; // Beginning of post display
@@ -68,31 +69,78 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	echo empty( $params['item_style'] ) ? '' : ' style="'.format_to_output( $params['item_style'], 'htmlattr' ).'"' ?>>
 	
 	<?php
-		if( in_array( $disp, array( 'posts', 'single' )) && !$Item->is_intro() )
+		if( $disp == 'posts' && !$Item->is_intro() )
 		{	// Display images that are linked to this post:
-			echo '<div class="' . $post_cover_image_class . '">';
-			$Item->images( array(
-				'before_images'            => '<div class="evo_post_images">',
-				'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block ' . $special_cover_image . '">',
-				'before_image_legend'      => '<figcaption class="evo_image_legend">',
-				'after_image_legend'       => '</figcaption>',
-				'after_image'              => '</figure></div>',
-				'after_images'             => '</div>',
-				'image_class'              => 'img-responsive',
-				'image_size'               => 'fit-1280x720',
-				'image_limit'              =>  1,
-				'image_link_to'            => 'original', // Can be 'original', 'single' or empty
+			echo '<div class="col-lg-5 col-md-4">';
+			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
+				$Item->images( array(
+					'before_images'            => '<div class="evo_post_images">',
+					'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block">',
+					'before_image_legend'      => '<figcaption class="evo_image_legend">',
+					'after_image_legend'       => '</figcaption>',
+					'after_image'              => '</figure></div>',
+					'after_images'             => '</div>',
+					'image_class'              => 'img-responsive',
+					'image_size'               => 'fit-1280x720',
+					'image_limit'              =>  1,
+					'image_link_to'            => 'original', // Can be 'original', 'single' or empty
 
-				// We DO NOT want to display galleries here, only one cover image
-				'gallery_image_limit'      => 0,
-				'gallery_colls'            => 0,
+					// We DO NOT want to display galleries here, only one cover image
+					'gallery_image_limit'      => 0,
+					'gallery_colls'            => 0,
 
-				// We want ONLY cover image to display here
-				'restrict_to_image_position' => 'cover',
-			) );
+					// We want ONLY cover image to display here
+					'restrict_to_image_position' => 'cover',
+				) );
+			} else {
+				echo '<div class="no-cover-image-container"><i class="fa fa-picture-o" aria-hidden="true"></i></div>';
+			}
 			echo '<div class="clearfix"></div></div>';
 			
-			echo '<div class="' . $post_content_class . '">';
+			echo '<div class="col-lg-7 col-md-8">';
+		}
+	?>
+	
+	<?php
+		/**
+		 * If disp=single
+		 */
+		if( $disp == 'single' )
+		{
+			/**
+			 * If there is at least one image with cover position
+		     */
+			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
+				echo '<div class="col-lg-6 special-cover-image-wrapper">';
+				$Item->images( array(
+					'before_images'            => '<div class="evo_post_images">',
+					'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special-cover-image">',
+					'before_image_legend'      => '<figcaption class="evo_image_legend">',
+					'after_image_legend'       => '</figcaption>',
+					'after_image'              => '</figure></div>',
+					'after_images'             => '</div>',
+					'image_class'              => 'img-responsive',
+					'image_size'               => 'fit-1280x720',
+					'image_limit'              =>  1,
+					'image_link_to'            => 'original', // Can be 'original', 'single' or empty
+
+					// We DO NOT want to display galleries here, only one cover image
+					'gallery_image_limit'      => 0,
+					'gallery_colls'            => 0,
+
+					// We want ONLY cover image to display here
+					'restrict_to_image_position' => 'cover',
+				) );
+				echo '<div class="clearfix"></div></div>';
+				
+				echo '<div class="col-lg-6 col-lg-offset-6" id="single-post-content-wrapper">';
+				
+			/**
+			 * If there are no images positioned as cover, post is 100% container width
+		     */
+			} else {
+				echo '<div class="col-lg-12">';
+			}
 		}
 	?>
 	
