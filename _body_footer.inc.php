@@ -89,6 +89,12 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 </div><!-- .container -->
 
 <script>
+/**
+ * The idea of disp=single is to have fixed image on the left of the content
+ * and relative (scrollable) content on the right.
+ * 
+ * Cover image wrapper gets "position: fixed" when reached --> sticky cover image.
+ */
 var fixmeTop = $('.special-cover-image-wrapper').offset().top;
 $(window).scroll(function() {
     var currentScroll = $(window).scrollTop();
@@ -107,13 +113,13 @@ $(window).scroll(function() {
     }
 });
 
-
-
+/**
+ * On disp=single, clone cover image div height as min-height CSS attribute for content div.
+ * This is important because we want to set footer ALWAYS BELOW the main content.
+ * Giving min-height to the content allows us to leave blank space below the content if content height < cover image height.
+ */
 var cover_img_height = $(".special-cover-image").height();
-
-document.getElementById('single-post-content-wrapper').setAttribute("style","height:" + cover_img_height + "px");
-
-
+document.getElementById('single-post-content-wrapper').setAttribute("style","min-height:" + cover_img_height + "px");
 </script>
 
 <?php

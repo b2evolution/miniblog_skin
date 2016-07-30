@@ -48,7 +48,7 @@ if( $Skin->get_setting('post_comments') )
 	$display_comments_bool = true;
 }
 /**
- * Before post, depending on disp
+ * What goes before post, depending on disp and number of cover images in the post
  */
 $post_before = '';
 $post_after  = '';
@@ -58,8 +58,8 @@ if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover'
 	$post_after  = '';
 } if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
 {
-	$post_before = '';
-	$post_after  = '';
+	$post_before = '<div class="row">';
+	$post_after  = '</div>';
 }
 
 echo $post_before . '<div class="evo_content_block">'; // Beginning of post display
@@ -69,9 +69,13 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	echo empty( $params['item_style'] ) ? '' : ' style="'.format_to_output( $params['item_style'], 'htmlattr' ).'"' ?>>
 	
 	<?php
+		/**
+		 * Display cover images on disp posts left of the content - miniblog layout
+		 */
 		if( $disp == 'posts' && !$Item->is_intro() )
-		{	// Display images that are linked to this post:
+		{ // Display cover images that are linked to this post:
 			echo '<div class="col-lg-5 col-md-4">';
+			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				$Item->images( array(
 					'before_images'            => '<div class="evo_post_images">',
@@ -92,6 +96,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 					// We want ONLY cover image to display here
 					'restrict_to_image_position' => 'cover',
 				) );
+			// If there are NO cover images in this post, create special div block as a substitute to preserve miniblog layout
 			} else {
 				echo '<div class="no-cover-image-container"><i class="fa fa-picture-o" aria-hidden="true"></i></div>';
 			}
@@ -103,13 +108,11 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	
 	<?php
 		/**
-		 * If disp=single
+		 * Display cover images on disp posts left of the content - special miniblog layout
 		 */
 		if( $disp == 'single' )
 		{
-			/**
-			 * If there is at least one image with cover position
-		     */
+			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				echo '<div class="col-lg-6 special-cover-image-wrapper">';
 				$Item->images( array(
@@ -135,9 +138,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 				
 				echo '<div class="col-lg-6 col-lg-offset-6" id="single-post-content-wrapper">';
 				
-			/**
-			 * If there are no images positioned as cover, post is 100% container width
-		     */
+			// If there are NO cover images in this post, place post content centered of the page
 			} else {
 				echo '<div class="col-lg-12">';
 			}
