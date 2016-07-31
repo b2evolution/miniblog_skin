@@ -284,6 +284,9 @@ div.log_container {
 footer.row {
   margin-top: 20px;
 }
+.disp_posts .evo_content_block:first-child {
+  margin-top: 20px;
+}
 .disp_single .evo_post {
   margin: 0;
 }
