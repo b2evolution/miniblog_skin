@@ -1,3 +1,30 @@
+// --------- Universal item list widget & Recent posts widget ---------
+@import "../../rsc/less/_universal_item_list_widget.module.less";
+// --------------------------------------------------------------------
+
+// ------------------- Media Index widget --------------------
+@import "../../rsc/less/_coll_media_index_widget.module.less";
+// -----------------------------------------------------------
+
+// ----------- User Avatars (User List) widget ------------
+@import "../../rsc/less/_user_avatars_widget.module.less";
+// --------------------------------------------------------
+
+// -----------------About Author widget -------------------
+@import "../../rsc/less/_about_author_widget.module.less";
+// --------------------------------------------------------
+
+// ------------- Organization Members widget -------------
+@import "../../rsc/less/_org_members_widget.module.less";
+// -------------------------------------------------------
+
+// ----------------------------- Font include -------------------------------
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700");
+#skin_wrapper {
+	font-family: 'PT Sans', sans-serif;
+}
+// --------------------------------------------------------------------------
+
 // Header
 .evo_container__header {
 	margin-bottom: 20px;
@@ -334,10 +361,6 @@ footer.row {
 	margin-top: 20px;
 }
 
-// Disp single
-.disp_single .evo_post {
-	margin: 0;
-}
 .special-cover-image-wrapper {
 	position: absolute;
 	padding: 0;
@@ -346,12 +369,6 @@ footer.row {
 		img {
 			border-radius: 0;
 		}
-	}
-}
-.pager  {
-	margin: 0;
-	li > a {
-		border-radius: 0;
 	}
 }
 
@@ -372,6 +389,11 @@ footer.row {
 }
 
 .disp_single {
+
+	#single-post-content-wrapper {
+		padding: 0 40px;
+	}
+
 	.fixed {
 		position:fixed;
 		top:0;
@@ -388,10 +410,45 @@ footer.row {
 		margin: 0;
 		min-height: 100%;
 	}
+	
+	.evo_post {
+		margin: 0;
+		
+		.evo_post_title h1 {
+			font-size: 72px;
+			font-weight: 700;
+			margin: 46px 0 25px;
+		}
+		
+		.widget_core_item_content {
+			font-size: 20px;
+		}
+		
+		.widget_core_item_about_author {
+			margin-top: 25px;
+		}
+		
+		.widget_core_item_small_print,
+		.widget_core_item_about_author {
+			color: #ccc;
+			font-size: 18px;
+			a {
+				color: #ccc;
+				text-decoration: underline;
+			}
+			img {
+				border-radius: 50%;
+			}
+		}
+		
+		.widget_core_item_about_author .evo_avatar {
+			margin: 0 15px 5px 0;
+		}
+	}
 
 	.skin-footer-content {
 		background-color: #fff;
-		padding: 20px 0;
+		padding: 20px 15px;
 		.skin-footer-single {
 			right: 0;
 			bottom: 0;
@@ -405,18 +462,32 @@ footer.row {
 		z-index: 9999;
 		position: relative;
 	}
+}
+
+
 	
-	@media screen and (max-width: 991px) {
-		.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
-			position: relative;
+@media screen and (max-width: 991px) {
+	.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
+		position: relative;
+	}
+	
+	#single-post-content-wrapper {
+		min-height: auto !important;
+	}
+	
+	.disp_single {
+		.evo_post {
+			.evo_post_title h1 {
+				font-size: 36px;
+				font-weight: 700;
+				margin: 25px 0;
+			}
 		}
-		
-		#single-post-content-wrapper {
-			min-height: auto !important;
-		}
-		
-		.pager {
-			margin-top: 20px;
-		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.disp_single #single-post-content-wrapper {
+		padding: 0 15px;
 	}
 }

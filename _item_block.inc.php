@@ -148,17 +148,6 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	<header>
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
-		
-		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
-		item_prevnext_links( array(
-			'block_start' => '<nav><ul class="pager">',
-				'prev_start'  => '<li class="previous">',
-				'prev_end'    => '</li>',
-				'next_start'  => '<li class="next">',
-				'next_end'    => '</li>',
-			'block_end'   => '</ul></nav>',
-			) );
-		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 
 		// ------- Title -------
 		if( $params['disp_title'] )
@@ -197,62 +186,6 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 			echo $params['item_title_line_after'];
 		}
 	?>
-
-	<?php
-	if( ! $Item->is_intro() )
-	{ // Don't display the following for intro posts
-	?>
-	<div class="small text-muted">
-	<?php
-		if( $Item->status != 'published' )
-		{
-			$Item->format_status( array(
-					'template' => '<div class="evo_status evo_status__$status$ badge pull-right">$status_title$</div>',
-				) );
-		}
-
-		// Flag:
-		$Item->flag();
-
-		// Permalink:
-		$Item->permanent_link( array(
-				'text' => '#icon#',
-			) );
-
-		// We want to display the post time:
-		$Item->issue_time( array(
-				'before'      => ' '.T_('posted on '),
-				'after'       => ' ',
-				'time_format' => 'M j, Y',
-			) );
-
-		// Author
-		$Item->author( array(
-			'before'    => /* TRANS: author name */ ' '.T_('by').' ',
-			'after'     => ' ',
-			'link_text' => $params['author_link_text'],
-		) );
-
-		// Categories
-		$Item->categories( array(
-			'before'          => /* TRANS: category name(s) */ T_('in').' ',
-			'after'           => ' ',
-			'include_main'    => true,
-			'include_other'   => true,
-			'include_external'=> true,
-			'link_categories' => true,
-		) );
-
-		// Link for editing
-		$Item->edit_link( array(
-			'before'    => ' &bull; ',
-			'after'     => '',
-		) );
-	?>
-	</div>
-	<?php
-	}
-	?>
 	</header>
 
 	<?php
@@ -273,7 +206,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 			'block_title_start' => '<h3>',
 			'block_title_end' => '</h3>',
 			// Template params for "Item Tags" widget
-			'widget_item_tags_before'    => '<div class="small post_tags">',
+			'widget_item_tags_before'    => '<div class="post_tags">',
 			'widget_item_tags_separator' => '',
 			'widget_item_tags_after'     => '</div>',
 			// Params for skin file "_item_content.inc.php"
@@ -315,7 +248,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	<footer>
 
 		<?php
-			if( ! $Item->is_intro() && $disp != 'single' ) // Do NOT apply tags, comments and feedback on intro posts AND on disp=single
+			if( ! $Item->is_intro() && $disp != 'single' && $disp != 'page' ) // Do NOT apply tags, comments and feedback on intro posts AND on disp=single
 			{ // List all tags attached to this post:
 				if( $Skin->get_setting( 'post_tags' ) ) {
 				$Item->tags( array(
