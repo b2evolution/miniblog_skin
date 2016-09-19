@@ -25,6 +25,11 @@
 }
 // --------------------------------------------------------------------------
 
+// Remove bottom margin separation from sw header
+.sitewide_header {
+	margin-bottom: 0;
+}
+
 // Header
 .evo_container__header {
 	margin-bottom: 20px;
@@ -372,6 +377,17 @@ footer.row {
 	}
 }
 
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: rgba(255,255,255,1) /*url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif')*/ no-repeat center center;
+}
+
 .no-cover-image-container {
     background: #F5F5F5;
     height: 200px;
@@ -417,7 +433,7 @@ footer.row {
 		.evo_post_title h1 {
 			font-size: 72px;
 			font-weight: 700;
-			margin: 46px 0 25px;
+			margin: 0 0 25px;
 		}
 		
 		.widget_core_item_content {

@@ -15,6 +15,8 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 global $Item, $Skin, $app_version;
 
+global $File;
+
 // Default params:
 $params = array_merge( array(
 		'feature_block'              => false,			// fp>yura: what is this for??
@@ -96,6 +98,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 					// We want ONLY cover image to display here
 					'restrict_to_image_position' => 'cover',
 				) );
+				
 			// If there are NO cover images in this post, create special div block as a substitute to preserve miniblog layout
 			} else {
 				echo '<div class="no-cover-image-container"><i class="fa fa-picture-o" aria-hidden="true"></i></div>';
@@ -110,30 +113,46 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 		/**
 		 * Display cover images on disp posts left of the content - special miniblog layout
 		 */
-		if( $disp == 'single' )
+		if( $disp == 'single' || $disp == 'page' )
 		{
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				echo '<div class="col-md-6 special-cover-image-wrapper">';
-				$Item->images( array(
-					'before_images'            => '<div class="evo_post_images">',
-					'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special-cover-image">',
-					'before_image_legend'      => '<figcaption class="evo_image_legend">',
-					'after_image_legend'       => '</figcaption>',
-					'after_image'              => '</figure></div>',
-					'after_images'             => '</div>',
-					'image_class'              => 'img-responsive',
-					'image_size'               => 'fit-1280x720',
-					'image_limit'              =>  1,
-					'image_link_to'            => 'original', // Can be 'original', 'single' or empty
+				
+				// Add cover image depending on the selected back-office option
+				if( $Skin->get_setting( 'cover_image_layout' ) == 'default' ||
+					$Skin->get_setting( 'cover_image_layout' ) == 'expand_pos' ) {
+					$Item->images( array(
+						'before_images'            => '<div class="evo_post_images">',
+						'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special-cover-image">',
+						'before_image_legend'      => '<figcaption class="evo_image_legend">',
+						'after_image_legend'       => '</figcaption>',
+						'after_image'              => '</figure></div>',
+						'after_images'             => '</div>',
+						'image_class'              => 'img-responsive',
+						'image_size'               => 'fit-1280x720',
+						'image_limit'              =>  1,
+						'image_link_to'            => 'original', // Can be 'original', 'single' or empty
 
-					// We DO NOT want to display galleries here, only one cover image
-					'gallery_image_limit'      => 0,
-					'gallery_colls'            => 0,
+						// We DO NOT want to display galleries here, only one cover image
+						'gallery_image_limit'      => 0,
+						'gallery_colls'            => 0,
 
-					// We want ONLY cover image to display here
-					'restrict_to_image_position' => 'cover',
-				) );
+						// We want ONLY cover image to display here
+						'restrict_to_image_position' => 'cover',
+					) );
+					
+				} else {
+					
+					/*
+						OVO RADI, SAMO MORAS DA POKUPIS POST ID I LINK ID DA STAVIS NA ODGOVARAJUCE MESTO U <a> !!!!!!!
+						*/
+					echo '
+					<a href="' . $Item->get_cover_image_url() . '" rel="lightbox[p' . $Item->ID . ']" class="cboxElement">
+						<figure id="special-cover-image_bg_pos" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure>
+					</a>';
+				}
+				
 				echo '<div class="clearfix"></div></div>';
 				
 				echo '<div class="col-md-6 col-md-offset-6" id="single-post-content-wrapper">';
@@ -175,7 +194,6 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 			// EDIT LINK:
 			//if( $Item->is_intro() )
 			//{ // Display edit link only for intro posts, because for all other posts the link is displayed on the info line.
-			// WE NEED THIS BUTTON ON EVERY POST! Otherwise, there is no edit post button, because there is no info line!
 				$Item->edit_link( array(
 							'before' => '<div class="'.button_class( 'group' ).'">',
 							'after'  => '</div>',

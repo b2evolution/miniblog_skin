@@ -112,7 +112,34 @@ $(window).scroll(function() {
  */
 var cover_img_height = $(".special-cover-image").height();
 document.getElementById('single-post-content-wrapper').setAttribute("style","min-height:" + cover_img_height + "px");
+
+//$('#special-cover-image_bg_pos').css("height", $(window).height());
 </script>
+
+<?php 
+if( in_array( $disp, array( 'single', 'page') ) && $Skin->get_setting( 'cover_image_layout' ) == 'background_pos' )
+{
+	?>
+	<script>
+		$(window).resize(function() {
+		$('#special-cover-image_bg_pos').height($(window).height());
+		});
+		$(window).trigger('resize');
+		
+		
+		
+		jQuery(document).ready(function ($) {
+			$(window).load(function () {
+				setTimeout(function(){
+					$('#preloader').fadeOut('slow', function () {
+					});
+				},50); // set the time here
+			});  
+		});
+	</script>
+	<?php
+}
+?>
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------

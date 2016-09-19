@@ -37,6 +37,11 @@ siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 ?>
 
+<?php
+if( in_array( $disp, array( 'single', 'page') ) && $Skin->get_setting( 'cover_image_layout' ) == 'background_pos' ) {
+	echo '<div id="preloader"></div>';
+}
+?>
 
 <div class="container">
 

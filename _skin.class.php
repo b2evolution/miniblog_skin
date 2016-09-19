@@ -155,6 +155,17 @@ class miniblog_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Single Page Settings')
 				),
+					'cover_image_layout' => array(
+						'label' => T_('Image position'),
+						'note' => '',
+						'defaultvalue' => 'default',
+						'options' => array(
+								'default'        => T_('Default position'),
+								'expand_pos' 	 => T_('Expanded image'),
+								'background_pos' => T_('Background image'),
+							),
+						'type' => 'select',
+					),
 					'post_comments' => array(
 						'label' => T_('Post Comments'),
 						'note' => T_('Check to enable post comments on single pages.'),
@@ -397,6 +408,18 @@ class miniblog_Skin extends Skin
 		{ // Custom current tab text color:
 			$custom_css .= 'ul.nav.nav-tabs li a.selected { color: '.$color." }\n";
 		}
+		
+		
+		if( in_array( $disp, array( 'single', 'page') ) )
+		{
+			if( $this->get_setting( 'cover_image_layout' ) == 'background_pos' ) {
+				$custom_css .= "#special-cover-image_bg_pos { background-position: 50% 50%; background-size: cover }\n";
+			}
+			elseif( $this->get_setting( 'cover_image_layout' ) == 'expand_pos' ) {
+				$custom_css .= ".special-cover-image-wrapper .special-cover-image img { width: 100%; height: 100% }\n";
+			}
+		}
+		
 
 		// Limit images by max height:
 		$max_image_height = intval( $this->get_setting( 'max_image_height' ) );
