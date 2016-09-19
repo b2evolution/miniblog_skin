@@ -173,15 +173,16 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 				) );
 
 			// EDIT LINK:
-			if( $Item->is_intro() )
-			{ // Display edit link only for intro posts, because for all other posts the link is displayed on the info line.
+			//if( $Item->is_intro() )
+			//{ // Display edit link only for intro posts, because for all other posts the link is displayed on the info line.
+			// WE NEED THIS BUTTON ON EVERY POST! Otherwise, there is no edit post button, because there is no info line!
 				$Item->edit_link( array(
 							'before' => '<div class="'.button_class( 'group' ).'">',
 							'after'  => '</div>',
 							'text'   => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
 							'class'  => button_class( 'text' ),
 						) );
-			}
+			//}
 
 			echo $params['item_title_line_after'];
 		}
