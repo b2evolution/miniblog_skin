@@ -151,18 +151,83 @@ class miniblog_Skin extends Skin
 				),
 				
 				
+				'section_nav_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Navigation Settings')
+				),
+					'nav_bg_color' => array(
+						'label' => T_('Background color'),
+						'note' => T_('Set the background color of navigation section.') . T_('Default color is') . ' <code>#333333</code>.',
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+					'nav_text_color' => array(
+						'label' => T_('Text color'),
+						'note' => T_('Set the text color of navigation section.') . T_('Default color is') . ' <code>#eeeeee</code>.',
+						'defaultvalue' => '#eeeeee',
+						'type' => 'color',
+					),
+					'nav_link_color' => array(
+						'label' => T_('Navigation links color'),
+						'note' => T_('Set the color of navigation links.') . T_('Default color is') . ' <code>#eeeeee</code>.',
+						'defaultvalue' => '#fefefe',
+						'type' => 'color',
+					),
+				'section_nav_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'section_posts_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Posts Page Settings')
+				),
+					'cover_image_height' => array(
+						'label' => T_('Cover image height'),
+						'note' => 'px (' . T_('Input numbers only') . ').' . T_('Set height for cover images shown on posts page.') . T_( 'Default value is') . ' <code>200</code>.',
+						'defaultvalue' => '200',
+						'type' => 'integer',
+						'size' => '7',
+						// 'allow_empty' => true,
+					),
+					'cover_pos_posts' => array(
+						'label' => T_('Cover image position'),
+						'note' => T_('Select the position of the cover image that will be shown on single page.'),
+						'defaultvalue' => 'cover_center',
+						'options' => array(
+								'cover_top'       => T_('Top'),
+								'cover_center'    => T_('Center'),
+								'cover_bottom'    => T_('Bottom'),
+							),
+						'type' => 'select',
+					),
+				   'cover_link_posts' => array(
+					  'label'    => T_('Cover image link'),
+					  'note'     => ' (' . T_('Decide whether you want the cover image to link to the post or to the image') . ')',
+					  'type'     => 'radio',
+					  'options'  => array(
+						 array( 'link_to_post', T_('Link to post') ),
+						 array( 'link_to_image', T_('Link to image') ),
+					  ),
+					  'defaultvalue' => 'link_to_post',
+				   ),
+				'section_posts_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
 				'section_single_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Single Page Settings')
 				),
-					'cover_image_layout' => array(
-						'label' => T_('Image position'),
-						'note' => '',
-						'defaultvalue' => 'default',
+					'cover_pos_single' => array(
+						'label' => T_('Cover image position'),
+						'note' => T_('Select the position of the cover image that will be shown on single page.'),
+						'defaultvalue' => 'cover_center',
 						'options' => array(
-								'default'        => T_('Default position'),
-								'expand_pos' 	 => T_('Expanded image'),
-								'background_pos' => T_('Background image'),
+								'cover_top'       => T_('Top'),
+								'cover_center'    => T_('Center'),
+								'cover_bottom'    => T_('Bottom'),
 							),
 						'type' => 'select',
 					),
@@ -410,14 +475,29 @@ class miniblog_Skin extends Skin
 		}
 		
 		
+		if( $color = $this->get_setting( 'nav_bg_color' ) )
+		{ // Custom current tab text color:
+			$custom_css .= '.navbar { background-color: '.$color." }\n";
+		}
+		if( $color = $this->get_setting( 'nav_text_color' ) )
+		{ // Custom current tab text color:
+			$custom_css .= '.navbar { color: '.$color." }\n";
+		}
+		if( $color = $this->get_setting( 'nav_link_color' ) )
+		{ // Custom current tab text color:
+			$custom_css .= '.navbar ul.nav li a, .navbar-header a { color: '.$color." }\n";
+			$custom_css .= '.navbar-toggle span { background-color: '.$color." }\n";
+		}
+		
+		
 		if( in_array( $disp, array( 'single', 'page') ) )
 		{
-			if( $this->get_setting( 'cover_image_layout' ) == 'background_pos' ) {
-				$custom_css .= "#special-cover-image_bg_pos { background-position: 50% 50%; background-size: cover }\n";
-			}
-			elseif( $this->get_setting( 'cover_image_layout' ) == 'expand_pos' ) {
-				$custom_css .= ".special-cover-image-wrapper .special-cover-image img { width: 100%; height: 100% }\n";
-			}
+			$custom_css .= "#special-cover-image_bg_pos { background-position: 50% 50%; }\n";
+		}
+		
+		if( $height = $this->get_setting( 'cover_image_height' ) )
+		{
+			$custom_css .= '.posts-cover-image, .no-cover-image-container { height: ' . $height . "px }\n";
 		}
 		
 

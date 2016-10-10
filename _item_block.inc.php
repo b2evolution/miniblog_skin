@@ -19,7 +19,7 @@ global $File;
 
 // Default params:
 $params = array_merge( array(
-		'feature_block'              => false,			// fp>yura: what is this for??
+		'feature_block'              => false,
 		// Classes for the <article> tag:
 		'item_class'                 => 'evo_post evo_content_block',
 		'item_type_class'            => 'evo_post__ptyp_',
@@ -38,33 +38,72 @@ $params = array_merge( array(
 		'image_class'                => 'img-responsive',
 		'image_size'                 => 'fit-1280x720',
 		'author_link_text'           => 'auto',
+		
+		// By default, this skin does not display comments, unless chosen in the b-o of the skin
+		'display_comments_bool'      => false,
+		
+		// Control the layout depending on existance of cover image in post
+		'post_before'                => '',
+		'post_after'                 => '',
 	), $params );
 	
 /**
  * Prepare boolean value depending on the result set by the user
  * We use this to enable/disable comments in the back-office of the skin
  */
-$display_comments_bool = false;
 if( $Skin->get_setting('post_comments') )
 {
-	$display_comments_bool = true;
+	$params['display_comments_bool'] = true;
 }
+
 /**
  * What goes before post, depending on disp and number of cover images in the post
  */
-$post_before = '';
-$post_after  = '';
 if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) > 0 )
 {
-	$post_before = '</div></div></div><div class="container-fluid"><div class="row">';
-	$post_after  = '';
-} if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
+	$params['post_before'] = '</div></div></div><div class="container-fluid"><div class="row">';
+}
+if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
 {
-	$post_before = '<div class="row">';
-	$post_after  = '</div>';
+	$params['post_before'] = '<div class="row">';
+	$params['post_after']  = '</div>';
 }
 
-echo $post_before . '<div class="evo_content_block">'; // Beginning of post display
+/**
+ * Select cover image background position for disp=single and disp=page
+ */
+$cover_pos_single = 'cover_center';
+if( $Skin->get_setting( 'cover_pos_single' ) == 'cover_top' )
+{
+	$cover_pos_single = 'cover_top';
+} elseif( $Skin->get_setting( 'cover_pos_single' ) == 'cover_bottom' )
+{
+	$cover_pos_single = 'cover_bottom';
+}
+
+/**
+ * Select cover image background position for disp=posts
+ */
+$cover_pos_posts = 'cover_center';
+if( $Skin->get_setting( 'cover_pos_posts' ) == 'cover_top' )
+{
+	$cover_pos_posts = 'cover_top';
+} elseif( $Skin->get_setting( 'cover_pos_posts' ) == 'cover_bottom' )
+{
+	$cover_pos_posts = 'cover_bottom';
+}
+
+/**
+ * Select cover image background position for disp=posts
+ */
+$cover_link_posts = '<a href="' . $Item->get_permanent_url() . '">';
+if( $Skin->get_setting( 'cover_link_posts' ) == 'link_to_image' )
+{
+	$cover_link_posts = '<a href="' . $Item->get_cover_image_url() . '" rel="lightbox[p' . $Item->ID . ']" id="link_' . $Item->ID . '" class="cboxElement">';
+}
+
+
+echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of post display
 ?>
 
 <article id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>"<?php
@@ -79,25 +118,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 			echo '<div class="col-lg-5 col-md-4 posts-cover-image-block">';
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
-				$Item->images( array(
-					'before_images'            => '<div class="evo_post_images">',
-					'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block">',
-					'before_image_legend'      => '<figcaption class="evo_image_legend">',
-					'after_image_legend'       => '</figcaption>',
-					'after_image'              => '</figure></div>',
-					'after_images'             => '</div>',
-					'image_class'              => 'img-responsive',
-					'image_size'               => 'fit-1280x720',
-					'image_limit'              =>  1,
-					'image_link_to'            => 'original', // Can be 'original', 'single' or empty
-
-					// We DO NOT want to display galleries here, only one cover image
-					'gallery_image_limit'      => 0,
-					'gallery_colls'            => 0,
-
-					// We want ONLY cover image to display here
-					'restrict_to_image_position' => 'cover',
-				) );
+				echo $cover_link_posts . '<figure class="posts-cover-image ' . $cover_pos_posts . '" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure></a>';
 				
 			// If there are NO cover images in this post, create special div block as a substitute to preserve miniblog layout
 			} else {
@@ -111,47 +132,18 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	
 	<?php
 		/**
-		 * Display cover images on disp posts left of the content - special miniblog layout
+		 * Display cover images on disp single left of the content - special miniblog layout
 		 */
 		if( $disp == 'single' || $disp == 'page' )
 		{
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				echo '<div class="col-md-6 special-cover-image-wrapper">';
-				
-				// Add cover image depending on the selected back-office option
-				if( $Skin->get_setting( 'cover_image_layout' ) == 'default' ||
-					$Skin->get_setting( 'cover_image_layout' ) == 'expand_pos' ) {
-					$Item->images( array(
-						'before_images'            => '<div class="evo_post_images">',
-						'before_image'             => '<div class="evo_post_images"><figure class="evo_image_block special-cover-image">',
-						'before_image_legend'      => '<figcaption class="evo_image_legend">',
-						'after_image_legend'       => '</figcaption>',
-						'after_image'              => '</figure></div>',
-						'after_images'             => '</div>',
-						'image_class'              => 'img-responsive',
-						'image_size'               => 'fit-1280x720',
-						'image_limit'              =>  1,
-						'image_link_to'            => 'original', // Can be 'original', 'single' or empty
-
-						// We DO NOT want to display galleries here, only one cover image
-						'gallery_image_limit'      => 0,
-						'gallery_colls'            => 0,
-
-						// We want ONLY cover image to display here
-						'restrict_to_image_position' => 'cover',
-					) );
-					
-				} else {
-					
-					/*
-						OVO RADI, SAMO MORAS DA POKUPIS POST ID I LINK ID DA STAVIS NA ODGOVARAJUCE MESTO U <a> !!!!!!!
-						*/
+						
 					echo '
-					<a href="' . $Item->get_cover_image_url() . '" rel="lightbox[p' . $Item->ID . ']" class="cboxElement">
-						<figure id="special-cover-image_bg_pos" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure>
+					<a href="' . $Item->get_cover_image_url() . '" rel="lightbox[p' . $Item->ID . ']" id="link_' . $Item->ID . '" class="cboxElement">
+						<figure id="special-cover-image_bg_pos" class="' . $cover_pos_single . '" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure>
 					</a>';
-				}
 				
 				echo '<div class="clearfix"></div></div>';
 				
@@ -267,7 +259,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	<footer>
 
 		<?php
-			if( ! $Item->is_intro() && $disp != 'single' && $disp != 'page' ) // Do NOT apply tags, comments and feedback on intro posts AND on disp=single
+			if( ! $Item->is_intro() && $disp != 'single' && $disp != 'page' ) // Do NOT apply tags, commentcomments and feedback on intro posts AND on disp=single
 			{ // List all tags attached to this post:
 				if( $Skin->get_setting( 'post_tags' ) ) {
 				$Item->tags( array(
@@ -279,7 +271,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 		?>
 
 		<?php
-			if( $display_comments_bool == true ) {
+			if( $params['display_comments_bool'] ) {
 			echo '<nav class="post_comments_link">';
 			// Link to comments, trackbacks, etc.:
 			$Item->feedback_link( array(
@@ -324,15 +316,15 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 		skin_include( '_item_feedback.inc.php', array_merge( array(
 				'before_section_title' => '<div class="clearfix"></div><h3 class="evo_comment__list_title">',
 				'after_section_title'  => '</h3>',
-				'disp_comments'          => $display_comments_bool,
-				'disp_comment_form'      => $display_comments_bool,
-				'disp_trackbacks'        => $display_comments_bool,
-				'disp_trackback_url'     => $display_comments_bool,
-				'disp_pingbacks'         => $display_comments_bool,
+				'disp_comments'          => $params['display_comments_bool'],
+				'disp_comment_form'      => $params['display_comments_bool'],
+				'disp_trackbacks'        => $params['display_comments_bool'],
+				'disp_trackback_url'     => $params['display_comments_bool'],
+				'disp_pingbacks'         => $params['display_comments_bool'],
 				'disp_meta_comments'     => false,
-				'disp_section_title'     => $display_comments_bool,
-				'disp_meta_comment_info' => $display_comments_bool,
-				'disp_rating_summary'    => $display_comments_bool,
+				'disp_section_title'     => $params['display_comments_bool'],
+				'disp_meta_comment_info' => $params['display_comments_bool'],
+				'disp_rating_summary'    => $params['display_comments_bool'],
 			), $params ) );
 		// Note: You can customize the default item feedback by copying the generic
 		// /skins/_item_feedback.inc.php file into the current skin folder.
@@ -349,7 +341,7 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	?>
 
 	<?php
-	if( evo_version_compare( $app_version, '6.7' ) >= 0 && $display_comments_bool == true )
+	if( evo_version_compare( $app_version, '6.7' ) >= 0 && $params['display_comments_bool'] )
 	{	// We are running at least b2evo 6.7, so we can include this file:
 		// ------------------ META COMMENTS INCLUDED HERE ------------------
 		skin_include( '_item_meta_comments.inc.php', array(
@@ -365,4 +357,4 @@ echo $post_before . '<div class="evo_content_block">'; // Beginning of post disp
 	?>
 </article>
 
-<?php echo '</div>' . $post_after; // End of post display ?>
+<?php echo '</div>' . $params['post_after']; // End of post display ?>

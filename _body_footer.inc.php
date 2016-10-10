@@ -110,19 +110,22 @@ $(window).scroll(function() {
  * This is important because we want to set footer ALWAYS BELOW the main content.
  * Giving min-height to the content allows us to leave blank space below the content if content height < cover image height.
  */
-var cover_img_height = $(".special-cover-image").height();
-document.getElementById('single-post-content-wrapper').setAttribute("style","min-height:" + cover_img_height + "px");
+//var cover_img_height = $("#special-cover-image_bg_pos").height();
+//document.getElementById('single-post-content-wrapper').setAttribute("style","min-height:" + cover_img_height + "px");
 
-//$('#special-cover-image_bg_pos').css("height", $(window).height());
+$('#special-cover-image_bg_pos').css("height", $(window).height());
+$('#single-post-content-wrapper').css("min-height", $('#special-cover-image_bg_pos').height());
 </script>
 
 <?php 
-if( in_array( $disp, array( 'single', 'page') ) && $Skin->get_setting( 'cover_image_layout' ) == 'background_pos' )
+if( in_array( $disp, array( 'single', 'page') ) )
 {
 	?>
 	<script>
 		$(window).resize(function() {
-		$('#special-cover-image_bg_pos').height($(window).height());
+			$('#special-cover-image_bg_pos').height($(window).height());
+			$('#special-cover-image_bg_pos').height($(window).height());
+			$('#single-post-content-wrapper').css("min-height", $('#special-cover-image_bg_pos').height());
 		});
 		$(window).trigger('resize');
 		
