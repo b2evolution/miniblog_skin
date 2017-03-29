@@ -133,19 +133,6 @@ class miniblog_Skin extends Skin
 						'type' => 'integer',
 						'allow_empty' => true,
 					),
-					'font_size' => array(
-						'label' => T_('Font size'),
-						'note' => '',
-						'defaultvalue' => 'default',
-						'options' => array(
-								'default'        => T_('Default (14px)'),
-								'standard'       => T_('Standard (16px)'),
-								'medium'         => T_('Medium (18px)'),
-								'large'          => T_('Large (20px)'),
-								'very_large'     => T_('Very large (22px)'),
-							),
-						'type' => 'select',
-					),
 				'section_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
@@ -174,6 +161,63 @@ class miniblog_Skin extends Skin
 						'type' => 'color',
 					),
 				'section_nav_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+
+				'section_color_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Custom Settings')
+				),
+					'page_bg_color' => array(
+						'label' => T_('Background color'),
+						'note' => T_('E-g: #ff0000 for red'),
+						'defaultvalue' => '#fff',
+						'type' => 'color',
+					),
+					'page_text_color' => array(
+						'label' => T_('Text color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
+					),
+					'page_link_color' => array(
+						'label' => T_('Link color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#809cb5',
+						'type' => 'color',
+					),
+					'page_hover_link_color' => array(
+						'label' => T_('Hover link color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#809cb5',
+						'type' => 'color',
+					),
+					'bgimg_text_color' => array(
+						'label' => T_('Text color on background image'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#fff',
+						'type' => 'color',
+					),
+					'bgimg_link_color' => array(
+						'label' => T_('Link color on background image'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#6cb2ef',
+						'type' => 'color',
+					),
+					'bgimg_hover_link_color' => array(
+						'label' => T_('Hover link color on background image'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#6cb2ef',
+						'type' => 'color',
+					),
+					'current_tab_text_color' => array(
+						'label' => T_('Current tab text color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
+					),
+				'section_color_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -247,60 +291,30 @@ class miniblog_Skin extends Skin
 					'layout' => 'end_fieldset',
 				),
 				
-
-				'section_color_start' => array(
+				
+				'section_footer_start' => array(
 					'layout' => 'begin_fieldset',
-					'label'  => T_('Custom Settings')
+					'label'  => T_('Footer Settings')
 				),
-					'page_bg_color' => array(
+					'footer_background_color' => array(
 						'label' => T_('Background color'),
-						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#fff',
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#333',
 						'type' => 'color',
 					),
-					'page_text_color' => array(
+					'footer_text_color' => array(
 						'label' => T_('Text color'),
 						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#333',
-						'type' => 'color',
-					),
-					'page_link_color' => array(
-						'label' => T_('Link color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#337ab7',
-						'type' => 'color',
-					),
-					'page_hover_link_color' => array(
-						'label' => T_('Hover link color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#23527c',
-						'type' => 'color',
-					),
-					'bgimg_text_color' => array(
-						'label' => T_('Text color on background image'),
-						'note' => T_('E-g: #00ff00 for green'),
 						'defaultvalue' => '#fff',
 						'type' => 'color',
 					),
-					'bgimg_link_color' => array(
-						'label' => T_('Link color on background image'),
+					'footer_link_color' => array(
+						'label' => T_('Links color'),
 						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#6cb2ef',
+						'defaultvalue' => '#e8e8e8',
 						'type' => 'color',
 					),
-					'bgimg_hover_link_color' => array(
-						'label' => T_('Hover link color on background image'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#6cb2ef',
-						'type' => 'color',
-					),
-					'current_tab_text_color' => array(
-						'label' => T_('Current tab text color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#333',
-						'type' => 'color',
-					),
-				'section_color_end' => array(
+				'section_footer_end' => array(
 					'layout' => 'end_fieldset',
 				),
 
@@ -428,6 +442,8 @@ class miniblog_Skin extends Skin
 				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
 				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
+		
+		add_headline( '<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" rel="stylesheet">' );
 
 		// Skin specific initializations:
 		global $media_url, $media_path;
@@ -437,17 +453,18 @@ class miniblog_Skin extends Skin
 
 		if( $color = $this->get_setting( 'page_bg_color' ) )
 		{ // Custom page background color:
-			$custom_css .= 'body { background-color: '.$color." }\n";
+			$custom_css .= '#skin_wrapper { background-color: '.$color." }\n";
+			$custom_css .= '.pagination li.active a, .pagination li.active span { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'page_text_color' ) )
 		{ // Custom page text color:
-			$custom_css .= 'body { color: '.$color." }\n";
+			$custom_css .= '#skin_wrapper { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'page_link_color' ) )
 		{ // Custom page link color:
 			$custom_css .= 'a { color: '.$color." }\n";
 			$custom_css .= 'h4.evo_comment_title a, h4.panel-title a.evo_comment_type, .pagination li:not(.active) a, .pagination li:not(.active) span { color: '.$color." !important }\n";
-			$custom_css .= '.pagination li.active a, .pagination li.active span { color: #fff; background-color: '.$color.' !important; border-color: '.$color." }\n";
+			$custom_css .= '.pagination li.active a, .pagination li.active span { background-color: '.$color.' !important; border-color: '.$color." }\n";
 			if( $this->get_setting( 'gender_colored' ) !== 1 )
 			{ // If gender option is not enabled, choose custom link color. Otherwise, chose gender link colors:
 				$custom_css .= 'h4.panel-title a { color: '.$color." }\n";
@@ -507,64 +524,18 @@ class miniblog_Skin extends Skin
 		{
 			$custom_css .= '.evo_image_block img { max-height: '.$max_image_height.'px; width: auto; }'." }\n";
 		}
-
-		// Font size customization
-		if( $font_size = $this->get_setting( 'font_size' ) )
-		{
-			switch( $font_size )
-			{
-				case 'default': // When default font size, no CSS entry
-					//$custom_css .= '';
-					break;
-
-				case 'standard':// When standard layout
-					$custom_css .= '.container { font-size: 16px !important'." }\n";
-					$custom_css .= '.container input.search_field { height: 100%'." }\n";
-					$custom_css .= '.container h1 { font-size: 38px'." }\n";
-					$custom_css .= '.container h2 { font-size: 32px'." }\n";
-					$custom_css .= '.container h3 { font-size: 26px'." }\n";
-					$custom_css .= '.container h4 { font-size: 18px'." }\n";
-					$custom_css .= '.container h5 { font-size: 16px'." }\n";
-					$custom_css .= '.container h6 { font-size: 14px'." }\n";
-					$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-					break;
-
-				case 'medium': // When default font size, no CSS entry
-					$custom_css .= '.container { font-size: 18px !important'." }\n";
-					$custom_css .= '.container input.search_field { height: 100%'." }\n";
-					$custom_css .= '.container h1 { font-size: 40px'." }\n";
-					$custom_css .= '.container h2 { font-size: 34px'." }\n";
-					$custom_css .= '.container h3 { font-size: 28px'." }\n";
-					$custom_css .= '.container h4 { font-size: 20px'." }\n";
-					$custom_css .= '.container h5 { font-size: 18px'." }\n";
-					$custom_css .= '.container h6 { font-size: 16px'." }\n";
-					$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-					break;
-
-				case 'large': // When default font size, no CSS entry
-					$custom_css .= '.container { font-size: 20px !important'." }\n";
-					$custom_css .= '.container input.search_field { height: 100%'." }\n";
-					$custom_css .= '.container h1 { font-size: 42px'." }\n";
-					$custom_css .= '.container h2 { font-size: 36px'." }\n";
-					$custom_css .= '.container h3 { font-size: 30px'." }\n";
-					$custom_css .= '.container h4 { font-size: 22px'." }\n";
-					$custom_css .= '.container h5 { font-size: 20px'." }\n";
-					$custom_css .= '.container h6 { font-size: 18px'." }\n";
-					$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-					break;
-
-				case 'very_large': // When default font size, no CSS entry
-					$custom_css .= '.container { font-size: 22px !important'." }\n";
-					$custom_css .= '.container input.search_field { height: 100%'." }\n";
-					$custom_css .= '.container h1 { font-size: 44px'." }\n";
-					$custom_css .= '.container h2 { font-size: 38px'." }\n";
-					$custom_css .= '.container h3 { font-size: 32px'." }\n";
-					$custom_css .= '.container h4 { font-size: 24px'." }\n";
-					$custom_css .= '.container h5 { font-size: 22px'." }\n";
-					$custom_css .= '.container h6 { font-size: 20px'." }\n";
-					$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-					break;
-			}
+		
+		if( $color = $this->get_setting( 'footer_background_color' ) )
+		{ // Custom footer background color:
+			$custom_css .= '.skin-footer-single { background-color: '.$color." }\n";
+		}
+		if( $color = $this->get_setting( 'footer_text_color' ) )
+		{ // Custom footer text color:
+			$custom_css .= '.skin-footer-single { color: '.$color." }\n";
+		}
+		if( $color = $this->get_setting( 'footer_link_color' ) )
+		{ // Custom footer text color:
+			$custom_css .= '.skin-footer-single a { color: '.$color." }\n";
 		}
 
 		if( ! empty( $custom_css ) )

@@ -14,10 +14,10 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 </div>
 
-<footer class="row skin-footer-single">
+<footer class="skin-footer-single">
 
 	<!-- =================================== START OF FOOTER =================================== -->
-	<div class="col-md-12 center skin-footer-content">
+	<div class="container skin-footer-content">
 
 		<div class="evo_container evo_container__footer">
 		<?php

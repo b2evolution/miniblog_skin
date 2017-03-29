@@ -42,9 +42,9 @@ siteskin_include( '_site_body_header.inc.php' );
 ?>
 
 
-<header class="row">
+<header class="container-fluid">
 
-<div class="container-fluid">
+<div class="row">
 <nav class="navbar">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -102,10 +102,10 @@ siteskin_include( '_site_body_header.inc.php' );
 
 <div class="container">
 
+<?php if( $disp != 'single' ) { ?>
 <div class="row">
-
-	<div class="col-md-12">
-		<div class="evo_container evo_container__page_top">
+	<div class="evo_container evo_container__page_top">
+		<div class="container">
 		<?php
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
@@ -121,16 +121,17 @@ siteskin_include( '_site_body_header.inc.php' );
 				) );
 			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
 		?>
-		</div>
-	</div><!-- .col -->
-
+		</div><!-- .container -->
+	</div><!-- .evo_container__page_top -->
 </div><!-- .row -->
+
+<?php } ?>
 
 <div class="row">
 
 	<div class="<?php echo $Skin->get_column_class(); ?>">
 
-		<main><!-- This is were a link like "Jump to main content" would land -->
+		<main class="<?php echo 'main_disp_'.( empty( $disp ) ? 'none' : $disp ); ?>"><!-- This is were a link like "Jump to main content" would land -->
 
 		<!-- ================================= START OF MAIN AREA ================================== -->
 

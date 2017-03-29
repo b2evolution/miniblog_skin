@@ -1,30 +1,12 @@
-// --------- Universal item list widget & Recent posts widget ---------
-@import "../../rsc/less/_universal_item_list_widget.module.less";
-// --------------------------------------------------------------------
-
-// ------------------- Media Index widget --------------------
-@import "../../rsc/less/_coll_media_index_widget.module.less";
-// -----------------------------------------------------------
-
-// ----------- User Avatars (User List) widget ------------
-@import "../../rsc/less/_user_avatars_widget.module.less";
-// --------------------------------------------------------
-
-// -----------------About Author widget -------------------
-@import "../../rsc/less/_about_author_widget.module.less";
-// --------------------------------------------------------
-
-// ------------- Organization Members widget -------------
-@import "../../rsc/less/_org_members_widget.module.less";
-// -------------------------------------------------------
-
 // ----------------------------- Font include -------------------------------
-@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,400i,500,700");
 #skin_wrapper {
 	font-family: 'PT Sans', sans-serif;
 }
 // --------------------------------------------------------------------------
 
+a[rel~=nofollow]:not([class~=btn]):hover {
+	background: transparent;
+}
 // Remove bottom margin separation from sw header
 nav.sitewide_header {
 	margin-bottom: 0;
@@ -32,8 +14,8 @@ nav.sitewide_header {
 
 .navbar {
 	border-radius: 0;
+	margin: 0;
 	ul.nav {
-		// margin: 10px 0;
 		display: table;
 		vertical-align: middle;
 		li a {
@@ -72,15 +54,16 @@ nav.sitewide_header {
 	}
 }
 
-/*.evo_container__page_top {
-	margin-top: 20px;
+.evo_container__page_top {
 	.ufld_icon_links {
 		text-align: right;
 	}
 }
-.nav.nav-tabs {
-	margin-top: 0;
-}*/
+
+// Main classes
+.main_disp_front {
+	margin: 2em 0;
+}
 
 // Login widget form
 .widget_core_user_login {
@@ -368,6 +351,16 @@ div.bSideItem {
 // Pagination
 .pagination {
 	margin: 0;
+	padding-top: 5px;
+	>li:first-child>a, >li:first-child>span, >li:last-child>a, >li:last-child>span {
+		border-radius: 0;
+	}
+	&.pagination_top {
+		margin-top: 2em;
+	}
+	&.pagination_bottom {
+		margin-bottom: 2em;
+	}
 }
 
 // Messages
@@ -382,26 +375,28 @@ div.action_messages, div.log_container {
 // Positions on the action buttons near page titles
 .evo_post_title {
 	display: table;
+	margin-top: -7px; // Important to align titles with the top of cover images on $disp=posts
 	h2 {
 		display: table-cell;
+		font-size: 46px;
+		font-weight: 700;
 		margin: 0;
-		padding: 20px 0 10px;
+		padding: 0 0 10px;
 	}
 	.btn-group {
 		display: table-cell;
-		padding: 20px 0 10px 30px;
+		padding: 15px 0 10px 30px;
 		vertical-align: middle;
 	}
 }
 
-// This skin needs this for disp=posts to separate from lower pagination
-footer.row {
-	margin-top: 20px;
+.evo_post__excerpt {
+	font-size: 16px;
 }
 
 // Disp posts
 .disp_posts .evo_content_block:first-child {
-	margin-top: 20px;
+	margin-top: 2em;
 }
 
 .posts-cover-image {
@@ -421,6 +416,7 @@ footer.row {
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		margin: 0;
 		
 		&.cover_center {
 			background-position: center;
@@ -442,7 +438,7 @@ footer.row {
     width: 100%;
     height: 100%;
     overflow: visible;
-    background: rgba(255,255,255,1) /*url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif')*/ no-repeat center center;
+    background: rgba(255,255,255,1) no-repeat center center;
 }
 
 .no-cover-image-container {
@@ -484,13 +480,17 @@ footer.row {
 		min-height: 100%;
 	}
 	
+	.evo_container__item_single {
+		padding-bottom: 35px;
+	}
+	
 	.evo_post {
 		margin: 0;
 		
 		.evo_post_title h1 {
 			font-size: 72px;
 			font-weight: 700;
-			margin: 0 0 25px;
+			margin:25px 0;
 		}
 		
 		.widget_core_item_content {
@@ -504,7 +504,7 @@ footer.row {
 		.widget_core_item_small_print,
 		.widget_core_item_about_author {
 			color: #ccc;
-			font-size: 18px;
+			font-size: 20px;
 			a {
 				color: #ccc;
 				text-decoration: underline;
@@ -519,15 +519,13 @@ footer.row {
 		}
 	}
 
-	.skin-footer-content {
-		background-color: #fff;
-		padding: 20px 15px;
-		.skin-footer-single {
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
+	.skin-footer-single {
+		bottom: 0;
+		left: 0;
+		position: relative;
+		right: 0;
 	}
+	
 	.sitewide_footer {
 		right: 0;
 		bottom: 0;
@@ -537,7 +535,23 @@ footer.row {
 	}
 }
 
+.powered_by img {
+	background: #fefefe;
+	border-radius: 3px;
+	padding: 2px;
+}
 
+// All disps footer settings
+.skin-footer-content {
+	padding: 15px;
+}
+
+.evo_widget {
+	h3 {
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}
 	
 @media screen and (max-width: 991px) {
 	.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
