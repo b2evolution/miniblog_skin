@@ -24,7 +24,7 @@ if( empty( $params ) )
 
 // Merge the params from current skin
 $params = array_merge( array(
-		'mediaidx_thumb_size' => 'fit-80x80',
+		'mediaidx_thumb_size' => 'fit-1280x720',
 	), $params );
 
 $photocell_styles = '';
@@ -43,7 +43,7 @@ skin_widget( array(
 		'block_end' => '</div>',
 		'block_display_title' => false,
 		'thumb_size' => $params['mediaidx_thumb_size'],
-		'thumb_layout' => 'flow',
+		'thumb_layout' => 'rwd',
 		'grid_start' => '<div class="evo_image_index">',
 		'grid_end' => '</div>',
 		'grid_nb_cols' => 8,

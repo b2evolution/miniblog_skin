@@ -160,6 +160,13 @@ class miniblog_Skin extends Skin
 						'defaultvalue' => '#fefefe',
 						'type' => 'color',
 					),
+					'nav_logo_file_ID' => array(
+						'label' => T_('Upload logo image'),
+						'note' => T_('If you upload your logo here, it will be shown in navigation menu instead of collection title.'),
+						'type' => 'fileselect',
+						'initialize_with' => 'shared/global/sunset/sunset.jpg',
+						'thumbnail_size' => 'fit-320x320',
+					),
 				'section_nav_end' => array(
 					'layout' => 'end_fieldset',
 				),
@@ -184,13 +191,13 @@ class miniblog_Skin extends Skin
 					'page_link_color' => array(
 						'label' => T_('Link color'),
 						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#809cb5',
+						'defaultvalue' => '#3b434a',
 						'type' => 'color',
 					),
 					'page_hover_link_color' => array(
 						'label' => T_('Hover link color'),
 						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#809cb5',
+						'defaultvalue' => '#3b434a',
 						'type' => 'color',
 					),
 					'bgimg_text_color' => array(
@@ -454,7 +461,7 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_bg_color' ) )
 		{ // Custom page background color:
 			$custom_css .= '#skin_wrapper { background-color: '.$color." }\n";
-			$custom_css .= '.pagination li.active a, .pagination li.active span { color: '.$color." }\n";
+			$custom_css .= '.pagination li.active a, .pagination li.active span, .evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2 { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'page_text_color' ) )
 		{ // Custom page text color:
@@ -463,6 +470,8 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_link_color' ) )
 		{ // Custom page link color:
 			$custom_css .= 'a { color: '.$color." }\n";
+			$custom_css .= '.evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, div.compact_search_form .input-group-btn input:hover, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2 { background-color: '.$color." }\n";
+			$custom_css .= '#login_form input:focus:invalid:focus, #login_form select:focus:invalid:focus, #login_form textarea:focus:invalid:focus, .form-control:focus, .controls input.form-control.form_text_input:focus, div.compact_search_form .input-group-btn input { border-color: '.$color." }\n";
 			$custom_css .= 'h4.evo_comment_title a, h4.panel-title a.evo_comment_type, .pagination li:not(.active) a, .pagination li:not(.active) span { color: '.$color." !important }\n";
 			$custom_css .= '.pagination li.active a, .pagination li.active span { background-color: '.$color.' !important; border-color: '.$color." }\n";
 			if( $this->get_setting( 'gender_colored' ) !== 1 )

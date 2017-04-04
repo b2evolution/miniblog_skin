@@ -4,12 +4,17 @@
 }
 // --------------------------------------------------------------------------
 
+// Remove background color on hovering users names
 a[rel~=nofollow]:not([class~=btn]):hover {
 	background: transparent;
 }
 // Remove bottom margin separation from sw header
 nav.sitewide_header {
 	margin-bottom: 0;
+}
+//Remove 
+#login_form input:focus:invalid:focus, #login_form select:focus:invalid:focus, #login_form textarea:focus:invalid:focus, input:focus:invalid:focus, select:focus:invalid:focus, textarea:focus:invalid:focus, .form-control:focus {
+	box-shadow: none;
 }
 
 .navbar {
@@ -34,17 +39,19 @@ nav.sitewide_header {
 	.navbar-toggle {
 		margin-top: 18px;
 	}
-	.evo_widget {
-		padding-bottom: 10px;
+	h3 {
+		margin-top: 18px;
+		margin-bottom: 0;
+		font-size: 22px;
+		text-transform: uppercase;
+		font-weight: 600;
 	}
-	.evo_widget.widget_core_coll_title {
-		padding-bottom: 0;
+	.navbar-logo {
 		h1 {
-			margin-top: 24px;
-			margin-bottom: 0;
-			font-size: 22px;
-			text-transform: uppercase;
-			font-weight: 600;
+			margin: 0;
+			img {
+				max-height: 60px;
+			}
 		}
 	}
 }
@@ -63,6 +70,98 @@ nav.sitewide_header {
 // Main classes
 .main_disp_front {
 	margin: 2em 0;
+}
+// Disp=404
+.main_disp_404 {
+	.evo_widget {
+		margin: 0;
+	}
+}
+// Access denied disp
+.main_disp_access_denied {
+	padding: 5em 0;
+	> p {
+		font-size: 16px;
+		margin: 0;
+	}
+}
+.main_disp_contacts,
+.main_disp_users {
+	.results {
+		margin: 2em 0;
+		&.panel {
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+		}
+		.panel-heading {
+			border: 0;
+			border-radius: 0;
+			.panel-title {
+				font-weight: 700;
+				padding: 4px 0;
+				text-transform: uppercase;
+				text-align: center;
+				.close {
+					display: none;
+				}
+			}
+			// Position properly button in panel-heading on results table
+			.panel_heading_action_icons {
+				margin-top: -2px;
+				.btn {
+					border-radius: 0;
+				}
+			}
+		}
+		.panel-body {
+			font-size: 16px;
+			padding: 2em 0;
+			.form_text_input, .form-group-sm select.form-control {
+				border-radius: 0;
+				box-shadow: none;
+				height: 46px;
+			}
+			.control-buttons .btn {
+				border-radius: 0;
+				margin: 0 0 5px;
+				width: 100%;
+				&.btn-primary {
+					margin: 0;
+				}
+			}
+			.btn {
+				border-radius: 0;
+			}
+		}
+		// Remove border-radius from result rows images
+		.table_scroll table.table tr td.firstcol.shrinkwrap a img, .table_scroll table.table tr td.firstcol.shrinkwrap span img {
+			border-radius: 0;
+		}
+		// Remove border-bottom from result's last row
+		table.table {
+			border-bottom: 0;
+		}
+		.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+			border: 0;
+			font-size: 16px;
+		}
+		.panel-footer {
+			border: 0;
+			border-radius: 0;
+		}
+	}
+}
+// 45.6
+.main_disp_mediaidx {
+	h2 {
+		font-size: 16px;
+		font-weight: 700;
+		margin: 2em 0 0;
+		padding: 14px 15px;
+		text-transform: uppercase;
+		text-align: center;
+	}
 }
 
 // Login widget form
@@ -184,8 +283,15 @@ form.search .search_options {
 }
 div.compact_search_form {
 	input.search_field {
-		width: 100%;
+		border-radius: 0;
+		box-shadow: none;
+		height: 46px;
 		margin: 0;
+		width: 100%;
+	}
+	.input-group-btn input {
+		border-radius: 0;
+		height: 46px;
 	}
 }
 div.extended_search_form {
@@ -223,6 +329,7 @@ textarea.message_text {
 	color: #337ab7;
 }
 
+// Default post layout
 .evo_post {
 	margin-bottom: 2em;
 	.small.text-muted {
@@ -232,6 +339,13 @@ textarea.message_text {
 		}
 	}
 }
+
+// Intro post layout
+main .well {
+	margin-bottom: 0;
+	padding: 25px 25px 15px;
+}
+
 .evo_hasbgimg {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -276,20 +390,76 @@ div.bSideItem {
 	min-width: 290px;
 	margin: 1.5em auto auto;
 	.panel {
-		margin: 5px 0;
+		border: 0;
+		box-shadow: none;
+		margin: 2em 0 0;
+	}
+	.panel-heading {
+	    border: 0;
+		border-radius: 0;
+		.panel-title {
+			font-weight: 700;
+			padding: 4px 0;
+			text-transform: uppercase;
+			text-align: center;
+			.close {
+				display: none;
+			}
+		}
 	}
 	.panel-body {
-		padding-top: 20px;
-		padding-bottom: 0;
+		padding: 2em 0 0;
+		.form_text_input {
+			border-radius: 0;
+			box-shadow: none;
+			height: 46px;
+		}
+		.control-buttons .btn {
+			border-radius: 0;
+			margin: 0 0 5px;
+			width: 100%;
+			&.btn-primary {
+				margin: 0;
+			}
+		}
 	}
 }
 .evo_panel__login {
 	max-width: 400px;
+	label {
+		display: none;
+	}
+	.evo_form__login {
+		.form-group {
+			margin: 0;
+			padding-bottom: 2em;
+		}
+	}
+	.evo_login_dialog_standard_link {
+		margin: 0;
+	}
+	.evo_login_dialog_footer {
+		margin: 10px 0 2em;
+	}
 }
 .evo_panel__lostpass {
-	max-width: 480px;
+	max-width: 400px;
 	#ffield_x label {
 		display: none;
+	}
+	.panel {
+		.panel-body {
+			padding-top: 0;
+			.form-group {
+				margin-bottom: 2em;
+			}
+		}
+	}
+	.evo_login_dialog_standard_link {
+		margin: 2em 0 0;
+	}
+	.evo_login_dialog_footer {
+		margin: 10px 0 2em;
 	}
 }
 .evo_panel__activation {
@@ -299,9 +469,22 @@ div.bSideItem {
 	}
 }
 .evo_panel__register {
-	max-width: 580px;
+	max-width: 400px;
 	.control-buttons{
 		text-align: left;
+	}
+	.evo_form__register {
+		.form-group {
+			margin-bottom: 2em;
+			&:not(.field_required) {
+				.control-buttons {
+					margin: 0;
+				}
+			}
+			input {
+				width: 100% !important;
+			}
+		}
 	}
 	&.register-disabled {
 		width: 350px;
@@ -310,6 +493,12 @@ div.bSideItem {
 		&#country, &#u {
 			width: 100%;
 		}
+	}
+	.evo_login_dialog_standard_link {
+		margin: 2em 0 0;
+	}
+	.evo_login_dialog_footer {
+		margin: 10px 0 2em;
 	}
 }
 .evo_form__login_links {
@@ -352,8 +541,11 @@ div.bSideItem {
 .pagination {
 	margin: 0;
 	padding-top: 5px;
-	>li:first-child>a, >li:first-child>span, >li:last-child>a, >li:last-child>span {
-		border-radius: 0;
+	>li:first-child>a, >li:first-child>span {
+		border-radius: 3px 0 0 3px;
+	}
+	>li:last-child>a, >li:last-child>span {
+		border-radius: 0 3px 3px 0;
 	}
 	&.pagination_top {
 		margin-top: 2em;
@@ -535,21 +727,52 @@ div.action_messages, div.log_container {
 	}
 }
 
-.powered_by img {
-	background: #fefefe;
-	border-radius: 3px;
-	padding: 2px;
+// b2evo "Powered by" logo line
+div.powered_by {
+	padding: 1.5em;
+	margin: 0;
+	img {
+		background: #fefefe;
+		border-radius: 3px;
+		padding: 2px;
+	}
 }
 
 // All disps footer settings
 .skin-footer-content {
 	padding: 15px;
+	// Copyright text
+	> p {
+		margin: 0;
+		padding: 1.5em;
+	}
 }
-
+main, .skin-footer-single {
+	.evo_widget {
+		padding: 1.5em 0;
+	}
+}
 .evo_widget {
+    font-size: 16px;
 	h3 {
 		font-weight: 700;
 		text-transform: uppercase;
+	}
+	// If h3 element is in the widget title, no margin top
+	& > h3 {
+		margin-top: 0;
+	}
+	// Lists layout for widgets
+	ul, ol {
+		margin-bottom: 10px;
+		// If last list of the widget, no margin bottom
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	// If last paragraph of the widget, no margin bottom
+	p:last-child {
+		margin-bottom: 0;
 	}
 }
 	

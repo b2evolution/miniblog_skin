@@ -33,7 +33,7 @@ skin_include( '_html_header.inc.php', array() );
 
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
-siteskin_include( '_site_body_header.inc.php' );
+skin_include( '_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 ?>
 
@@ -41,64 +41,6 @@ siteskin_include( '_site_body_header.inc.php' );
 	//echo '<div id="preloader"></div>';
 ?>
 
-
-<header class="container-fluid">
-
-<div class="row">
-<nav class="navbar">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header evo_container__header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-		<?php
-			// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			skin_container( NT_('Header'), array(
-					// The following params will be used as defaults for widgets included in this container:
-					'block_start'       => '<div class="evo_widget $wi_class$">',
-					'block_end'         => '</div>',
-					'block_title_start' => '<h1>',
-					'block_title_end'   => '</h1>',
-				) );
-			// ----------------------------- END OF "Header" CONTAINER -----------------------------
-		?>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-		<?php
-			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			// Note: this container is designed to be a single <ul> list
-			skin_container( NT_('Menu'), array(
-					// The following params will be used as defaults for widgets included in this container:
-					'block_start'         => '',
-					'block_end'           => '',
-					'block_display_title' => false,
-					'list_start'          => '',
-					'list_end'            => '',
-					'item_start'          => '<li class="evo_widget $wi_class$">',
-					'item_end'            => '</li>',
-					'item_selected_start' => '<li class="active evo_widget $wi_class$">',
-					'item_selected_end'   => '</li>',
-					'item_title_before'   => '',
-					'item_title_after'    => '',
-				) );
-			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-		?>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-</div>
-</header><!-- .row -->
 
 <div class="container">
 
@@ -163,6 +105,8 @@ siteskin_include( '_site_body_header.inc.php' );
 					'account_activation' => '',
 					'msgform_text'      => '',
 					'user_text'         => '',
+					'contacts_text'     => '',
+					'mediaidx_text'     => T_( 'Recent photos' ),
 					'users_text'        => '',
 					'display_edit_links'=> false,
 				) );

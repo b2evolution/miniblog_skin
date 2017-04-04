@@ -7,6 +7,15 @@ a[rel~=nofollow]:not([class~=btn]):hover {
 nav.sitewide_header {
   margin-bottom: 0;
 }
+#login_form input:focus:invalid:focus,
+#login_form select:focus:invalid:focus,
+#login_form textarea:focus:invalid:focus,
+input:focus:invalid:focus,
+select:focus:invalid:focus,
+textarea:focus:invalid:focus,
+.form-control:focus {
+  box-shadow: none;
+}
 .navbar {
   border-radius: 0;
   margin: 0;
@@ -27,18 +36,18 @@ nav.sitewide_header {
 .navbar-header .navbar-toggle {
   margin-top: 18px;
 }
-.navbar-header .evo_widget {
-  padding-bottom: 10px;
-}
-.navbar-header .evo_widget.widget_core_coll_title {
-  padding-bottom: 0;
-}
-.navbar-header .evo_widget.widget_core_coll_title h1 {
-  margin-top: 24px;
+.navbar-header h3 {
+  margin-top: 18px;
   margin-bottom: 0;
   font-size: 22px;
   text-transform: uppercase;
   font-weight: 600;
+}
+.navbar-header .navbar-logo h1 {
+  margin: 0;
+}
+.navbar-header .navbar-logo h1 img {
+  max-height: 60px;
 }
 @media (max-width: 767px) {
   .navbar-header {
@@ -50,6 +59,115 @@ nav.sitewide_header {
 }
 .main_disp_front {
   margin: 2em 0;
+}
+.main_disp_404 .evo_widget {
+  margin: 0;
+}
+.main_disp_access_denied {
+  padding: 5em 0;
+}
+.main_disp_access_denied > p {
+  font-size: 16px;
+  margin: 0;
+}
+.main_disp_contacts .results,
+.main_disp_users .results {
+  margin: 2em 0;
+}
+.main_disp_contacts .results.panel,
+.main_disp_users .results.panel {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.main_disp_contacts .results .panel-heading,
+.main_disp_users .results .panel-heading {
+  border: 0;
+  border-radius: 0;
+}
+.main_disp_contacts .results .panel-heading .panel-title,
+.main_disp_users .results .panel-heading .panel-title {
+  font-weight: 700;
+  padding: 4px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+.main_disp_contacts .results .panel-heading .panel-title .close,
+.main_disp_users .results .panel-heading .panel-title .close {
+  display: none;
+}
+.main_disp_contacts .results .panel-heading .panel_heading_action_icons,
+.main_disp_users .results .panel-heading .panel_heading_action_icons {
+  margin-top: -2px;
+}
+.main_disp_contacts .results .panel-heading .panel_heading_action_icons .btn,
+.main_disp_users .results .panel-heading .panel_heading_action_icons .btn {
+  border-radius: 0;
+}
+.main_disp_contacts .results .panel-body,
+.main_disp_users .results .panel-body {
+  font-size: 16px;
+  padding: 2em 0;
+}
+.main_disp_contacts .results .panel-body .form_text_input,
+.main_disp_users .results .panel-body .form_text_input,
+.main_disp_contacts .results .panel-body .form-group-sm select.form-control,
+.main_disp_users .results .panel-body .form-group-sm select.form-control {
+  border-radius: 0;
+  box-shadow: none;
+  height: 46px;
+}
+.main_disp_contacts .results .panel-body .control-buttons .btn,
+.main_disp_users .results .panel-body .control-buttons .btn {
+  border-radius: 0;
+  margin: 0 0 5px;
+  width: 100%;
+}
+.main_disp_contacts .results .panel-body .control-buttons .btn.btn-primary,
+.main_disp_users .results .panel-body .control-buttons .btn.btn-primary {
+  margin: 0;
+}
+.main_disp_contacts .results .panel-body .btn,
+.main_disp_users .results .panel-body .btn {
+  border-radius: 0;
+}
+.main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
+.main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
+.main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
+.main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap span img {
+  border-radius: 0;
+}
+.main_disp_contacts .results table.table,
+.main_disp_users .results table.table {
+  border-bottom: 0;
+}
+.main_disp_contacts .results .table-bordered > tbody > tr > td,
+.main_disp_users .results .table-bordered > tbody > tr > td,
+.main_disp_contacts .results .table-bordered > tbody > tr > th,
+.main_disp_users .results .table-bordered > tbody > tr > th,
+.main_disp_contacts .results .table-bordered > tfoot > tr > td,
+.main_disp_users .results .table-bordered > tfoot > tr > td,
+.main_disp_contacts .results .table-bordered > tfoot > tr > th,
+.main_disp_users .results .table-bordered > tfoot > tr > th,
+.main_disp_contacts .results .table-bordered > thead > tr > td,
+.main_disp_users .results .table-bordered > thead > tr > td,
+.main_disp_contacts .results .table-bordered > thead > tr > th,
+.main_disp_users .results .table-bordered > thead > tr > th {
+  border: 0;
+  font-size: 16px;
+}
+.main_disp_contacts .results .panel-footer,
+.main_disp_users .results .panel-footer {
+  border: 0;
+  border-radius: 0;
+}
+.main_disp_mediaidx h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2em 0 0;
+  padding: 14px 15px;
+  text-transform: uppercase;
+  text-align: center;
 }
 .widget_core_user_login #login_form .form-group {
   margin: 0;
@@ -147,8 +265,15 @@ form.search .search_options .search_option label {
   margin-top: 5px;
 }
 div.compact_search_form input.search_field {
-  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  height: 46px;
   margin: 0;
+  width: 100%;
+}
+div.compact_search_form .input-group-btn input {
+  border-radius: 0;
+  height: 46px;
 }
 div.extended_search_form {
   text-align: center;
@@ -184,6 +309,10 @@ textarea.message_text {
 .evo_post .small.text-muted a,
 .evo_post .small.text-muted a .glyphicon {
   color: inherit;
+}
+main .well {
+  margin-bottom: 0;
+  padding: 25px 25px 15px;
 }
 .evo_hasbgimg {
   background-repeat: no-repeat;
@@ -230,23 +359,93 @@ div.bSideItem h4 {
 .evo_panel__lostpass .panel,
 .evo_panel__register .panel,
 .evo_panel__activation .panel {
-  margin: 5px 0;
+  border: 0;
+  box-shadow: none;
+  margin: 2em 0 0;
+}
+.evo_panel__login .panel-heading,
+.evo_panel__lostpass .panel-heading,
+.evo_panel__register .panel-heading,
+.evo_panel__activation .panel-heading {
+  border: 0;
+  border-radius: 0;
+}
+.evo_panel__login .panel-heading .panel-title,
+.evo_panel__lostpass .panel-heading .panel-title,
+.evo_panel__register .panel-heading .panel-title,
+.evo_panel__activation .panel-heading .panel-title {
+  font-weight: 700;
+  padding: 4px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+.evo_panel__login .panel-heading .panel-title .close,
+.evo_panel__lostpass .panel-heading .panel-title .close,
+.evo_panel__register .panel-heading .panel-title .close,
+.evo_panel__activation .panel-heading .panel-title .close {
+  display: none;
 }
 .evo_panel__login .panel-body,
 .evo_panel__lostpass .panel-body,
 .evo_panel__register .panel-body,
 .evo_panel__activation .panel-body {
-  padding-top: 20px;
-  padding-bottom: 0;
+  padding: 2em 0 0;
+}
+.evo_panel__login .panel-body .form_text_input,
+.evo_panel__lostpass .panel-body .form_text_input,
+.evo_panel__register .panel-body .form_text_input,
+.evo_panel__activation .panel-body .form_text_input {
+  border-radius: 0;
+  box-shadow: none;
+  height: 46px;
+}
+.evo_panel__login .panel-body .control-buttons .btn,
+.evo_panel__lostpass .panel-body .control-buttons .btn,
+.evo_panel__register .panel-body .control-buttons .btn,
+.evo_panel__activation .panel-body .control-buttons .btn {
+  border-radius: 0;
+  margin: 0 0 5px;
+  width: 100%;
+}
+.evo_panel__login .panel-body .control-buttons .btn.btn-primary,
+.evo_panel__lostpass .panel-body .control-buttons .btn.btn-primary,
+.evo_panel__register .panel-body .control-buttons .btn.btn-primary,
+.evo_panel__activation .panel-body .control-buttons .btn.btn-primary {
+  margin: 0;
 }
 .evo_panel__login {
   max-width: 400px;
 }
+.evo_panel__login label {
+  display: none;
+}
+.evo_panel__login .evo_form__login .form-group {
+  margin: 0;
+  padding-bottom: 2em;
+}
+.evo_panel__login .evo_login_dialog_standard_link {
+  margin: 0;
+}
+.evo_panel__login .evo_login_dialog_footer {
+  margin: 10px 0 2em;
+}
 .evo_panel__lostpass {
-  max-width: 480px;
+  max-width: 400px;
 }
 .evo_panel__lostpass #ffield_x label {
   display: none;
+}
+.evo_panel__lostpass .panel .panel-body {
+  padding-top: 0;
+}
+.evo_panel__lostpass .panel .panel-body .form-group {
+  margin-bottom: 2em;
+}
+.evo_panel__lostpass .evo_login_dialog_standard_link {
+  margin: 2em 0 0;
+}
+.evo_panel__lostpass .evo_login_dialog_footer {
+  margin: 10px 0 2em;
 }
 .evo_panel__activation {
   max-width: 530px;
@@ -255,10 +454,19 @@ div.bSideItem h4 {
   text-align: left;
 }
 .evo_panel__register {
-  max-width: 580px;
+  max-width: 400px;
 }
 .evo_panel__register .control-buttons {
   text-align: left;
+}
+.evo_panel__register .evo_form__register .form-group {
+  margin-bottom: 2em;
+}
+.evo_panel__register .evo_form__register .form-group:not(.field_required) .control-buttons {
+  margin: 0;
+}
+.evo_panel__register .evo_form__register .form-group input {
+  width: 100% !important;
 }
 .evo_panel__register.register-disabled {
   width: 350px;
@@ -266,6 +474,12 @@ div.bSideItem h4 {
 .evo_panel__register .form-control#country,
 .evo_panel__register .form-control#u {
   width: 100%;
+}
+.evo_panel__register .evo_login_dialog_standard_link {
+  margin: 2em 0 0;
+}
+.evo_panel__register .evo_login_dialog_footer {
+  margin: 10px 0 2em;
 }
 .evo_form__login_links {
   padding: 0 5px;
@@ -304,10 +518,12 @@ div.bSideItem h4 {
   padding-top: 5px;
 }
 .pagination > li:first-child > a,
-.pagination > li:first-child > span,
+.pagination > li:first-child > span {
+  border-radius: 3px 0 0 3px;
+}
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-  border-radius: 0;
+  border-radius: 0 3px 3px 0;
 }
 .pagination.pagination_top {
   margin-top: 2em;
@@ -457,7 +673,11 @@ div.log_container {
   z-index: 9999;
   position: relative;
 }
-.powered_by img {
+div.powered_by {
+  padding: 1.5em;
+  margin: 0;
+}
+div.powered_by img {
   background: #fefefe;
   border-radius: 3px;
   padding: 2px;
@@ -465,9 +685,34 @@ div.log_container {
 .skin-footer-content {
   padding: 15px;
 }
+.skin-footer-content > p {
+  margin: 0;
+  padding: 1.5em;
+}
+main .evo_widget,
+.skin-footer-single .evo_widget {
+  padding: 1.5em 0;
+}
+.evo_widget {
+  font-size: 16px;
+}
 .evo_widget h3 {
   font-weight: 700;
   text-transform: uppercase;
+}
+.evo_widget > h3 {
+  margin-top: 0;
+}
+.evo_widget ul,
+.evo_widget ol {
+  margin-bottom: 10px;
+}
+.evo_widget ul:last-child,
+.evo_widget ol:last-child {
+  margin-bottom: 0;
+}
+.evo_widget p:last-child {
+  margin-bottom: 0;
 }
 @media screen and (max-width: 991px) {
   .special-cover-image-wrapper,
