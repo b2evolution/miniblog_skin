@@ -71,103 +71,296 @@ textarea:focus:invalid:focus,
   margin: 0;
 }
 .main_disp_contacts .results,
-.main_disp_users .results {
+.main_disp_users .results,
+.main_disp_useritems .results,
+.main_disp_usercomments .results {
   margin: 2em 0;
 }
 .main_disp_contacts .results.panel,
-.main_disp_users .results.panel {
+.main_disp_users .results.panel,
+.main_disp_useritems .results.panel,
+.main_disp_usercomments .results.panel {
   border: 0;
   border-radius: 0;
   box-shadow: none;
 }
 .main_disp_contacts .results .panel-heading,
-.main_disp_users .results .panel-heading {
+.main_disp_users .results .panel-heading,
+.main_disp_useritems .results .panel-heading,
+.main_disp_usercomments .results .panel-heading {
   border: 0;
   border-radius: 0;
 }
 .main_disp_contacts .results .panel-heading .panel-title,
-.main_disp_users .results .panel-heading .panel-title {
+.main_disp_users .results .panel-heading .panel-title,
+.main_disp_useritems .results .panel-heading .panel-title,
+.main_disp_usercomments .results .panel-heading .panel-title {
   font-weight: 700;
   padding: 4px 0;
   text-transform: uppercase;
   text-align: center;
 }
 .main_disp_contacts .results .panel-heading .panel-title .close,
-.main_disp_users .results .panel-heading .panel-title .close {
+.main_disp_users .results .panel-heading .panel-title .close,
+.main_disp_useritems .results .panel-heading .panel-title .close,
+.main_disp_usercomments .results .panel-heading .panel-title .close {
   display: none;
 }
 .main_disp_contacts .results .panel-heading .panel_heading_action_icons,
-.main_disp_users .results .panel-heading .panel_heading_action_icons {
+.main_disp_users .results .panel-heading .panel_heading_action_icons,
+.main_disp_useritems .results .panel-heading .panel_heading_action_icons,
+.main_disp_usercomments .results .panel-heading .panel_heading_action_icons {
   margin-top: -2px;
 }
 .main_disp_contacts .results .panel-heading .panel_heading_action_icons .btn,
-.main_disp_users .results .panel-heading .panel_heading_action_icons .btn {
+.main_disp_users .results .panel-heading .panel_heading_action_icons .btn,
+.main_disp_useritems .results .panel-heading .panel_heading_action_icons .btn,
+.main_disp_usercomments .results .panel-heading .panel_heading_action_icons .btn {
   border-radius: 0;
 }
 .main_disp_contacts .results .panel-body,
-.main_disp_users .results .panel-body {
+.main_disp_users .results .panel-body,
+.main_disp_useritems .results .panel-body,
+.main_disp_usercomments .results .panel-body {
   font-size: 16px;
   padding: 2em 0;
 }
 .main_disp_contacts .results .panel-body .form_text_input,
 .main_disp_users .results .panel-body .form_text_input,
+.main_disp_useritems .results .panel-body .form_text_input,
+.main_disp_usercomments .results .panel-body .form_text_input,
 .main_disp_contacts .results .panel-body .form-group-sm select.form-control,
-.main_disp_users .results .panel-body .form-group-sm select.form-control {
+.main_disp_users .results .panel-body .form-group-sm select.form-control,
+.main_disp_useritems .results .panel-body .form-group-sm select.form-control,
+.main_disp_usercomments .results .panel-body .form-group-sm select.form-control {
   border-radius: 0;
   box-shadow: none;
   height: 46px;
 }
 .main_disp_contacts .results .panel-body .control-buttons .btn,
-.main_disp_users .results .panel-body .control-buttons .btn {
+.main_disp_users .results .panel-body .control-buttons .btn,
+.main_disp_useritems .results .panel-body .control-buttons .btn,
+.main_disp_usercomments .results .panel-body .control-buttons .btn {
   border-radius: 0;
   margin: 0 0 5px;
   width: 100%;
 }
 .main_disp_contacts .results .panel-body .control-buttons .btn.btn-primary,
-.main_disp_users .results .panel-body .control-buttons .btn.btn-primary {
+.main_disp_users .results .panel-body .control-buttons .btn.btn-primary,
+.main_disp_useritems .results .panel-body .control-buttons .btn.btn-primary,
+.main_disp_usercomments .results .panel-body .control-buttons .btn.btn-primary {
   margin: 0;
 }
 .main_disp_contacts .results .panel-body .btn,
-.main_disp_users .results .panel-body .btn {
+.main_disp_users .results .panel-body .btn,
+.main_disp_useritems .results .panel-body .btn,
+.main_disp_usercomments .results .panel-body .btn {
   border-radius: 0;
 }
 .main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
+.main_disp_useritems .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
+.main_disp_usercomments .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
-.main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap span img {
+.main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
+.main_disp_useritems .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
+.main_disp_usercomments .results .table_scroll table.table tr td.firstcol.shrinkwrap span img {
   border-radius: 0;
 }
 .main_disp_contacts .results table.table,
-.main_disp_users .results table.table {
+.main_disp_users .results table.table,
+.main_disp_useritems .results table.table,
+.main_disp_usercomments .results table.table {
   border-bottom: 0;
 }
 .main_disp_contacts .results .table-bordered > tbody > tr > td,
 .main_disp_users .results .table-bordered > tbody > tr > td,
+.main_disp_useritems .results .table-bordered > tbody > tr > td,
+.main_disp_usercomments .results .table-bordered > tbody > tr > td,
 .main_disp_contacts .results .table-bordered > tbody > tr > th,
 .main_disp_users .results .table-bordered > tbody > tr > th,
+.main_disp_useritems .results .table-bordered > tbody > tr > th,
+.main_disp_usercomments .results .table-bordered > tbody > tr > th,
 .main_disp_contacts .results .table-bordered > tfoot > tr > td,
 .main_disp_users .results .table-bordered > tfoot > tr > td,
+.main_disp_useritems .results .table-bordered > tfoot > tr > td,
+.main_disp_usercomments .results .table-bordered > tfoot > tr > td,
 .main_disp_contacts .results .table-bordered > tfoot > tr > th,
 .main_disp_users .results .table-bordered > tfoot > tr > th,
+.main_disp_useritems .results .table-bordered > tfoot > tr > th,
+.main_disp_usercomments .results .table-bordered > tfoot > tr > th,
 .main_disp_contacts .results .table-bordered > thead > tr > td,
 .main_disp_users .results .table-bordered > thead > tr > td,
+.main_disp_useritems .results .table-bordered > thead > tr > td,
+.main_disp_usercomments .results .table-bordered > thead > tr > td,
 .main_disp_contacts .results .table-bordered > thead > tr > th,
-.main_disp_users .results .table-bordered > thead > tr > th {
+.main_disp_users .results .table-bordered > thead > tr > th,
+.main_disp_useritems .results .table-bordered > thead > tr > th,
+.main_disp_usercomments .results .table-bordered > thead > tr > th {
   border: 0;
   font-size: 16px;
 }
 .main_disp_contacts .results .panel-footer,
-.main_disp_users .results .panel-footer {
+.main_disp_users .results .panel-footer,
+.main_disp_useritems .results .panel-footer,
+.main_disp_usercomments .results .panel-footer {
   border: 0;
   border-radius: 0;
 }
-.main_disp_mediaidx h2 {
+.detail_msgform .evo_form {
+  margin-top: 2em;
+}
+.detail_msgform .evo_form .form-group {
+  margin-bottom: 2em;
+}
+.detail_msgform .evo_form .form-group input.form_text_input {
+  border-radius: 0;
+  box-shadow: none;
+  height: 46px;
+}
+.detail_msgform .evo_form .form-group .token-input-list-facebook {
+  border-radius: 0;
+  box-shadow: none;
+}
+.detail_msgform .evo_form .form-group .token-input-list-facebook li {
+  border-radius: 0;
+}
+.detail_msgform .evo_form .form-group .btn-toolbar {
+  border-radius: 0;
+}
+.detail_msgform .evo_form .form-group .SaveButton {
+  border-radius: 0;
+  font-size: 16px;
+}
+.main_disp_sitemap > h3 {
+  font-weight: 700;
+  margin-top: 2em;
+  text-transform: uppercase;
+}
+.main_disp_sitemap > .evo_widget {
+  padding-top: 0;
+}
+.main_disp_user div.profile_content {
+  max-width: 100%;
+}
+.main_disp_user .other_profile_pictures {
+  margin-bottom: 1.5em;
+}
+.main_disp_profile > nav,
+.main_disp_avatar > nav,
+.main_disp_pwdchange > nav,
+.main_disp_userprefs > nav,
+.main_disp_subs > nav {
+  margin: 2em 0;
+}
+.main_disp_profile > nav > ul,
+.main_disp_avatar > nav > ul,
+.main_disp_pwdchange > nav > ul,
+.main_disp_userprefs > nav > ul,
+.main_disp_subs > nav > ul {
+  margin: 0;
+}
+.main_disp_profile > nav > ul li a,
+.main_disp_avatar > nav > ul li a,
+.main_disp_pwdchange > nav > ul li a,
+.main_disp_userprefs > nav > ul li a,
+.main_disp_subs > nav > ul li a {
+  border-radius: 0;
+}
+.main_disp_profile .fieldset_wrapper .panel,
+.main_disp_avatar .fieldset_wrapper .panel,
+.main_disp_pwdchange .fieldset_wrapper .panel,
+.main_disp_userprefs .fieldset_wrapper .panel,
+.main_disp_subs .fieldset_wrapper .panel {
+  margin-bottom: 0;
+}
+.main_disp_user img,
+.main_disp_profile img,
+.main_disp_avatar img,
+.main_disp_pwdchange img,
+.main_disp_userprefs img,
+.main_disp_subs img {
+  border-radius: 0;
+}
+.main_disp_user .fieldset_wrapper .panel,
+.main_disp_profile .fieldset_wrapper .panel,
+.main_disp_avatar .fieldset_wrapper .panel,
+.main_disp_pwdchange .fieldset_wrapper .panel,
+.main_disp_userprefs .fieldset_wrapper .panel,
+.main_disp_subs .fieldset_wrapper .panel {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.main_disp_user .fieldset_wrapper .panel .panel-heading,
+.main_disp_profile .fieldset_wrapper .panel .panel-heading,
+.main_disp_avatar .fieldset_wrapper .panel .panel-heading,
+.main_disp_pwdchange .fieldset_wrapper .panel .panel-heading,
+.main_disp_userprefs .fieldset_wrapper .panel .panel-heading,
+.main_disp_subs .fieldset_wrapper .panel .panel-heading {
+  border: 0;
+  border-radius: 0;
+  font-weight: 700;
+  padding: 12px 15px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.main_disp_user .fieldset_wrapper .panel .panel-body,
+.main_disp_profile .fieldset_wrapper .panel .panel-body,
+.main_disp_avatar .fieldset_wrapper .panel .panel-body,
+.main_disp_pwdchange .fieldset_wrapper .panel .panel-body,
+.main_disp_userprefs .fieldset_wrapper .panel .panel-body,
+.main_disp_subs .fieldset_wrapper .panel .panel-body {
+  font-size: 16px;
+  padding: 2em 0;
+}
+.main_disp_user .fieldset_wrapper .panel .panel-body input,
+.main_disp_profile .fieldset_wrapper .panel .panel-body input,
+.main_disp_avatar .fieldset_wrapper .panel .panel-body input,
+.main_disp_pwdchange .fieldset_wrapper .panel .panel-body input,
+.main_disp_userprefs .fieldset_wrapper .panel .panel-body input,
+.main_disp_subs .fieldset_wrapper .panel .panel-body input,
+.main_disp_user .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_profile .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_avatar .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_pwdchange .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_userprefs .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_subs .fieldset_wrapper .panel .panel-body textarea,
+.main_disp_user .fieldset_wrapper .panel .panel-body select,
+.main_disp_profile .fieldset_wrapper .panel .panel-body select,
+.main_disp_avatar .fieldset_wrapper .panel .panel-body select,
+.main_disp_pwdchange .fieldset_wrapper .panel .panel-body select,
+.main_disp_userprefs .fieldset_wrapper .panel .panel-body select,
+.main_disp_subs .fieldset_wrapper .panel .panel-body select {
+  border-radius: 0;
+  box-shadow: none;
+}
+.main_disp_user .btn,
+.main_disp_profile .btn,
+.main_disp_avatar .btn,
+.main_disp_pwdchange .btn,
+.main_disp_userprefs .btn,
+.main_disp_subs .btn {
+  border-radius: 0;
+  padding: 10px;
+}
+.main_disp_mediaidx h2,
+.detail_msgform main h2,
+.main_disp_sitemap h2,
+.main_disp_profile > h2,
+.main_disp_avatar > h2,
+.main_disp_pwdchange > h2,
+.main_disp_userprefs > h2,
+.main_disp_subs > h2 {
   font-size: 16px;
   font-weight: 700;
   margin: 2em 0 0;
   padding: 14px 15px;
   text-transform: uppercase;
   text-align: center;
+}
+.avatar_main_frame {
+  border-radius: 0;
 }
 .widget_core_user_login #login_form .form-group {
   margin: 0;
@@ -530,6 +723,12 @@ div.bSideItem h4 {
 }
 .pagination.pagination_bottom {
   margin-bottom: 2em;
+}
+.pager {
+  margin: 2em 0;
+}
+.pager li a {
+  border-radius: 0;
 }
 div.action_messages,
 div.log_container {

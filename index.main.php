@@ -105,6 +105,8 @@ skin_include( '_body_header.inc.php' );
 					'account_activation' => '',
 					'msgform_text'      => '',
 					'user_text'         => '',
+					'useritems_text'    => '',
+					'usercomments_text' => '',
 					'contacts_text'     => '',
 					'mediaidx_text'     => T_( 'Recent photos' ),
 					'users_text'        => '',

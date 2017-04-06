@@ -85,8 +85,11 @@ nav.sitewide_header {
 		margin: 0;
 	}
 }
+// Disp=contacts, Disp=users
 .main_disp_contacts,
-.main_disp_users {
+.main_disp_users,
+.main_disp_useritems,
+.main_disp_usercomments {
 	.results {
 		margin: 2em 0;
 		&.panel {
@@ -152,16 +155,126 @@ nav.sitewide_header {
 		}
 	}
 }
-// 45.6
-.main_disp_mediaidx {
-	h2 {
-		font-size: 16px;
-		font-weight: 700;
-		margin: 2em 0 0;
-		padding: 14px 15px;
-		text-transform: uppercase;
-		text-align: center;
+// Disp=contact
+.detail_msgform .evo_form {
+	margin-top: 2em;
+	.form-group {
+		margin-bottom: 2em;
+		input.form_text_input {
+			border-radius: 0;
+			box-shadow: none;
+			height: 46px;
+		}
+		.token-input-list-facebook {
+			border-radius: 0;
+			box-shadow: none;
+			li {
+				border-radius: 0;
+			}
+		}
+		.btn-toolbar {
+			border-radius: 0;
+		}
+		.SaveButton {
+			border-radius: 0;
+			font-size: 16px;
+		}
 	}
+}
+// Disp=sitemap
+.main_disp_sitemap {
+	> h3 {
+		font-weight: 700;
+		margin-top: 2em;
+		text-transform: uppercase;
+	}
+	> .evo_widget {
+		padding-top: 0;
+	}
+}
+// Disp=user
+.main_disp_user {
+	div.profile_content {
+		max-width: 100%;
+	}
+	.other_profile_pictures {
+		margin-bottom: 1.5em;
+	}
+}
+// Disp=profile, Disp=avatar, Disp=pwdchange, Disp=userprefs, Disp=subs
+.main_disp_profile,
+.main_disp_avatar,
+.main_disp_pwdchange,
+.main_disp_userprefs,
+.main_disp_subs {
+	> nav {
+		margin: 2em 0;
+		> ul {
+			margin: 0;
+			li a {
+				border-radius: 0;
+			}
+		}
+	}
+	.fieldset_wrapper .panel {
+		margin-bottom: 0;
+	}
+}
+// Disp=user, Disp=profile, Disp=avatar, Disp=pwdchange, Disp=userprefs, Disp=subs
+.main_disp_user,
+.main_disp_profile,
+.main_disp_avatar,
+.main_disp_pwdchange,
+.main_disp_userprefs,
+.main_disp_subs {
+	img {
+		border-radius: 0;
+	}
+	.fieldset_wrapper .panel {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		.panel-heading {
+			border: 0;
+			border-radius: 0;
+			font-weight: 700;
+			padding: 12px 15px;
+			text-transform: uppercase;
+			text-align: center;
+		}
+		.panel-body {
+			font-size: 16px;
+			padding: 2em 0;
+			input, textarea, select {
+				border-radius: 0;
+				box-shadow: none;
+			}
+		}
+	}
+	.btn {
+		border-radius: 0;
+		padding: 10px;
+	}
+}
+
+// Other disps title
+.main_disp_mediaidx h2,
+.detail_msgform main h2,
+.main_disp_sitemap h2,
+.main_disp_profile > h2,
+.main_disp_avatar > h2,
+.main_disp_pwdchange > h2,
+.main_disp_userprefs > h2,
+.main_disp_subs > h2 {
+	font-size: 16px;
+	font-weight: 700;
+	margin: 2em 0 0;
+	padding: 14px 15px;
+	text-transform: uppercase;
+	text-align: center;
+}
+.avatar_main_frame {
+	border-radius: 0;
 }
 
 // Login widget form
@@ -552,6 +665,14 @@ div.bSideItem {
 	}
 	&.pagination_bottom {
 		margin-bottom: 2em;
+	}
+}
+
+// Pager for disp=user
+.pager {
+	margin: 2em 0;
+	li a {
+		border-radius: 0;
 	}
 }
 
