@@ -344,6 +344,105 @@ textarea:focus:invalid:focus,
   border-radius: 0;
   padding: 10px;
 }
+.main_disp_comments .panel,
+.disp_single .panel,
+.disp_page .panel {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 2em 0;
+}
+.main_disp_comments .panel .panel-heading,
+.disp_single .panel .panel-heading,
+.disp_page .panel .panel-heading {
+  border: 0;
+  border-radius: 0;
+  font-weight: 700;
+  padding: 16px 15px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.main_disp_comments .panel .panel-heading .panel-title,
+.disp_single .panel .panel-heading .panel-title,
+.disp_page .panel .panel-heading .panel-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+.main_disp_comments .panel .panel-body,
+.disp_single .panel .panel-body,
+.disp_page .panel .panel-body {
+  font-size: 16px;
+  padding: 2em 0;
+}
+.main_disp_comments .panel .panel-body img,
+.disp_single .panel .panel-body img,
+.disp_page .panel .panel-body img {
+  border-radius: 0;
+}
+.main_disp_comments .btn,
+.disp_single .btn,
+.disp_page .btn {
+  border-radius: 0;
+}
+.main_disp_comments .btn.preview,
+.disp_single .btn.preview,
+.disp_page .btn.preview,
+.main_disp_comments .btn.submit,
+.disp_single .btn.submit,
+.disp_page .btn.submit {
+  padding: 10px;
+}
+.disp_single .evo_post > div > .panel .panel-body,
+.disp_page .evo_post > div > .panel .panel-body {
+  padding-bottom: 0;
+}
+.disp_single .evo_form__comment textarea,
+.disp_page .evo_form__comment textarea,
+.disp_single .evo_form__comment .btn-toolbar,
+.disp_page .evo_form__comment .btn-toolbar {
+  border-radius: 0;
+  box-shadow: none;
+}
+.disp_single .evo_form__comment > .fieldset_wrapper .panel,
+.disp_page .evo_form__comment > .fieldset_wrapper .panel {
+  margin: 0;
+}
+.disp_single .evo_form__comment > .fieldset_wrapper .panel .panel-body,
+.disp_page .evo_form__comment > .fieldset_wrapper .panel .panel-body {
+  padding: 0;
+}
+.disp_single .evo_item_meta_comments .panel .panel-body,
+.disp_page .evo_item_meta_comments .panel .panel-body {
+  padding: 0;
+}
+.disp_single .evo_item_meta_comments .panel .panel-body .form-horizontal .controls,
+.disp_page .evo_item_meta_comments .panel .panel-body .form-horizontal .controls {
+  padding-right: 15px;
+}
+.disp_single .evo_item_meta_comments .panel .panel-body .panel,
+.disp_page .evo_item_meta_comments .panel .panel-body .panel {
+  margin: 0;
+}
+.evo_comment__meta_info {
+  padding-top: 6px;
+  margin-top: 2em;
+}
+.main_disp_arcdir {
+  font-size: 16px;
+}
+.main_disp_arcdir > ul {
+  margin: 2em 0 2em 25px;
+}
+.main_disp_catdir > .widget_core_coll_category_list {
+  padding: 2em 0;
+}
+.main_disp_catdir > .widget_core_coll_category_list > ul {
+  list-style-type: disc;
+  margin: 0 0 0 25px;
+}
+.main_disp_catdir > .widget_core_coll_category_list > ul li {
+  list-style-type: disc;
+}
 .main_disp_mediaidx h2,
 .detail_msgform main h2,
 .main_disp_sitemap h2,
@@ -351,7 +450,11 @@ textarea:focus:invalid:focus,
 .main_disp_avatar > h2,
 .main_disp_pwdchange > h2,
 .main_disp_userprefs > h2,
-.main_disp_subs > h2 {
+.main_disp_subs > h2,
+.main_disp_comments > h2,
+.evo_comment__list_title,
+.main_disp_arcdir > h2,
+.main_disp_catdir > h2 {
   font-size: 16px;
   font-weight: 700;
   margin: 2em 0 0;
@@ -711,12 +814,10 @@ div.bSideItem h4 {
   padding-top: 5px;
 }
 .pagination > li:first-child > a,
-.pagination > li:first-child > span {
-  border-radius: 3px 0 0 3px;
-}
+.pagination > li:first-child > span,
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-  border-radius: 0 3px 3px 0;
+  border-radius: 0;
 }
 .pagination.pagination_top {
   margin-top: 2em;
@@ -756,11 +857,15 @@ div.log_container {
 .evo_post__excerpt {
   font-size: 16px;
 }
+.disp_posts .evo_intro_post,
+.disp_posts .evo_featured_post {
+  border-radius: 0;
+  box-shadow: none;
+}
 .disp_posts .evo_content_block:first-child {
   margin-top: 2em;
 }
 .posts-cover-image {
-  border-radius: 4px;
   margin: 0;
   background-repeat: no-repeat;
   background-position: center;
@@ -797,7 +902,6 @@ div.log_container {
 }
 .no-cover-image-container {
   background: #F5F5F5;
-  border-radius: 4px;
   display: table;
   width: 100%;
   text-align: center;

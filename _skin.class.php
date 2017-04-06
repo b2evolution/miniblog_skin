@@ -461,7 +461,7 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_bg_color' ) )
 		{ // Custom page background color:
 			$custom_css .= '#skin_wrapper { background-color: '.$color." }\n";
-			$custom_css .= '.pagination li.active a, .pagination li.active span, .evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .results .panel-heading a:hover, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2 { color: '.$color." }\n";
+			$custom_css .= '.pagination li.active a, .pagination li.active span, .evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .results .panel-heading a:hover, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .evo_comment .panel-heading a, .evo_comment .panel-heading .panel-title a, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2 { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'page_text_color' ) )
 		{ // Custom page text color:
@@ -470,9 +470,9 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_link_color' ) )
 		{ // Custom page link color:
 			$custom_css .= 'a { color: '.$color." }\n";
-			$custom_css .= '.evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, div.compact_search_form .input-group-btn input:hover, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2 { background-color: '.$color." }\n";
+			$custom_css .= '.evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, div.compact_search_form .input-group-btn input:hover, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2 { background-color: '.$color." }\n";
 			$custom_css .= '#login_form input:focus:invalid:focus, #login_form select:focus:invalid:focus, #login_form textarea:focus:invalid:focus, .form-control:focus, .controls input.form-control.form_text_input:focus, div.compact_search_form .input-group-btn input { border-color: '.$color." }\n";
-			$custom_css .= 'h4.evo_comment_title a, h4.panel-title a.evo_comment_type, .pagination li:not(.active) a, .pagination li:not(.active) span { color: '.$color." !important }\n";
+			$custom_css .= '.pagination li:not(.active) a, .pagination li:not(.active) span { color: '.$color." !important }\n";
 			$custom_css .= '.pagination li.active a, .pagination li.active span { background-color: '.$color.' !important; border-color: '.$color." }\n";
 			if( $this->get_setting( 'gender_colored' ) !== 1 )
 			{ // If gender option is not enabled, choose custom link color. Otherwise, chose gender link colors:

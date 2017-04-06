@@ -256,7 +256,94 @@ nav.sitewide_header {
 		padding: 10px;
 	}
 }
-
+// Disp=comments, Disp=single, Disp=page
+.main_disp_comments, .disp_single, .disp_page {
+	.panel {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		margin: 2em 0;
+		.panel-heading {
+			border: 0;
+			border-radius: 0;
+			font-weight: 700;
+			padding: 16px 15px;
+			text-transform: uppercase;
+			text-align: left;
+			.panel-title {
+				font-size: 13px;
+				font-weight: 700;
+			}
+		}
+		.panel-body {
+			font-size: 16px;
+			padding: 2em 0;
+			img {
+				border-radius: 0;
+			}
+		}
+	}
+	.btn {
+		border-radius: 0;
+		&.preview, &.submit {
+			padding: 10px;
+		}
+	}
+}
+.disp_single, .disp_page {
+	.evo_post > div > .panel .panel-body {
+		padding-bottom: 0;
+	}
+	.evo_form__comment {
+		textarea, .btn-toolbar {
+			border-radius: 0;
+			box-shadow: none;
+		}
+		> .fieldset_wrapper {
+			.panel {
+				margin: 0;
+				.panel-body {
+					padding: 0;
+				}
+			}
+		}
+	}
+	.evo_item_meta_comments {
+		.panel .panel-body {
+			padding: 0;
+			.form-horizontal .controls {
+				padding-right: 15px;
+			}
+			.panel {
+				margin: 0;
+			}
+		}
+	}
+}
+.evo_comment__meta_info {
+	padding-top: 6px;
+	margin-top: 2em;
+}
+// Disp=arcdir
+.main_disp_arcdir {
+	font-size: 16px;
+	> ul {
+		margin: 2em 0 2em 25px;
+	}
+}
+// Disp=catdir
+.main_disp_catdir {
+	> .widget_core_coll_category_list {
+		padding: 2em 0;
+		> ul {
+			list-style-type: disc;
+			margin: 0 0 0 25px;
+			li {
+				list-style-type: disc;
+			}
+		}
+	}
+}
 // Other disps title
 .main_disp_mediaidx h2,
 .detail_msgform main h2,
@@ -265,7 +352,11 @@ nav.sitewide_header {
 .main_disp_avatar > h2,
 .main_disp_pwdchange > h2,
 .main_disp_userprefs > h2,
-.main_disp_subs > h2 {
+.main_disp_subs > h2,
+.main_disp_comments > h2,
+.evo_comment__list_title,
+.main_disp_arcdir > h2,
+.main_disp_catdir > h2 {
 	font-size: 16px;
 	font-weight: 700;
 	margin: 2em 0 0;
@@ -654,11 +745,8 @@ div.bSideItem {
 .pagination {
 	margin: 0;
 	padding-top: 5px;
-	>li:first-child>a, >li:first-child>span {
-		border-radius: 3px 0 0 3px;
-	}
-	>li:last-child>a, >li:last-child>span {
-		border-radius: 0 3px 3px 0;
+	>li:first-child>a, >li:first-child>span, >li:last-child>a, >li:last-child>span {
+		border-radius: 0;
 	}
 	&.pagination_top {
 		margin-top: 2em;
@@ -708,12 +796,18 @@ div.action_messages, div.log_container {
 }
 
 // Disp posts
-.disp_posts .evo_content_block:first-child {
-	margin-top: 2em;
+.disp_posts {
+	.evo_intro_post, .evo_featured_post {
+		border-radius: 0;
+		box-shadow: none;
+	}
+	.evo_content_block:first-child {
+		margin-top: 2em;
+	}
 }
 
 .posts-cover-image {
-	border-radius: 4px;
+	// border-radius: 4px;
 	margin: 0;
 
 	background-repeat: no-repeat;
@@ -757,7 +851,7 @@ div.action_messages, div.log_container {
 .no-cover-image-container {
     background: #F5F5F5;
     // height: 200px; <--- Set throught customization options
-    border-radius: 4px;
+    // border-radius: 4px;
     display: table;
     width: 100%;
     text-align: center;

@@ -105,6 +105,8 @@ skin_include( '_body_header.inc.php' );
 					'account_activation' => '',
 					'msgform_text'      => '',
 					'user_text'         => '',
+					'arcdir_text'       => T_('Archives'),
+					'catdir_text'       => T_('Categories'),
 					'useritems_text'    => '',
 					'usercomments_text' => '',
 					'contacts_text'     => '',
