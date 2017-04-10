@@ -1,6 +1,7 @@
 // ----------------------------- Font include -------------------------------
 #skin_wrapper {
 	font-family: 'PT Sans', sans-serif;
+	line-height: 1.6em;
 }
 // --------------------------------------------------------------------------
 
@@ -15,6 +16,13 @@ nav.sitewide_header {
 //Remove 
 #login_form input:focus:invalid:focus, #login_form select:focus:invalid:focus, #login_form textarea:focus:invalid:focus, input:focus:invalid:focus, select:focus:invalid:focus, textarea:focus:invalid:focus, .form-control:focus {
 	box-shadow: none;
+}
+// Remove border-radius from image placeholders and images
+div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_placeholder, div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeholder, div.widget_core_coll_page_list.evo_1pic__special ul li .item_first_image_placeholder, div.widget_core_coll_post_list.evo_1pic__special ul li .item_first_image_placeholder, div.widget_core_coll_related_post_list.evo_1pic__special ul li .item_first_image_placeholder, img, .alert {
+	border-radius: 0;
+}
+.widget_core_org_members  {
+	margin: 0;
 }
 
 .navbar {
@@ -37,7 +45,7 @@ nav.sitewide_header {
 
 .navbar-header {
 	.navbar-toggle {
-		margin-top: 18px;
+		margin: 28px 25px 28px 0;
 	}
 	h3 {
 		margin-top: 18px;
@@ -45,6 +53,13 @@ nav.sitewide_header {
 		font-size: 22px;
 		text-transform: uppercase;
 		font-weight: 600;
+		a {
+			display: block;
+			max-width: 190px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 	}
 	.navbar-logo {
 		h1 {
@@ -290,6 +305,7 @@ nav.sitewide_header {
 		}
 	}
 }
+// Disp=single, Disp=page
 .disp_single, .disp_page {
 	.evo_post > div > .panel .panel-body {
 		padding-bottom: 0;
@@ -356,7 +372,9 @@ nav.sitewide_header {
 .main_disp_comments > h2,
 .evo_comment__list_title,
 .main_disp_arcdir > h2,
-.main_disp_catdir > h2 {
+.main_disp_catdir > h2,
+.main_disp_tags > h2,
+.main_disp_search > h2 {
 	font-size: 16px;
 	font-weight: 700;
 	margin: 2em 0 0;
@@ -366,6 +384,63 @@ nav.sitewide_header {
 }
 .avatar_main_frame {
 	border-radius: 0;
+}
+// Disp=tags
+.main_disp_tags {
+	.tag_cloud {
+		margin: 2em 0;
+	}
+}
+// Disp=search
+.main_disp_search {
+	.widget_core_coll_search_form {
+		padding: 2em 0 0;
+	}
+	.search_result {
+		padding: 2em 0;
+		.search_content_wrap {
+			margin-left: 60px;
+			.search_title {
+				padding-bottom: 1em;
+				a {
+					font-size: 36px;
+					font-weight: 700;
+					text-decoration: none;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+			.result_content {
+				font-size: 16px;
+			}
+			.search_info {
+				font-size: 16px;
+				padding-top: 1em;
+			}
+		}
+		.search_result_score {
+			border-radius: 50%;
+			font-size: 12px;
+			font-weight: 900;
+			height: 40px;
+			line-height: 42px;
+			margin-top: -6px;
+			text-align: center;
+			width: 40px;
+		}
+	}
+	// Margin only on lower pagination showing results
+	.center:last-child {
+		margin-bottom: 2em;
+	}
+}
+// Post tags, all disps
+.post_tags {
+	a {
+		border-radius: 0;
+		padding: 6px;
+	}
 }
 
 // Login widget form
@@ -485,7 +560,7 @@ form.search .search_options {
 		margin-top: 5px;
 	}
 }
-div.compact_search_form {
+div.compact_search_form, .main_disp_search {
 	input.search_field {
 		border-radius: 0;
 		box-shadow: none;
@@ -745,7 +820,7 @@ div.bSideItem {
 .pagination {
 	margin: 0;
 	padding-top: 5px;
-	>li:first-child>a, >li:first-child>span, >li:last-child>a, >li:last-child>span {
+	>li:first-child>a, >li:first-child>span, >li:last-child>a, >li:last-child>span, li.listnav_first>a, li.listnav_last>a {
 		border-radius: 0;
 	}
 	&.pagination_top {
@@ -776,7 +851,7 @@ div.action_messages, div.log_container {
 // Positions on the action buttons near page titles
 .evo_post_title {
 	display: table;
-	margin-top: -7px; // Important to align titles with the top of cover images on $disp=posts
+	margin-top: 15px;
 	h2 {
 		display: table-cell;
 		font-size: 46px;
@@ -954,12 +1029,16 @@ div.powered_by {
 }
 
 // All disps footer settings
-.skin-footer-content {
+.skin-footer-content, .skin-footer-single {
 	padding: 15px;
 	// Copyright text
 	> p {
 		margin: 0;
 		padding: 1.5em;
+	}
+	.btn {
+		border-radius: 0;
+		padding: 10px;
 	}
 }
 main, .skin-footer-single {
@@ -990,8 +1069,14 @@ main, .skin-footer-single {
 		margin-bottom: 0;
 	}
 }
-	
-@media screen and (max-width: 991px) {
+
+@media (min-width: 992px) {
+	.evo_post_title {
+		margin-top: -7px; // Important to align titles with the top of cover images on $disp=posts
+	}
+}
+
+@media (max-width: 991px) {
 	.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
 		position: relative;
 	}
@@ -1014,5 +1099,13 @@ main, .skin-footer-single {
 @media screen and (max-width: 767px) {
 	.disp_single #single-post-content-wrapper {
 		padding: 0 15px;
+	}
+	.main_disp_search .search_result {
+		.search_result_score {
+			margin-top: -3px;
+		}
+		.search_content_wrap .search_title a {
+			font-size: 24px;
+		}
 	}
 }

@@ -40,69 +40,54 @@ siteskin_include( '_site_body_header.inc.php' );
 ?>
 
 
-<div class="container">
-
-
-<header class="row">
-
-	<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
-		<?php
-		if( $Skin->is_visible_container( 'page_top' ) )
-		{ // Display 'Page Top' widget container
-		?>
-		<div class="evo_container evo_container__page_top">
-		<?php
-			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			skin_container( NT_('Page Top'), array(
-					// The following params will be used as defaults for widgets included in this container:
-					'block_start'         => '<div class="evo_widget $wi_class$">',
-					'block_end'           => '</div>',
-					'block_display_title' => false,
-					'list_start'          => '<ul>',
-					'list_end'            => '</ul>',
-					'item_start'          => '<li>',
-					'item_end'            => '</li>',
-				) );
-			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
-	</div><!-- .col -->
-
-	<div class="coll-xs-12 col-sm-12 col-md-8 col-md-pull-4">
-		<?php
-		if( $Skin->is_visible_container( 'header' ) )
-		{ // Display 'Header' widget container
-		?>
-		<div class="evo_container evo_container__header">
-		<?php
-			// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			skin_container( NT_('Header'), array(
-					// The following params will be used as defaults for widgets included in this container:
-					'block_start'       => '<div class="evo_widget $wi_class$">',
-					'block_end'         => '</div>',
-					'block_title_start' => '<h1>',
-					'block_title_end'   => '</h1>',
-				) );
-			// ----------------------------- END OF "Header" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
-	</div><!-- .col -->
-
-</header><!-- .row -->
-
-
 <?php
 if( $Skin->is_visible_container( 'menu' ) )
-{ // Display 'Menu' widget container
+{ // Display 'Page Top' widget container
 ?>
-<nav class="row">
+<header class="container-fluid">
 
-	<div class="col-md-12">
-		<ul class="nav nav-tabs evo_container evo_container__menu">
+<div class="row">
+<nav class="navbar">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+		<?php
+		// Display Logo only if it is set through customization option
+		global $baseurl;
+		$FileCache = & get_FileCache();
+		$logo_File = NULL;
+		if( $logo_File_ID = $Skin->get_setting( 'nav_logo_file_ID' ) )
+		{
+			$logo_File = & $FileCache->get_by_ID( $logo_File_ID, false, false );
+		}
+		if( ! empty( $logo_File ) && $logo_File->exists() )
+		{ // If it exists in media folder ?>
+			<div class="navbar-brand navbar-logo">
+				<h1>
+					<a href="<?php echo $baseurl; ?>"><img class="miniblog_skin_logo" src="<?php echo $logo_File->get_url(); ?>" /></a>
+				</h1>
+			</div>
+		<?php } else {
+			skin_widget( array(
+				// CODE for the widget:
+				'widget'              => 'coll_title',
+				// Optional display params
+				'block_start'         => '<div class="navbar-brand">',
+				'block_end'           => '</div>',
+			) );
+		}
+		?>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
 		<?php
 			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
@@ -123,12 +108,16 @@ if( $Skin->is_visible_container( 'menu' ) )
 				) );
 			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 		?>
-		</ul>
-	</div><!-- .col -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-</nav><!-- .row -->
+</div>
+</header><!-- .row -->
 <?php } ?>
 
+<div class="container">
 
 <div class="row">
 	<div class="<?php echo $Skin->get_column_class(); ?>">
@@ -170,15 +159,17 @@ if( $Skin->is_visible_container( 'menu' ) )
 
 </div><!-- .row -->
 
-<footer class="row">
+</div><!-- .container -->
+
+<?php
+if( $Skin->is_visible_container( 'footer' ) )
+{ // Display 'Footer' widget container
+?>
+<footer class="skin-footer-single">
 
 	<!-- =================================== START OF FOOTER =================================== -->
-	<div class="col-md-12 center">
+	<div class="container skin-footer-content">
 
-		<?php
-		if( $Skin->is_visible_container( 'footer' ) )
-		{ // Display 'Footer' widget container
-		?>
 		<div class="evo_container evo_container__footer">
 		<?php
 			// Display container and contents:
@@ -190,7 +181,6 @@ if( $Skin->is_visible_container( 'menu' ) )
 			// Note: Double quotes have been used around "Footer" only for test purposes.
 		?>
 		</div>
-		<?php } ?>
 
 		<p>
 			<?php
@@ -199,8 +189,6 @@ if( $Skin->is_visible_container( 'menu' ) )
 						'before' => '',
 						'after'  => ' &bull; ',
 					) );
-
-			// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
 			?>
 
 			<?php
@@ -244,13 +232,11 @@ if( $Skin->is_visible_container( 'menu' ) )
 					'img_height'  => 32,
 				) );
 		?>
+		
 	</div><!-- .col -->
 	
 </footer><!-- .row -->
-
-
-</div><!-- .container -->
-
+<?php } ?>
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------
