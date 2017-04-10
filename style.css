@@ -476,7 +476,8 @@ img,
 .main_disp_arcdir > h2,
 .main_disp_catdir > h2,
 .main_disp_tags > h2,
-.main_disp_search > h2 {
+.main_disp_search > h2,
+.disp_help main > h2 {
   font-size: 16px;
   font-weight: 700;
   margin: 2em 0 0;
@@ -489,6 +490,12 @@ img,
 }
 .main_disp_tags .tag_cloud {
   margin: 2em 0;
+}
+.disp_help main {
+  margin-bottom: 2em;
+}
+.disp_help main > h2 {
+  margin-bottom: 2em;
 }
 .main_disp_search .widget_core_coll_search_form {
   padding: 2em 0 0;
