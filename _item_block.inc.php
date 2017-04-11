@@ -59,13 +59,13 @@ if( $Skin->get_setting('post_comments') )
 /**
  * What goes before post, depending on disp and number of cover images in the post
  */
-if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) > 0 )
-{
-	$params['post_before'] = '</div></div></div><div class="container-fluid"><div class="row">';
-}
-if( $disp ==  'single' && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
+if( in_array( $disp, array( 'single', 'page') ) && $Item->get_number_of_images( $image_position = 'cover' ) > 0 )
 {
 	$params['post_before'] = '<div class="row">';
+}
+if( in_array( $disp, array( 'single', 'page') ) && $Item->get_number_of_images( $image_position = 'cover' ) < 1 )
+{
+	$params['post_before'] = '<div class="row"><div class="container">';
 	$params['post_after']  = '</div>';
 }
 
@@ -151,8 +151,16 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 				
 			// If there are NO cover images in this post, place post content centered of the page
 			} else {
-				echo '<div class="col-lg-12">';
+				echo '<div class="single-no-cover-img-wrapper">';
 			}
+			
+			
+			// ------------------------- MESSAGES GENERATED FROM ACTIONS -------------------------
+			messages( array(
+					'block_start' => '<div class="action_messages">',
+					'block_end'   => '</div>',
+				) );
+			// --------------------------------- END OF MESSAGES ---------------------------------
 		}
 	?>
 	
@@ -200,7 +208,7 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 	</header>
 
 	<?php
-	if( $disp == 'single' )
+	if( $disp == 'single' || $disp == 'page' )
 	{
 		?>
 		<div class="evo_container evo_container__item_single">		
@@ -256,11 +264,10 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 	}
 	?>
 
-	<footer>
-
 		<?php
-			if( ! $Item->is_intro() && $disp != 'single' && $disp != 'page' ) // Do NOT apply tags, commentcomments and feedback on intro posts AND on disp=single
-			{ // List all tags attached to this post:
+		if( ! $Item->is_intro() && $disp != 'single' && $disp != 'page' ) // Do NOT apply tags, commentcomments and feedback on intro posts AND on disp=single
+		{ // List all tags attached to this post:
+			echo '<footer>';
 				if( $Skin->get_setting( 'post_tags' ) ) {
 				$Item->tags( array(
 						'before'    => '<nav class="small post_tags">',
@@ -298,10 +305,10 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 						) );
 			echo '</nav>';
 			}
-		?>
 		
-		<?php } ?>
-	</footer>
+			echo '</footer>';
+		}
+		?>
 	
 	<?php
 	if( $disp == 'posts' ) {

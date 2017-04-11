@@ -44,7 +44,7 @@ skin_include( '_body_header.inc.php' );
 
 <div class="container">
 
-<?php if( $disp != 'single' ) { ?>
+<?php if( ! in_array( $disp, array( 'single', 'page') ) ) { ?>
 <div class="row">
 	<div class="evo_container evo_container__page_top">
 		<div class="container">
@@ -69,6 +69,12 @@ skin_include( '_body_header.inc.php' );
 
 <?php } ?>
 
+<?php if( in_array( $disp, array( 'single', 'page') ) ) { ?>
+</div><!-- .container -->
+
+<div class="container-fluid">
+<?php } ?>
+
 <div class="row">
 
 	<div class="<?php echo $Skin->get_column_class(); ?>">
@@ -78,7 +84,7 @@ skin_include( '_body_header.inc.php' );
 		<!-- ================================= START OF MAIN AREA ================================== -->
 
 		<?php
-		if( ! in_array( $disp, array( 'login', 'lostpassword', 'register', 'activateinfo', 'access_requires_login' ) ) )
+		if( ! in_array( $disp, array( 'login', 'lostpassword', 'register', 'activateinfo', 'access_requires_login', 'single', 'page' ) ) )
 		{ // Don't display the messages here because they are displayed inside wrapper to have the same width as form
 			// ------------------------- MESSAGES GENERATED FROM ACTIONS -------------------------
 			messages( array(

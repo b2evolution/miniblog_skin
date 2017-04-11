@@ -115,7 +115,7 @@ if( $Skin->is_visible_container( 'menu' ) )
 <div class="container">
 
 <div class="row">
-	<div class="<?php echo $Skin->is_visible_sidebar( true ) ? $Skin->get_column_class() : 'col-md-12'; ?>">
+	<div class="<?php echo $Skin->get_column_class(); ?>">
 		<main><!-- This is were a link like "Jump to main content" would land -->
 
 		<!-- ================================= START OF MAIN AREA ================================== -->

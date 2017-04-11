@@ -924,7 +924,7 @@ div.log_container {
 }
 .evo_post_title h2 {
   display: table-cell;
-  font-size: 46px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0;
   padding: 0 0 10px;
@@ -936,6 +936,9 @@ div.log_container {
 }
 .evo_post__excerpt {
   font-size: 16px;
+}
+.disp_posts main > .action_messages .alert {
+  margin: 2em 0;
 }
 .disp_posts .evo_intro_post,
 .disp_posts .evo_featured_post {
@@ -992,64 +995,89 @@ div.log_container {
   font-size: 28px;
   color: rgba(0, 0, 0, 0.25);
 }
-.disp_single #single-post-content-wrapper {
-  padding: 0 40px;
+.disp_page .evo_post__full {
+  font-size: 16px;
 }
-.disp_single .fixed {
+.disp_single #single-post-content-wrapper,
+.disp_page #single-post-content-wrapper {
+  padding: 0 15px;
+}
+.disp_single #single-post-content-wrapper .action_messages,
+.disp_page #single-post-content-wrapper .action_messages {
+  margin-top: 2em;
+}
+.disp_single .fixed,
+.disp_page .fixed {
   position: fixed;
   top: 0;
   left: 0;
 }
-.disp_single html {
+.disp_single html,
+.disp_page html {
   height: 100%;
   box-sizing: border-box;
 }
-.disp_single body {
+.disp_single body,
+.disp_page body {
   position: relative;
   margin: 0;
   min-height: 100%;
 }
-.disp_single .evo_container__item_single {
+.disp_single .evo_container__item_single,
+.disp_page .evo_container__item_single {
   padding-bottom: 35px;
 }
-.disp_single .evo_post {
+.disp_single .evo_post,
+.disp_page .evo_post {
   margin: 0;
 }
-.disp_single .evo_post .evo_post_title h1 {
+.disp_single .evo_post .evo_post_title h1,
+.disp_page .evo_post .evo_post_title h1 {
   font-size: 72px;
   font-weight: 700;
   margin: 25px 0;
 }
-.disp_single .evo_post .widget_core_item_content {
-  font-size: 21px;
+.disp_single .evo_post .widget_core_item_content,
+.disp_page .evo_post .widget_core_item_content {
+  font-size: 16px;
 }
-.disp_single .evo_post .widget_core_item_about_author {
+.disp_single .evo_post .widget_core_item_about_author,
+.disp_page .evo_post .widget_core_item_about_author {
   margin-top: 25px;
 }
 .disp_single .evo_post .widget_core_item_small_print,
-.disp_single .evo_post .widget_core_item_about_author {
+.disp_page .evo_post .widget_core_item_small_print,
+.disp_single .evo_post .widget_core_item_about_author,
+.disp_page .evo_post .widget_core_item_about_author {
   color: #ccc;
   font-size: 20px;
 }
 .disp_single .evo_post .widget_core_item_small_print a,
-.disp_single .evo_post .widget_core_item_about_author a {
+.disp_page .evo_post .widget_core_item_small_print a,
+.disp_single .evo_post .widget_core_item_about_author a,
+.disp_page .evo_post .widget_core_item_about_author a {
   color: #ccc;
   text-decoration: underline;
 }
 .disp_single .evo_post .widget_core_item_small_print img,
-.disp_single .evo_post .widget_core_item_about_author img {
+.disp_page .evo_post .widget_core_item_small_print img,
+.disp_single .evo_post .widget_core_item_about_author img,
+.disp_page .evo_post .widget_core_item_about_author img {
   border-radius: 50%;
 }
-.disp_single .evo_post .widget_core_item_about_author .evo_avatar {
+.disp_single .evo_post .widget_core_item_about_author .evo_avatar,
+.disp_page .evo_post .widget_core_item_about_author .evo_avatar {
   margin: 0 15px 5px 0;
 }
-.disp_single .skin-footer-single {
+.disp_single .skin-footer-single,
+.disp_page .skin-footer-single {
   bottom: 0;
   left: 0;
   position: relative;
   right: 0;
 }
-.disp_single .sitewide_footer {
+.disp_single .sitewide_footer,
+.disp_page .sitewide_footer {
   right: 0;
   bottom: 0;
   left: 0;
@@ -1105,8 +1133,19 @@ main .evo_widget,
   margin-bottom: 0;
 }
 @media (min-width: 992px) {
+  .disp_single #single-post-content-wrapper,
+  .disp_page #single-post-content-wrapper {
+    padding: 0 40px;
+  }
   .evo_post_title {
     margin-top: -7px;
+  }
+  .evo_post_title h2 {
+    font-size: 46px;
+  }
+  .disp_single .evo_post .widget_core_item_content,
+  .evo_post__full {
+    font-size: 21px;
   }
 }
 @media (max-width: 991px) {

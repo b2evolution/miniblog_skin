@@ -862,7 +862,7 @@ div.action_messages, div.log_container {
 	margin-top: 15px;
 	h2 {
 		display: table-cell;
-		font-size: 46px;
+		font-size: 28px;
 		font-weight: 700;
 		margin: 0;
 		padding: 0 0 10px;
@@ -880,6 +880,9 @@ div.action_messages, div.log_container {
 
 // Disp posts
 .disp_posts {
+	main > .action_messages .alert  {
+		margin: 2em 0;
+	}
 	.evo_intro_post, .evo_featured_post {
 		border-radius: 0;
 		box-shadow: none;
@@ -946,11 +949,21 @@ div.action_messages, div.log_container {
 		color: rgba(0,0,0,0.25);	
 	}
 }
-
-.disp_single {
+// Disp=page
+.disp_page {
+	.evo_post__full {
+		font-size: 16px;
+	}
+}
+// Disp=single special layout
+.disp_single, .disp_page {
 
 	#single-post-content-wrapper {
-		padding: 0 40px;
+		padding: 0 15px;
+		// Add top margin for Alerts container
+		.action_messages {
+			margin-top: 2em;
+		}
 	}
 
 	.fixed {
@@ -984,7 +997,7 @@ div.action_messages, div.log_container {
 		}
 		
 		.widget_core_item_content {
-			font-size: 21px;
+			font-size: 16px;
 		}
 		
 		.widget_core_item_about_author {
@@ -1079,8 +1092,19 @@ main, .skin-footer-single {
 }
 
 @media (min-width: 992px) {
+	.disp_single, .disp_page {
+		#single-post-content-wrapper {
+			padding: 0 40px;
+		}
+	}
 	.evo_post_title {
 		margin-top: -7px; // Important to align titles with the top of cover images on $disp=posts
+		h2 {
+			font-size: 46px;
+		}
+	}
+	.disp_single .evo_post .widget_core_item_content, .evo_post__full {
+		font-size: 21px;
 	}
 }
 
