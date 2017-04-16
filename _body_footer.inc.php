@@ -124,7 +124,6 @@ if( in_array( $disp, array( 'single', 'page') ) )
 	<script>
 		$(window).resize(function() {
 			$('#special-cover-image_bg_pos').height($(window).height());
-			$('#special-cover-image_bg_pos').height($(window).height());
 			$('#single-post-content-wrapper').css("min-height", $('#special-cover-image_bg_pos').height());
 		});
 		$(window).trigger('resize');

@@ -76,9 +76,16 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 	}
 }
 
-.evo_container__page_top {
+.evo_container__header {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 50px 0;
 	.ufld_icon_links {
-		text-align: right;
+		text-align: left;
+	}
+	.evo_widget {
+		margin: 2em 0;
 	}
 }
 
@@ -310,6 +317,9 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 	.evo_post > div > .panel .panel-body {
 		padding-bottom: 0;
 	}
+	.evo_comment__list_title {
+		margin-top: 28px;
+	}
 	.evo_form__comment {
 		textarea, .btn-toolbar {
 			border-radius: 0;
@@ -327,8 +337,13 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 	.evo_item_meta_comments {
 		.panel .panel-body {
 			padding: 0;
-			.form-horizontal .controls {
-				padding-right: 15px;
+			.form-horizontal {
+				.form-group {
+					padding-left: 15px;
+				}
+				.controls {
+					padding-right: 15px;
+				}
 			}
 			.panel {
 				margin: 0;
@@ -869,7 +884,7 @@ div.action_messages, div.log_container {
 	}
 	.btn-group {
 		display: table-cell;
-		padding: 15px 0 10px 30px;
+		padding: 2px 0 10px 30px;
 		vertical-align: middle;
 	}
 }
@@ -893,9 +908,7 @@ div.action_messages, div.log_container {
 }
 
 .posts-cover-image {
-	// border-radius: 4px;
 	margin: 0;
-
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -1090,6 +1103,12 @@ main, .skin-footer-single {
 		margin-bottom: 0;
 	}
 }
+#bCalendarToday {
+	border: none;
+	border-radius: 0;
+	background: 0;
+	text-decoration: underline;
+}
 
 @media (min-width: 992px) {
 	.disp_single, .disp_page {
@@ -1102,6 +1121,9 @@ main, .skin-footer-single {
 		h2 {
 			font-size: 46px;
 		}
+		.btn-group {
+			padding: 15px 0 10px 30px;
+		}
 	}
 	.disp_single .evo_post .widget_core_item_content, .evo_post__full {
 		font-size: 21px;
@@ -1111,13 +1133,16 @@ main, .skin-footer-single {
 @media (max-width: 991px) {
 	.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
 		position: relative;
+		#special-cover-image_bg_pos {
+			max-height: 300px !important;
+		}
 	}
 	
 	#single-post-content-wrapper {
 		min-height: auto !important;
 	}
 	
-	.disp_single {
+	.disp_single, .disp_page {
 		.evo_post {
 			.evo_post_title h1 {
 				font-size: 36px;

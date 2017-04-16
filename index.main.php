@@ -41,17 +41,15 @@ skin_include( '_body_header.inc.php' );
 	//echo '<div id="preloader"></div>';
 ?>
 
-
-<div class="container">
-
-<?php if( ! in_array( $disp, array( 'single', 'page') ) ) { ?>
+<?php if( $Skin->get_setting( 'display_header' ) == true && ! in_array( $disp, array( 'single', 'page') ) ) { ?>
+<div class="container-fluid">
 <div class="row">
-	<div class="evo_container evo_container__page_top">
+	<div class="evo_container evo_container__header">
 		<div class="container">
 		<?php
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
-			skin_container( NT_('Page Top'), array(
+			skin_container( NT_('Header'), array(
 					// The following params will be used as defaults for widgets included in this container:
 					'block_start'         => '<div class="evo_widget $wi_class$">',
 					'block_end'           => '</div>',
@@ -64,10 +62,14 @@ skin_include( '_body_header.inc.php' );
 			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
 		?>
 		</div><!-- .container -->
-	</div><!-- .evo_container__page_top -->
+	</div><!-- .evo_container__header -->
 </div><!-- .row -->
+</div><!-- .container-fluid -->
 
 <?php } ?>
+
+
+<div class="container">
 
 <?php if( in_array( $disp, array( 'single', 'page') ) ) { ?>
 </div><!-- .container -->
@@ -77,7 +79,7 @@ skin_include( '_body_header.inc.php' );
 
 <div class="row">
 
-	<div class="<?php echo $Skin->get_column_class(); ?>">
+	<div class="col-lg-12">
 
 		<main class="<?php echo 'main_disp_'.( empty( $disp ) ? 'none' : $disp ); ?>"><!-- This is were a link like "Jump to main content" would land -->
 

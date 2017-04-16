@@ -227,6 +227,7 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			// Template params for "Item Tags" widget
 			'widget_item_tags_before'    => '<div class="post_tags">',
 			'widget_item_tags_separator' => '',
+			'widget_item_tags_before_list'    => '',
 			'widget_item_tags_after'     => '</div>',
 			// Params for skin file "_item_content.inc.php"
 			'widget_item_content_params' => array (

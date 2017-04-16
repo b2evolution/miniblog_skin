@@ -114,18 +114,18 @@ class miniblog_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Layout Settings')
 				),
-					'layout' => array(
-						'label' => T_('Layout'),
-						'note' => '',
-						'defaultvalue' => 'single_column',
-						'options' => array(
-								'single_column'              => T_('Single Column Large'),
-								'single_column_normal'       => T_('Single Column'),
-								'single_column_narrow'       => T_('Single Column Narrow'),
-								'single_column_extra_narrow' => T_('Single Column Extra Narrow'),
-							),
-						'type' => 'select',
-					),
+					// 'layout' => array(
+						// 'label' => T_('Layout'),
+						// 'note' => '',
+						// 'defaultvalue' => 'single_column',
+						// 'options' => array(
+								// 'single_column'              => T_('Single Column Large'),
+								// 'single_column_normal'       => T_('Single Column'),
+								// 'single_column_narrow'       => T_('Single Column Narrow'),
+								// 'single_column_extra_narrow' => T_('Single Column Extra Narrow'),
+							// ),
+						// 'type' => 'select',
+					// ),
 					'max_image_height' => array(
 						'label' => T_('Max image height'),
 						'note' => 'px',
@@ -134,40 +134,6 @@ class miniblog_Skin extends Skin
 						'allow_empty' => true,
 					),
 				'section_layout_end' => array(
-					'layout' => 'end_fieldset',
-				),
-				
-				
-				'section_nav_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('Navigation Settings')
-				),
-					'nav_bg_color' => array(
-						'label' => T_('Background color'),
-						'note' => T_('Set the background color of navigation section.') . T_('Default color is') . ' <code>#333333</code>.',
-						'defaultvalue' => '#333333',
-						'type' => 'color',
-					),
-					'nav_text_color' => array(
-						'label' => T_('Text color'),
-						'note' => T_('Set the text color of navigation section.') . T_('Default color is') . ' <code>#eeeeee</code>.',
-						'defaultvalue' => '#eeeeee',
-						'type' => 'color',
-					),
-					'nav_link_color' => array(
-						'label' => T_('Navigation links color'),
-						'note' => T_('Set the color of navigation links.') . T_('Default color is') . ' <code>#eeeeee</code>.',
-						'defaultvalue' => '#fefefe',
-						'type' => 'color',
-					),
-					'nav_logo_file_ID' => array(
-						'label' => T_('Upload logo image'),
-						'note' => T_('If you upload your logo here, it will be shown in navigation menu instead of collection title.'),
-						'type' => 'fileselect',
-						'initialize_with' => 'shared/global/sunset/sunset.jpg',
-						'thumbnail_size' => 'fit-320x320',
-					),
-				'section_nav_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -218,13 +184,99 @@ class miniblog_Skin extends Skin
 						'defaultvalue' => '#6cb2ef',
 						'type' => 'color',
 					),
-					'current_tab_text_color' => array(
-						'label' => T_('Current tab text color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#333',
-						'type' => 'color',
+					'post_comments' => array(
+						'label' => T_('Post Comments'),
+						'note' => T_('Check to enable post comments on posts page and single pages.'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'post_tags' => array(
+						'label' => T_('Post Tags'),
+						'note' => T_('Check to enable post tags.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'post_tags' => array(
+						'label' => T_('Post Tags'),
+						'note' => T_('Check to enable post tags.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
 					),
 				'section_color_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'section_header_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Header Settings')
+				),
+					'display_header' => array(
+						'label' => T_('Display header section'),
+						'note' => T_('Check to display the header section on all pages, except the single posts and single pages.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'header_bg_file_ID' => array(
+						'label' => T_('Upload logo'),
+						'note' => T_('If you upload your logo here, it will be shown in navigation menu instead of collection title.'),
+						'type' => 'fileselect',
+						'initialize_with' => 'shared/global/sunset/sunset.jpg',
+						'thumbnail_size' => 'fit-320x320',
+					),
+					'header_bg_color' => array(
+						'label' => T_('Background color'),
+						'note' => T_('Background color will be used if there is no background image.') . ' ' . T_('Default value is') . ' <code>#444444</code>.',
+						'defaultvalue' => '#444444',
+						'type' => 'color',
+					),
+					'header_text_color' => array(
+						'label' => T_('Text color'),
+						'note' => T_('Default value is') . ' <code>#ffffff</code>.',
+						'defaultvalue' => '#ffffff',
+						'type' => 'color',
+					),
+					'header_links_color' => array(
+						'label' => T_('Links color'),
+						'note' => T_('Default value is') . ' <code>#e8e8e8</code>.',
+						'defaultvalue' => '#e8e8e8',
+						'type' => 'color',
+					),
+				'section_header_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'section_nav_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Menu Settings')
+				),
+					'nav_bg_color' => array(
+						'label' => T_('Background color'),
+						'note' => T_('Set the background color of menu section.') . T_('Default color is') . ' <code>#333333</code>.',
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+					'nav_text_color' => array(
+						'label' => T_('Text color'),
+						'note' => T_('Set the text color of menu section.') . T_('Default color is') . ' <code>#eeeeee</code>.',
+						'defaultvalue' => '#eeeeee',
+						'type' => 'color',
+					),
+					'nav_link_color' => array(
+						'label' => T_('Menu links color'),
+						'note' => T_('Set the color of menu links.') . T_('Default color is') . ' <code>#eeeeee</code>.',
+						'defaultvalue' => '#fefefe',
+						'type' => 'color',
+					),
+					'nav_logo_file_ID' => array(
+						'label' => T_('Upload logo'),
+						'note' => T_('If you upload your logo here, it will be shown in navigation menu instead of collection title.'),
+						'type' => 'fileselect',
+						'initialize_with' => 'shared/global/sunset/sunset.jpg',
+						'thumbnail_size' => 'fit-320x320',
+					),
+				'section_nav_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -235,7 +287,7 @@ class miniblog_Skin extends Skin
 				),
 					'cover_image_height' => array(
 						'label' => T_('Cover image height'),
-						'note' => 'px (' . T_('Input numbers only') . ').' . T_('Set height for cover images shown on posts page.') . T_( 'Default value is') . ' <code>200</code>.',
+						'note' => 'px (' . T_('input numbers only') . ').' . T_('Set height for cover images shown on posts page.') . T_( 'Default value is') . ' <code>200</code>.',
 						'defaultvalue' => '200',
 						'type' => 'integer',
 						'size' => '7',
@@ -281,18 +333,6 @@ class miniblog_Skin extends Skin
 								'cover_bottom'    => T_('Bottom'),
 							),
 						'type' => 'select',
-					),
-					'post_comments' => array(
-						'label' => T_('Post Comments'),
-						'note' => T_('Check to enable post comments on single pages.'),
-						'defaultvalue' => 0,
-						'type' => 'checkbox',
-					),
-					'post_tags' => array(
-						'label' => T_('Post Tags'),
-						'note' => T_('Check to enable post tags.'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
 					),
 				'section_single_end' => array(
 					'layout' => 'end_fieldset',
@@ -495,9 +535,33 @@ class miniblog_Skin extends Skin
 		{	// Custom link hover color on background image:
 			$custom_css .= '.evo_hasbgimg a:hover { color: '.$color." }\n";
 		}
-		if( $color = $this->get_setting( 'current_tab_text_color' ) )
-		{ // Custom current tab text color:
-			$custom_css .= 'ul.nav.nav-tabs li a.selected { color: '.$color." }\n";
+		
+		
+		if( ! in_array( $disp, array( 'single', 'page') ) ) {
+			// Display Logo only if it is set through customization option
+			$FileCache = & get_FileCache();
+			$header_bg_file = NULL;
+			if( $header_bg_file_ID = $this->get_setting( 'header_bg_file_ID' ) )
+			{
+				$header_bg_file = & $FileCache->get_by_ID( $header_bg_file_ID, false, false );
+			}
+			if( ! empty( $header_bg_file ) && $header_bg_file->exists() )
+			{
+				$custom_css .= '.evo_container__header { background-image: url(' . $header_bg_file->get_url() . ") }\n";
+			} else
+			{
+				$custom_css .= '.evo_container__header { background-color: ' . $this->get_setting( 'header_bg_color' ) . " }\n";
+			}
+			// Custom "header" section text color
+			if( $color = $this->get_setting( 'header_text_color' ) )
+			{
+				$custom_css .= '.evo_container__header { color: '.$color." }\n";
+			}
+			// Custom "header" section links color
+			if( $color = $this->get_setting( 'header_links_color' ) )
+			{
+				$custom_css .= '.evo_container__header a:not([class*="ufld_"]) { color: '.$color." }\n";
+			}
 		}
 		
 		
@@ -578,36 +642,6 @@ class miniblog_Skin extends Skin
 		$access = $this->get_setting( 'access_login_containers' );
 
 		return ( ! empty( $access ) && ! empty( $access[ $container_key ] ) );
-	}
-
-
-	/**
-	 * Get value for attbiute "class" of column block
-	 * depending on skin setting "Layout"
-	 *
-	 * @return string
-	 */
-	function get_column_class()
-	{
-		switch( $this->get_setting( 'layout' ) )
-		{
-			case 'single_column':
-				// Single Column Large
-			default:
-				return 'col-md-12';
-
-			case 'single_column_normal':
-				// Single Column
-				return 'col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1';
-
-			case 'single_column_narrow':
-				// Single Column Narrow
-				return 'col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2';
-
-			case 'single_column_extra_narrow':
-				// Single Column Extra Narrow
-				return 'col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3';
-		}
 	}
 }
 ?>

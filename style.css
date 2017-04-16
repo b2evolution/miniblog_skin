@@ -74,8 +74,17 @@ img,
     padding-left: 15px;
   }
 }
-.evo_container__page_top .ufld_icon_links {
-  text-align: right;
+.evo_container__header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0;
+}
+.evo_container__header .ufld_icon_links {
+  text-align: left;
+}
+.evo_container__header .evo_widget {
+  margin: 2em 0;
 }
 .main_disp_front {
   margin: 2em 0;
@@ -416,6 +425,10 @@ img,
 .disp_page .evo_post > div > .panel .panel-body {
   padding-bottom: 0;
 }
+.disp_single .evo_comment__list_title,
+.disp_page .evo_comment__list_title {
+  margin-top: 28px;
+}
 .disp_single .evo_form__comment textarea,
 .disp_page .evo_form__comment textarea,
 .disp_single .evo_form__comment .btn-toolbar,
@@ -434,6 +447,10 @@ img,
 .disp_single .evo_item_meta_comments .panel .panel-body,
 .disp_page .evo_item_meta_comments .panel .panel-body {
   padding: 0;
+}
+.disp_single .evo_item_meta_comments .panel .panel-body .form-horizontal .form-group,
+.disp_page .evo_item_meta_comments .panel .panel-body .form-horizontal .form-group {
+  padding-left: 15px;
 }
 .disp_single .evo_item_meta_comments .panel .panel-body .form-horizontal .controls,
 .disp_page .evo_item_meta_comments .panel .panel-body .form-horizontal .controls {
@@ -931,7 +948,7 @@ div.log_container {
 }
 .evo_post_title .btn-group {
   display: table-cell;
-  padding: 15px 0 10px 30px;
+  padding: 2px 0 10px 30px;
   vertical-align: middle;
 }
 .evo_post__excerpt {
@@ -1132,6 +1149,12 @@ main .evo_widget,
 .evo_widget p:last-child {
   margin-bottom: 0;
 }
+#bCalendarToday {
+  border: none;
+  border-radius: 0;
+  background: 0;
+  text-decoration: underline;
+}
 @media (min-width: 992px) {
   .disp_single #single-post-content-wrapper,
   .disp_page #single-post-content-wrapper {
@@ -1143,6 +1166,9 @@ main .evo_widget,
   .evo_post_title h2 {
     font-size: 46px;
   }
+  .evo_post_title .btn-group {
+    padding: 15px 0 10px 30px;
+  }
   .disp_single .evo_post .widget_core_item_content,
   .evo_post__full {
     font-size: 21px;
@@ -1153,10 +1179,15 @@ main .evo_widget,
   .special-cover-image-wrapper.fixed {
     position: relative;
   }
+  .special-cover-image-wrapper #special-cover-image_bg_pos,
+  .special-cover-image-wrapper.fixed #special-cover-image_bg_pos {
+    max-height: 300px !important;
+  }
   #single-post-content-wrapper {
     min-height: auto !important;
   }
-  .disp_single .evo_post .evo_post_title h1 {
+  .disp_single .evo_post .evo_post_title h1,
+  .disp_page .evo_post .evo_post_title h1 {
     font-size: 36px;
     font-weight: 700;
     margin: 25px 0;
