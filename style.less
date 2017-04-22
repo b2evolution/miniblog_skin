@@ -4,6 +4,18 @@
 	line-height: 1.6em;
 }
 // --------------------------------------------------------------------------
+div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_placeholder:before, div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeholder:before, div.widget_core_coll_page_list.evo_1pic__special ul li .item_first_image_placeholder:before, div.widget_core_coll_post_list.evo_1pic__special ul li .item_first_image_placeholder:before, div.widget_core_coll_related_post_list.evo_1pic__special ul li .item_first_image_placeholder:before {
+	line-height: 1.42857143;
+}
+div.widget_core_coll_featured_posts.evo_layout_rwd .widget_rwd_content, div.widget_core_coll_item_list.evo_layout_rwd .widget_rwd_content, div.widget_core_coll_page_list.evo_layout_rwd .widget_rwd_content, div.widget_core_coll_post_list.evo_layout_rwd .widget_rwd_content, div.widget_core_coll_related_post_list.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_featured_posts img, div.widget_core_coll_item_list img, div.widget_core_coll_page_list img, div.widget_core_coll_post_list img, div.widget_core_coll_related_post_list img,
+img,
+a.btn {
+	border-radius: 0;
+}
+.widget_core_basic_menu_link a.btn:hover {
+	background-color: transparent;
+}
 
 // Remove background color on hovering users names
 a[rel~=nofollow]:not([class~=btn]):hover {
@@ -111,7 +123,8 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 .main_disp_contacts,
 .main_disp_users,
 .main_disp_useritems,
-.main_disp_usercomments {
+.main_disp_usercomments,
+.main_disp_threads {
 	.results {
 		margin: 2em 0;
 		&.panel {
@@ -241,6 +254,10 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 	.fieldset_wrapper .panel {
 		margin-bottom: 0;
 	}
+}
+//
+.main_disp_threads .results .panel-heading .panel-title {
+	text-align: left;
 }
 // Disp=user, Disp=profile, Disp=avatar, Disp=pwdchange, Disp=userprefs, Disp=subs
 .main_disp_user,
@@ -915,13 +932,15 @@ div.action_messages, div.log_container {
 }
 
 .special-cover-image-wrapper {
-	position: absolute;
+	// position: absolute;
+	position: relative;
 	padding: 0;
 	
 	#special-cover-image_bg_pos {
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		max-height: 300px;
 		margin: 0;
 		
 		&.cover_center {
@@ -980,7 +999,7 @@ div.action_messages, div.log_container {
 	}
 
 	.fixed {
-		position:fixed;
+		position: relative;
 		top:0;
 		left:0;
 	}
@@ -1004,9 +1023,9 @@ div.action_messages, div.log_container {
 		margin: 0;
 		
 		.evo_post_title h1 {
-			font-size: 72px;
 			font-weight: 700;
 			margin:25px 0;
+			font-size: 36px;
 		}
 		
 		.widget_core_item_content {
@@ -1062,8 +1081,8 @@ div.powered_by {
 	}
 }
 
-// All disps footer settings
-.skin-footer-content, .skin-footer-single {
+// All disps header & footer settings
+.evo_container__header, .skin-footer-content, .skin-footer-single {
 	padding: 15px;
 	// Copyright text
 	> p {
@@ -1110,10 +1129,36 @@ main, .skin-footer-single {
 	text-decoration: underline;
 }
 
+// Custom skin class for tagline widget
+.special_tagline {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 40px;
+    padding: 40px 0;
+    line-height: 1.2em;
+	text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+}
+
 @media (min-width: 992px) {
 	.disp_single, .disp_page {
 		#single-post-content-wrapper {
 			padding: 0 40px;
+		}
+		.special-cover-image-wrapper {
+			position: absolute;
+			
+			&.fixed {
+				position: fixed;
+			}
+		}
+		.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
+			#special-cover-image_bg_pos {
+				max-height: none !important;
+			}
+		}
+		.evo_post .evo_post_title h1 {
+			font-size: 72px;
 		}
 	}
 	.evo_post_title {
@@ -1127,29 +1172,6 @@ main, .skin-footer-single {
 	}
 	.disp_single .evo_post .widget_core_item_content, .evo_post__full {
 		font-size: 21px;
-	}
-}
-
-@media (max-width: 991px) {
-	.special-cover-image-wrapper, .special-cover-image-wrapper.fixed {
-		position: relative;
-		#special-cover-image_bg_pos {
-			max-height: 300px !important;
-		}
-	}
-	
-	#single-post-content-wrapper {
-		min-height: auto !important;
-	}
-	
-	.disp_single, .disp_page {
-		.evo_post {
-			.evo_post_title h1 {
-				font-size: 36px;
-				font-weight: 700;
-				margin: 25px 0;
-			}
-		}
 	}
 }
 

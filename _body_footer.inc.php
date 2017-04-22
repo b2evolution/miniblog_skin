@@ -14,7 +14,8 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 </div>
 
-<footer class="skin-footer-single">
+<footer class="container-fluid skin-footer-single">
+<div class="row">
 
 	<!-- =================================== START OF FOOTER =================================== -->
 	<div class="container skin-footer-content">
@@ -31,7 +32,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 		?>
 		</div>
 
-		<p>
+		<p class="center">
 			<?php
 				// Display footer text (text can be edited in Blog Settings):
 				$Blog->footer_text( array(
@@ -84,7 +85,8 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 		
 	</div><!-- .col -->
 	
-</footer><!-- .row -->
+</div><!-- .row -->
+</footer><!-- .skin-footer-single -->
 
 </div><!-- .container -->
 
@@ -123,14 +125,20 @@ if( in_array( $disp, array( 'single', 'page') ) )
 	?>
 	<script>
 		$(window).resize(function() {
-			$('#special-cover-image_bg_pos').height($(window).height());
-			$('#single-post-content-wrapper').css("min-height", $('#special-cover-image_bg_pos').height());
+			
+			if ($(window).width() < 992 ) {
+				$('#single-post-content-wrapper').css("min-height", '0');
+			} else {
+				$('#special-cover-image_bg_pos').height($(window).height());
+				$('#single-post-content-wrapper').css("min-height", $('#special-cover-image_bg_pos').height());
+			}
+			
 		});
 		$(window).trigger('resize');
 		
 		
 		
-		jQuery(document).ready(function ($) {
+		$(document).ready(function ($) {
 			$(window).load(function () {
 				setTimeout(function(){
 					$('#preloader').fadeOut('slow', function () {

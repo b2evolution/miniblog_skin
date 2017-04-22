@@ -111,6 +111,7 @@ skin_include( '_body_header.inc.php' );
 					'login_text'        => '',
 					'lostpassword_text' => '',
 					'account_activation' => '',
+					'messages_text'     => '',
 					'msgform_text'      => '',
 					'user_text'         => '',
 					'arcdir_text'       => T_('Archives'),

@@ -218,7 +218,7 @@ class miniblog_Skin extends Skin
 						'type' => 'checkbox',
 					),
 					'header_bg_file_ID' => array(
-						'label' => T_('Upload logo'),
+						'label' => T_('Background image'),
 						'note' => T_('If you upload your logo here, it will be shown in navigation menu instead of collection title.'),
 						'type' => 'fileselect',
 						'initialize_with' => 'shared/global/sunset/sunset.jpg',
@@ -557,10 +557,15 @@ class miniblog_Skin extends Skin
 			{
 				$custom_css .= '.evo_container__header { color: '.$color." }\n";
 			}
+			// Custom "header" section text color
+			if( $color = $this->get_setting( 'header_bg_color' ) )
+			{
+				$custom_css .= '.evo_container__header .btn { background-color: '.$color." }\n";
+			}
 			// Custom "header" section links color
 			if( $color = $this->get_setting( 'header_links_color' ) )
 			{
-				$custom_css .= '.evo_container__header a:not([class*="ufld_"]) { color: '.$color." }\n";
+				$custom_css .= '.evo_container__header a:not([class*="ufld_"]), .evo_container__header .btn, .evo_container__header .btn:hover { color: '.$color." }\n";
 			}
 		}
 		

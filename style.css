@@ -2,6 +2,30 @@
   font-family: 'PT Sans', sans-serif;
   line-height: 1.6em;
 }
+div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_placeholder:before,
+div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeholder:before,
+div.widget_core_coll_page_list.evo_1pic__special ul li .item_first_image_placeholder:before,
+div.widget_core_coll_post_list.evo_1pic__special ul li .item_first_image_placeholder:before,
+div.widget_core_coll_related_post_list.evo_1pic__special ul li .item_first_image_placeholder:before {
+  line-height: 1.42857143;
+}
+div.widget_core_coll_featured_posts.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_item_list.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_page_list.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_post_list.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_related_post_list.evo_layout_rwd .widget_rwd_content,
+div.widget_core_coll_featured_posts img,
+div.widget_core_coll_item_list img,
+div.widget_core_coll_page_list img,
+div.widget_core_coll_post_list img,
+div.widget_core_coll_related_post_list img,
+img,
+a.btn {
+  border-radius: 0;
+}
+.widget_core_basic_menu_link a.btn:hover {
+  background-color: transparent;
+}
 a[rel~=nofollow]:not([class~=btn]):hover {
   background: transparent;
 }
@@ -102,13 +126,15 @@ img,
 .main_disp_contacts .results,
 .main_disp_users .results,
 .main_disp_useritems .results,
-.main_disp_usercomments .results {
+.main_disp_usercomments .results,
+.main_disp_threads .results {
   margin: 2em 0;
 }
 .main_disp_contacts .results.panel,
 .main_disp_users .results.panel,
 .main_disp_useritems .results.panel,
-.main_disp_usercomments .results.panel {
+.main_disp_usercomments .results.panel,
+.main_disp_threads .results.panel {
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -116,14 +142,16 @@ img,
 .main_disp_contacts .results .panel-heading,
 .main_disp_users .results .panel-heading,
 .main_disp_useritems .results .panel-heading,
-.main_disp_usercomments .results .panel-heading {
+.main_disp_usercomments .results .panel-heading,
+.main_disp_threads .results .panel-heading {
   border: 0;
   border-radius: 0;
 }
 .main_disp_contacts .results .panel-heading .panel-title,
 .main_disp_users .results .panel-heading .panel-title,
 .main_disp_useritems .results .panel-heading .panel-title,
-.main_disp_usercomments .results .panel-heading .panel-title {
+.main_disp_usercomments .results .panel-heading .panel-title,
+.main_disp_threads .results .panel-heading .panel-title {
   font-weight: 700;
   padding: 4px 0;
   text-transform: uppercase;
@@ -132,25 +160,29 @@ img,
 .main_disp_contacts .results .panel-heading .panel-title .close,
 .main_disp_users .results .panel-heading .panel-title .close,
 .main_disp_useritems .results .panel-heading .panel-title .close,
-.main_disp_usercomments .results .panel-heading .panel-title .close {
+.main_disp_usercomments .results .panel-heading .panel-title .close,
+.main_disp_threads .results .panel-heading .panel-title .close {
   display: none;
 }
 .main_disp_contacts .results .panel-heading .panel_heading_action_icons,
 .main_disp_users .results .panel-heading .panel_heading_action_icons,
 .main_disp_useritems .results .panel-heading .panel_heading_action_icons,
-.main_disp_usercomments .results .panel-heading .panel_heading_action_icons {
+.main_disp_usercomments .results .panel-heading .panel_heading_action_icons,
+.main_disp_threads .results .panel-heading .panel_heading_action_icons {
   margin-top: -2px;
 }
 .main_disp_contacts .results .panel-heading .panel_heading_action_icons .btn,
 .main_disp_users .results .panel-heading .panel_heading_action_icons .btn,
 .main_disp_useritems .results .panel-heading .panel_heading_action_icons .btn,
-.main_disp_usercomments .results .panel-heading .panel_heading_action_icons .btn {
+.main_disp_usercomments .results .panel-heading .panel_heading_action_icons .btn,
+.main_disp_threads .results .panel-heading .panel_heading_action_icons .btn {
   border-radius: 0;
 }
 .main_disp_contacts .results .panel-body,
 .main_disp_users .results .panel-body,
 .main_disp_useritems .results .panel-body,
-.main_disp_usercomments .results .panel-body {
+.main_disp_usercomments .results .panel-body,
+.main_disp_threads .results .panel-body {
   font-size: 16px;
   padding: 2em 0;
 }
@@ -158,10 +190,12 @@ img,
 .main_disp_users .results .panel-body .form_text_input,
 .main_disp_useritems .results .panel-body .form_text_input,
 .main_disp_usercomments .results .panel-body .form_text_input,
+.main_disp_threads .results .panel-body .form_text_input,
 .main_disp_contacts .results .panel-body .form-group-sm select.form-control,
 .main_disp_users .results .panel-body .form-group-sm select.form-control,
 .main_disp_useritems .results .panel-body .form-group-sm select.form-control,
-.main_disp_usercomments .results .panel-body .form-group-sm select.form-control {
+.main_disp_usercomments .results .panel-body .form-group-sm select.form-control,
+.main_disp_threads .results .panel-body .form-group-sm select.form-control {
   border-radius: 0;
   box-shadow: none;
   height: 46px;
@@ -169,7 +203,8 @@ img,
 .main_disp_contacts .results .panel-body .control-buttons .btn,
 .main_disp_users .results .panel-body .control-buttons .btn,
 .main_disp_useritems .results .panel-body .control-buttons .btn,
-.main_disp_usercomments .results .panel-body .control-buttons .btn {
+.main_disp_usercomments .results .panel-body .control-buttons .btn,
+.main_disp_threads .results .panel-body .control-buttons .btn {
   border-radius: 0;
   margin: 0 0 5px;
   width: 100%;
@@ -177,62 +212,74 @@ img,
 .main_disp_contacts .results .panel-body .control-buttons .btn.btn-primary,
 .main_disp_users .results .panel-body .control-buttons .btn.btn-primary,
 .main_disp_useritems .results .panel-body .control-buttons .btn.btn-primary,
-.main_disp_usercomments .results .panel-body .control-buttons .btn.btn-primary {
+.main_disp_usercomments .results .panel-body .control-buttons .btn.btn-primary,
+.main_disp_threads .results .panel-body .control-buttons .btn.btn-primary {
   margin: 0;
 }
 .main_disp_contacts .results .panel-body .btn,
 .main_disp_users .results .panel-body .btn,
 .main_disp_useritems .results .panel-body .btn,
-.main_disp_usercomments .results .panel-body .btn {
+.main_disp_usercomments .results .panel-body .btn,
+.main_disp_threads .results .panel-body .btn {
   border-radius: 0;
 }
 .main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_useritems .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_usercomments .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
+.main_disp_threads .results .table_scroll table.table tr td.firstcol.shrinkwrap a img,
 .main_disp_contacts .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
 .main_disp_users .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
 .main_disp_useritems .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
-.main_disp_usercomments .results .table_scroll table.table tr td.firstcol.shrinkwrap span img {
+.main_disp_usercomments .results .table_scroll table.table tr td.firstcol.shrinkwrap span img,
+.main_disp_threads .results .table_scroll table.table tr td.firstcol.shrinkwrap span img {
   border-radius: 0;
 }
 .main_disp_contacts .results table.table,
 .main_disp_users .results table.table,
 .main_disp_useritems .results table.table,
-.main_disp_usercomments .results table.table {
+.main_disp_usercomments .results table.table,
+.main_disp_threads .results table.table {
   border-bottom: 0;
 }
 .main_disp_contacts .results .table-bordered > tbody > tr > td,
 .main_disp_users .results .table-bordered > tbody > tr > td,
 .main_disp_useritems .results .table-bordered > tbody > tr > td,
 .main_disp_usercomments .results .table-bordered > tbody > tr > td,
+.main_disp_threads .results .table-bordered > tbody > tr > td,
 .main_disp_contacts .results .table-bordered > tbody > tr > th,
 .main_disp_users .results .table-bordered > tbody > tr > th,
 .main_disp_useritems .results .table-bordered > tbody > tr > th,
 .main_disp_usercomments .results .table-bordered > tbody > tr > th,
+.main_disp_threads .results .table-bordered > tbody > tr > th,
 .main_disp_contacts .results .table-bordered > tfoot > tr > td,
 .main_disp_users .results .table-bordered > tfoot > tr > td,
 .main_disp_useritems .results .table-bordered > tfoot > tr > td,
 .main_disp_usercomments .results .table-bordered > tfoot > tr > td,
+.main_disp_threads .results .table-bordered > tfoot > tr > td,
 .main_disp_contacts .results .table-bordered > tfoot > tr > th,
 .main_disp_users .results .table-bordered > tfoot > tr > th,
 .main_disp_useritems .results .table-bordered > tfoot > tr > th,
 .main_disp_usercomments .results .table-bordered > tfoot > tr > th,
+.main_disp_threads .results .table-bordered > tfoot > tr > th,
 .main_disp_contacts .results .table-bordered > thead > tr > td,
 .main_disp_users .results .table-bordered > thead > tr > td,
 .main_disp_useritems .results .table-bordered > thead > tr > td,
 .main_disp_usercomments .results .table-bordered > thead > tr > td,
+.main_disp_threads .results .table-bordered > thead > tr > td,
 .main_disp_contacts .results .table-bordered > thead > tr > th,
 .main_disp_users .results .table-bordered > thead > tr > th,
 .main_disp_useritems .results .table-bordered > thead > tr > th,
-.main_disp_usercomments .results .table-bordered > thead > tr > th {
+.main_disp_usercomments .results .table-bordered > thead > tr > th,
+.main_disp_threads .results .table-bordered > thead > tr > th {
   border: 0;
   font-size: 16px;
 }
 .main_disp_contacts .results .panel-footer,
 .main_disp_users .results .panel-footer,
 .main_disp_useritems .results .panel-footer,
-.main_disp_usercomments .results .panel-footer {
+.main_disp_usercomments .results .panel-footer,
+.main_disp_threads .results .panel-footer {
   border: 0;
   border-radius: 0;
 }
@@ -302,6 +349,9 @@ img,
 .main_disp_userprefs .fieldset_wrapper .panel,
 .main_disp_subs .fieldset_wrapper .panel {
   margin-bottom: 0;
+}
+.main_disp_threads .results .panel-heading .panel-title {
+  text-align: left;
 }
 .main_disp_user img,
 .main_disp_profile img,
@@ -972,13 +1022,14 @@ div.log_container {
   background-size: cover;
 }
 .special-cover-image-wrapper {
-  position: absolute;
+  position: relative;
   padding: 0;
 }
 .special-cover-image-wrapper #special-cover-image_bg_pos {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  max-height: 300px;
   margin: 0;
 }
 .special-cover-image-wrapper #special-cover-image_bg_pos.cover_center {
@@ -1025,7 +1076,7 @@ div.log_container {
 }
 .disp_single .fixed,
 .disp_page .fixed {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
 }
@@ -1050,9 +1101,9 @@ div.log_container {
 }
 .disp_single .evo_post .evo_post_title h1,
 .disp_page .evo_post .evo_post_title h1 {
-  font-size: 72px;
   font-weight: 700;
   margin: 25px 0;
+  font-size: 36px;
 }
 .disp_single .evo_post .widget_core_item_content,
 .disp_page .evo_post .widget_core_item_content {
@@ -1110,15 +1161,18 @@ div.powered_by img {
   border-radius: 3px;
   padding: 2px;
 }
+.evo_container__header,
 .skin-footer-content,
 .skin-footer-single {
   padding: 15px;
 }
+.evo_container__header > p,
 .skin-footer-content > p,
 .skin-footer-single > p {
   margin: 0;
   padding: 1.5em;
 }
+.evo_container__header .btn,
 .skin-footer-content .btn,
 .skin-footer-single .btn {
   border-radius: 0;
@@ -1155,10 +1209,37 @@ main .evo_widget,
   background: 0;
   text-decoration: underline;
 }
+.special_tagline {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 40px;
+  padding: 40px 0;
+  line-height: 1.2em;
+  text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+}
 @media (min-width: 992px) {
   .disp_single #single-post-content-wrapper,
   .disp_page #single-post-content-wrapper {
     padding: 0 40px;
+  }
+  .disp_single .special-cover-image-wrapper,
+  .disp_page .special-cover-image-wrapper {
+    position: absolute;
+  }
+  .disp_single .special-cover-image-wrapper.fixed,
+  .disp_page .special-cover-image-wrapper.fixed {
+    position: fixed;
+  }
+  .disp_single .special-cover-image-wrapper #special-cover-image_bg_pos,
+  .disp_page .special-cover-image-wrapper #special-cover-image_bg_pos,
+  .disp_single .special-cover-image-wrapper.fixed #special-cover-image_bg_pos,
+  .disp_page .special-cover-image-wrapper.fixed #special-cover-image_bg_pos {
+    max-height: none !important;
+  }
+  .disp_single .evo_post .evo_post_title h1,
+  .disp_page .evo_post .evo_post_title h1 {
+    font-size: 72px;
   }
   .evo_post_title {
     margin-top: -7px;
@@ -1172,25 +1253,6 @@ main .evo_widget,
   .disp_single .evo_post .widget_core_item_content,
   .evo_post__full {
     font-size: 21px;
-  }
-}
-@media (max-width: 991px) {
-  .special-cover-image-wrapper,
-  .special-cover-image-wrapper.fixed {
-    position: relative;
-  }
-  .special-cover-image-wrapper #special-cover-image_bg_pos,
-  .special-cover-image-wrapper.fixed #special-cover-image_bg_pos {
-    max-height: 300px !important;
-  }
-  #single-post-content-wrapper {
-    min-height: auto !important;
-  }
-  .disp_single .evo_post .evo_post_title h1,
-  .disp_page .evo_post .evo_post_title h1 {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 25px 0;
   }
 }
 @media screen and (max-width: 767px) {
