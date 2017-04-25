@@ -58,6 +58,11 @@ skin_include( '_body_header.inc.php' );
 					'list_end'            => '</ul>',
 					'item_start'          => '<li>',
 					'item_end'            => '</li>',
+					// Search
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
 				) );
 			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
 		?>
@@ -65,7 +70,6 @@ skin_include( '_body_header.inc.php' );
 	</div><!-- .evo_container__header -->
 </div><!-- .row -->
 </div><!-- .container-fluid -->
-
 <?php } ?>
 
 

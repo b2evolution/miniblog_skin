@@ -168,6 +168,11 @@ if( $Skin->is_visible_container( 'footer' ) )
 					// The following params will be used as defaults for widgets included in this container:
 					'block_start'       => '<div class="evo_widget $wi_class$">',
 					'block_end'         => '</div>',
+					// Search
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
 				) );
 			// Note: Double quotes have been used around "Footer" only for test purposes.
 		?>

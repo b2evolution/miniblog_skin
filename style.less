@@ -40,7 +40,7 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 .navbar {
 	border-radius: 0;
 	margin: 0;
-	ul.nav {
+	ul {
 		display: table;
 		vertical-align: middle;
 		li a {
@@ -50,7 +50,10 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 			text-transform: uppercase;
 			&:hover {
 				background-color: transparent;
+				text-decoration: underline;
 			}
+		}
+		ul {
 		}
 	}
 }
@@ -98,6 +101,28 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 	}
 	.evo_widget {
 		margin: 2em 0;
+	}
+	> p {
+		margin: 0;
+		padding: 1.5em;
+	}
+	.btn {
+		border-radius: 0;
+		padding: 10px;
+	}
+	.evo_widget {
+		// Tag cloud
+		&.widget_core_coll_tag_cloud a {
+		    border: 1px solid;
+   			display: inline-block;
+		    margin: 0 3px 8px 0;
+		    padding: 5px 7px;
+		    transition: 0.3s ease;
+		    &:hover {
+		    	text-decoration: none;
+		    	opacity: 0.85;
+		    }
+		}
 	}
 }
 
@@ -407,7 +432,8 @@ div.widget_core_coll_featured_posts.evo_1pic__special ul li .item_first_image_pl
 .main_disp_catdir > h2,
 .main_disp_tags > h2,
 .main_disp_search > h2,
-.disp_help main > h2 {
+.disp_help main > h2,
+.disp_posts[class*=" detail_posts"] .main_disp_posts > h2 {
 	font-size: 16px;
 	font-weight: 700;
 	margin: 2em 0 0;
@@ -662,7 +688,9 @@ textarea.message_text {
 // Intro post layout
 main .well {
 	margin-bottom: 0;
-	padding: 25px 25px 15px;
+	// padding: 25px 25px 15px;
+	padding: 45px 45px 35px;
+    line-height: 1.8em;
 }
 
 .evo_hasbgimg {
@@ -918,10 +946,25 @@ div.action_messages, div.log_container {
 	.evo_intro_post, .evo_featured_post {
 		border-radius: 0;
 		box-shadow: none;
+		&.evo_hasbgimg {
+			border: none;
+			font-size: 16px;
+			margin-top: 2em;
+			text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+			a.btn {
+				text-shadow: none;
+			}
+		}
 	}
 	.evo_content_block:first-child {
 		margin-top: 2em;
 	}
+}
+
+// Because we have Bootstraps' .col classes that add padding +15px
+.disp_posts[class*=" detail_posts"] .evo_content_block > article {
+	margin-left: -15px;
+	margin-right: -15px;
 }
 
 .posts-cover-image {
@@ -953,6 +996,11 @@ div.action_messages, div.log_container {
 			background-position: bottom;
 		}
 	}
+}
+
+// When there are no results on disp=posts
+.msg_nothing {
+	margin: 2em 0;
 }
 
 #preloader {
@@ -1070,6 +1118,12 @@ div.action_messages, div.log_container {
 	}
 }
 
+// Footer
+.evo_container__footer {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
 // b2evo "Powered by" logo line
 div.powered_by {
 	padding: 1.5em;
@@ -1082,7 +1136,7 @@ div.powered_by {
 }
 
 // All disps header & footer settings
-.evo_container__header, .skin-footer-content, .skin-footer-single {
+.skin-footer-content, .skin-footer-single {
 	padding: 15px;
 	// Copyright text
 	> p {
@@ -1093,10 +1147,24 @@ div.powered_by {
 		border-radius: 0;
 		padding: 10px;
 	}
+	.evo_widget {
+		// Tag cloud
+		&.widget_core_coll_tag_cloud a {
+		    border: 1px solid;
+   			display: inline-block;
+		    margin: 0 3px 8px 0;
+		    padding: 5px 7px;
+		    transition: 0.3s ease;
+		    &:hover {
+		    	text-decoration: none;
+		    	opacity: 0.85;
+		    }
+		}
+	}
 }
 main, .skin-footer-single {
 	.evo_widget {
-		padding: 1.5em 0;
+		padding: 1.5em 15px;
 	}
 }
 .evo_widget {

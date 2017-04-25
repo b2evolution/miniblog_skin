@@ -117,6 +117,37 @@ if( $Skin->is_visible_container( 'menu' ) )
 </header><!-- .row -->
 <?php } ?>
 
+<?php if( $Skin->get_setting( 'display_header' ) == true && $Skin->is_visible_container( 'header' ) ) { ?>
+<div class="container-fluid">
+<div class="row">
+	<div class="evo_container evo_container__header">
+		<div class="container">
+		<?php
+			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
+			// Display container and contents:
+			skin_container( NT_('Header'), array(
+					// The following params will be used as defaults for widgets included in this container:
+					'block_start'         => '<div class="evo_widget $wi_class$">',
+					'block_end'           => '</div>',
+					'block_display_title' => false,
+					'list_start'          => '<ul>',
+					'list_end'            => '</ul>',
+					'item_start'          => '<li>',
+					'item_end'            => '</li>',
+					// Search
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
+				) );
+			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
+		?>
+		</div><!-- .container -->
+	</div><!-- .evo_container__header -->
+</div><!-- .row -->
+</div><!-- .container-fluid -->
+<?php } ?>
+
 <div class="container">
 
 <div class="row">
@@ -177,6 +208,11 @@ if( $Skin->is_visible_container( 'footer' ) )
 					// The following params will be used as defaults for widgets included in this container:
 					'block_start'       => '<div class="evo_widget $wi_class$">',
 					'block_end'         => '</div>',
+					// Search
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
 				) );
 			// Note: Double quotes have been used around "Footer" only for test purposes.
 		?>

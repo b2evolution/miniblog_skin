@@ -257,16 +257,16 @@ class miniblog_Skin extends Skin
 						'defaultvalue' => '#333333',
 						'type' => 'color',
 					),
-					'nav_text_color' => array(
-						'label' => T_('Text color'),
-						'note' => T_('Set the text color of menu section.') . T_('Default color is') . ' <code>#eeeeee</code>.',
-						'defaultvalue' => '#eeeeee',
-						'type' => 'color',
-					),
 					'nav_link_color' => array(
 						'label' => T_('Menu links color'),
 						'note' => T_('Set the color of menu links.') . T_('Default color is') . ' <code>#eeeeee</code>.',
-						'defaultvalue' => '#fefefe',
+						'defaultvalue' => '#eeeeee',
+						'type' => 'color',
+					),
+					'active_nav_link_color' => array(
+						'label' => T_('Active menu link color'),
+						'note' => T_('Set the color of active menu link.') . T_('Default color is') . ' <code>#eeeeee</code>.',
+						'defaultvalue' => '#ffffff',
 						'type' => 'color',
 					),
 					'nav_logo_file_ID' => array(
@@ -455,7 +455,7 @@ class miniblog_Skin extends Skin
 						'options' => array(
 							array( 'header',   sprintf( T_('"%s" container'), NT_('Header') ),    1 ),
 							array( 'page_top', sprintf( T_('"%s" container'), NT_('Page Top') ),  1 ),
-							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),      0 ),
+							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),      1 ),
 							array( 'footer',   sprintf( T_('"%s" container'), NT_('Footer') ),    1 ) ),
 						),
 				'section_access_end' => array(
@@ -501,7 +501,7 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_bg_color' ) )
 		{ // Custom page background color:
 			$custom_css .= '#skin_wrapper { background-color: '.$color." }\n";
-			$custom_css .= '.pagination li.active a, .pagination li.active span, .evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .results .panel-heading a:hover, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .evo_comment .panel-heading a, .evo_comment .panel-heading .panel-title a, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2, .main_disp_tags > h2, .main_disp_search > h2, .main_disp_search .search_submit, .search_result_score, .disp_help main > h2 { color: '.$color." }\n";
+			$custom_css .= '.pagination li.active a, .pagination li.active span, .evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .results .panel-heading a:hover, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .evo_comment .panel-heading a, .evo_comment .panel-heading .panel-title a, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2, .main_disp_tags > h2, .main_disp_search > h2, .main_disp_search .search_submit, .search_result_score, .disp_help main > h2, .disp_posts[class*=" detail_posts"] .main_disp_posts > h2 { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'page_text_color' ) )
 		{ // Custom page text color:
@@ -510,7 +510,7 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'page_link_color' ) )
 		{ // Custom page link color:
 			$custom_css .= 'a { color: '.$color." }\n";
-			$custom_css .= '.evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, div.compact_search_form .input-group-btn input:hover, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2, .main_disp_tags > h2, .main_disp_search > h2, .main_disp_search .search_submit, .search_result_score, .disp_help main > h2 { background-color: '.$color." }\n";
+			$custom_css .= '.evo_panel__login .panel-heading, .evo_panel__lostpass .panel-heading, .evo_panel__register .panel-heading, .evo_panel__activation .panel-heading, div.compact_search_form .input-group-btn input, div.compact_search_form .input-group-btn input:hover, .results .panel-heading, .results .panel-footer, .main_disp_mediaidx h2, .detail_msgform main h2, .main_disp_sitemap h2, .fieldset_wrapper .panel-heading, .main_disp_profile > h2, .main_disp_avatar > h2, .main_disp_pwdchange > h2, .main_disp_userprefs > h2, .main_disp_subs > h2, .main_disp_comments > h2, .evo_comment .panel-heading, .disp_single .panel-heading, .disp_page .panel-heading, .main_disp_arcdir > h2, .main_disp_catdir > h2, .main_disp_tags > h2, .main_disp_search > h2, .main_disp_search .search_submit, .search_result_score, .disp_help main > h2, .disp_posts[class*=" detail_posts"] .main_disp_posts > h2 { background-color: '.$color." }\n";
 			$custom_css .= '#login_form input:focus:invalid:focus, #login_form select:focus:invalid:focus, #login_form textarea:focus:invalid:focus, .form-control:focus, .controls input.form-control.form_text_input:focus, div.compact_search_form .input-group-btn input, .main_disp_search .search_submit { border-color: '.$color." }\n";
 			$custom_css .= '.pagination li:not(.active) a, .pagination li:not(.active) span { color: '.$color." !important }\n";
 			$custom_css .= '.pagination li.active a, .pagination li.active span { background-color: '.$color.' !important; border-color: '.$color." }\n";
@@ -529,11 +529,11 @@ class miniblog_Skin extends Skin
 		}
 		if( $color = $this->get_setting( 'bgimg_link_color' ) )
 		{	// Custom link color on background image:
-			$custom_css .= '.evo_hasbgimg a { color: '.$color." }\n";
+			$custom_css .= '.evo_hasbgimg a:not(.btn) { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'bgimg_hover_link_color' ) )
 		{	// Custom link hover color on background image:
-			$custom_css .= '.evo_hasbgimg a:hover { color: '.$color." }\n";
+			$custom_css .= '.evo_hasbgimg a:not(.btn):hover { color: '.$color." }\n";
 		}
 		
 		
@@ -574,14 +574,14 @@ class miniblog_Skin extends Skin
 		{ // Custom current tab text color:
 			$custom_css .= '.navbar { background-color: '.$color." }\n";
 		}
-		if( $color = $this->get_setting( 'nav_text_color' ) )
-		{ // Custom current tab text color:
-			$custom_css .= '.navbar { color: '.$color." }\n";
-		}
 		if( $color = $this->get_setting( 'nav_link_color' ) )
 		{ // Custom current tab text color:
 			$custom_css .= '.navbar ul.nav li a, .navbar-header a { color: '.$color." }\n";
 			$custom_css .= '.navbar-toggle span { background-color: '.$color." }\n";
+		}
+		if( $color = $this->get_setting( 'active_nav_link_color' ) )
+		{ // Custom current tab text color:
+			$custom_css .= '.navbar ul.nav li a.selected, .navbar-brand h3 > a { color: '.$color." }\n";
 		}
 		
 		
@@ -606,14 +606,17 @@ class miniblog_Skin extends Skin
 		if( $color = $this->get_setting( 'footer_background_color' ) )
 		{ // Custom footer background color:
 			$custom_css .= '.skin-footer-single, .evo_container__footer a.btn.btn-default { background-color: '.$color." }\n";
+			$custom_css .= 'div.compact_search_form .input-group-btn input { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'footer_text_color' ) )
 		{ // Custom footer text color:
 			$custom_css .= '.skin-footer-single, .skin-footer-content, .skin-footer-content .evo_widget { color: '.$color." }\n";
 		}
 		if( $color = $this->get_setting( 'footer_link_color' ) )
-		{ // Custom footer text color:
+		{ // Custom footer link color:
 			$custom_css .= '.skin-footer-single a:not([class*="ufld_"]), .skin-footer-content a:not([class*="ufld_"]), .skin-footer-content .evo_widget a:not([class*="ufld_"]) { color: '.$color." }\n";
+			$custom_css .= '.evo_container__footer div.compact_search_form .input-group-btn input { border-color: '.$color.'; background-color: '.$color." }\n";
+			$custom_css .= '.evo_container__footer div.compact_search_form .search_field.form-control { border-color: '.$color." }\n";
 		}
 
 		if( ! empty( $custom_css ) )
