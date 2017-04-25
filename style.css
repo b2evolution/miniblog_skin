@@ -20,8 +20,14 @@ div.widget_core_coll_page_list img,
 div.widget_core_coll_post_list img,
 div.widget_core_coll_related_post_list img,
 img,
-a.btn {
+a.btn,
+.container .jumbotron,
+.container-fluid .jumbotron {
   border-radius: 0;
+}
+.container .jumbotron,
+.container-fluid .jumbotron {
+  margin: 0;
 }
 .widget_core_basic_menu_link a.btn:hover {
   background-color: transparent;
@@ -1279,6 +1285,9 @@ main .evo_widget,
   text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
 }
 @media (min-width: 992px) {
+  .navbar-header h3 a {
+    max-width: 280px;
+  }
   .disp_single #single-post-content-wrapper,
   .disp_page #single-post-content-wrapper {
     padding: 0 40px;
