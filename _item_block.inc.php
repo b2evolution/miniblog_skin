@@ -231,8 +231,8 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			'widget_item_tags_after'     => '</div>',
 			// Params for skin file "_item_content.inc.php"
 			'widget_item_content_params' => array (
-				'image_limit'              => 0,
-				'gallery_image_limit'      => 0,
+				'image_limit'              => 1000,
+				'gallery_image_limit'      => 5,
 				
 			),
 			// Template params for "Item Attachments" widget:

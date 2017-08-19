@@ -1147,6 +1147,10 @@ div.log_container {
 .disp_page .evo_container__item_single {
   padding-bottom: 35px;
 }
+.disp_single .evo_container__item_single img,
+.disp_page .evo_container__item_single img {
+  border-radius: 0;
+}
 .disp_single .evo_post,
 .disp_page .evo_post {
   margin: 0;
@@ -1203,6 +1207,9 @@ div.log_container {
   left: 0;
   z-index: 9999;
   position: relative;
+}
+.disabled-comments-notification {
+  margin: 5em 0;
 }
 .evo_container__footer {
   margin-left: -15px;

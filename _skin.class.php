@@ -618,6 +618,14 @@ class miniblog_Skin extends Skin
 			$custom_css .= '.evo_container__footer div.compact_search_form .input-group-btn input { border-color: '.$color.'; background-color: '.$color." }\n";
 			$custom_css .= '.evo_container__footer div.compact_search_form .search_field.form-control { border-color: '.$color." }\n";
 		}
+		
+		
+		
+		if( $this->get_setting( 'post_comments' ) == 0 )
+		{
+			$custom_css .= ".disp_comments main.main_disp_comments > h2 { display: none }\n";
+		}
+		
 
 		if( ! empty( $custom_css ) )
 		{	// Function for custom_css:
