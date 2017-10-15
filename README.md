@@ -1,9 +1,5 @@
 ## Bootstrap Blog Skin
 
-Skin version: 6.8.0-aplha.
-
-====
-
 ### Front Page
 
 ![disp=front](skinshot_front.jpg)
@@ -15,8 +11,3 @@ Skin version: 6.8.0-aplha.
 ### Single Page
 
 ![disp=single](skinshot_single.jpg)
-
-### Update log
-
-#### v6.8.0-aplha
-- LESS modules includes moved from skin style to generic b2evo CSS file
