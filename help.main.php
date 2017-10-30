@@ -123,7 +123,7 @@ if( $Skin->is_visible_container( 'menu' ) )
 					// The following params will be used as defaults for widgets included in this container:
 					'container_display_if_empty' => false, // If no widget, don't display container at all
 					'container_start'     => '<div class="container-fluid"><div class="row"><div class="evo_container $wico_class$"><div class="container">',
-					'container_end'       => '</div></div></div>',
+					'container_end'       => '</div></div></div></div>',
 					'block_start'         => '<div class="evo_widget $wi_class$">',
 					'block_end'           => '</div>',
 					'list_start'          => '<ul>',
