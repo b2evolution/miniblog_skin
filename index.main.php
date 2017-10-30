@@ -41,19 +41,16 @@ skin_include( '_body_header.inc.php' );
 	//echo '<div id="preloader"></div>';
 ?>
 
-<?php if( $Skin->get_setting( 'display_header' ) == true && ! in_array( $disp, array( 'single', 'page') ) ) { ?>
-<div class="container-fluid">
-<div class="row">
-	<div class="evo_container evo_container__header">
-		<div class="container">
-		<?php
+<?php if( $Skin->get_setting( 'display_header' ) == true && ! in_array( $disp, array( 'single', 'page') ) ) {
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
 			skin_container( NT_('Header'), array(
 					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start'     => '<div class="container-fluid"><div class="row"><div class="evo_container $wico_class$"><div class="container">',
+					'container_end'       => '</div></div></div></div>',
 					'block_start'         => '<div class="evo_widget $wi_class$">',
 					'block_end'           => '</div>',
-					'block_display_title' => false,
 					'list_start'          => '<ul>',
 					'list_end'            => '</ul>',
 					'item_start'          => '<li>',
@@ -65,12 +62,7 @@ skin_include( '_body_header.inc.php' );
 					'search_submit_after'  => '</span></div>',
 				) );
 			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
-		?>
-		</div><!-- .container -->
-	</div><!-- .evo_container__header -->
-</div><!-- .row -->
-</div><!-- .container-fluid -->
-<?php } ?>
+} ?>
 
 
 <div class="container">
