@@ -91,7 +91,7 @@ if( $Skin->is_visible_container( 'menu' ) )
 			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
 			// Note: this container is designed to be a single <ul> list
-			skin_container( NT_('Menu'), array(
+			widget_container( 'menu', array(
 					// The following params will be used as defaults for widgets included in this container:
 					'container_display_if_empty' => false, // If no widget, don't display container at all
 					'container_start'   => '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><ul class="nav navbar-nav navbar-right evo_container $wico_class$">',
@@ -120,7 +120,7 @@ if( $Skin->is_visible_container( 'menu' ) )
 <?php if( $Skin->get_setting( 'display_header' ) == true && $Skin->is_visible_container( 'header' ) ) {
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
-			skin_container( NT_('Header'), array(
+			widget_container( 'header', array(
 					// The following params will be used as defaults for widgets included in this container:
 					'container_display_if_empty' => false, // If no widget, don't display container at all
 					'container_start'     => '<div class="container-fluid"><div class="row"><div class="evo_container $wico_class$"><div class="container">',
@@ -194,7 +194,7 @@ if( $Skin->is_visible_container( 'footer' ) )
 	<div class="container skin-footer-content">
 		<?php
 			// Display container and contents:
-			skin_container( NT_('Footer'), array(
+			widget_container( 'footer', array(
 					// The following params will be used as defaults for widgets included in this container:
 					'container_display_if_empty' => false, // If no widget, don't display container at all
 					'container_start'   => '<div class="evo_container $wico_class$">',

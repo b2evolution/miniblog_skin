@@ -44,7 +44,7 @@ skin_include( '_body_header.inc.php' );
 <?php if( $Skin->get_setting( 'display_header' ) == true && ! in_array( $disp, array( 'single', 'page') ) ) {
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
-			skin_container( NT_('Header'), array(
+			widget_container( 'header', array(
 					// The following params will be used as defaults for widgets included in this container:
 					'container_display_if_empty' => false, // If no widget, don't display container at all
 					'container_start'     => '<div class="container-fluid"><div class="row"><div class="evo_container $wico_class$"><div class="container">',
