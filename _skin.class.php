@@ -116,6 +116,74 @@ class miniblog_Skin extends Skin
 	}
 
 
+	/**
+	 * Get the declarations of the widgets that the skin recommends by default.
+	 *
+	 * The skin class defines a default set of widgets to used. Skins should override this.
+	 *
+	 * @param string Collection type: 'std', 'main', 'photo', 'group', 'forum', 'manual'
+	 * @param string Skin type: 'normal' - Standard, 'mobile' - Phone, 'tablet' - Tablet
+	 * @param array Additional params. Example value 'init_as_blog_b' => true
+	 * @return array Array of default widgets:
+	 *          - Key - Container code,
+	 *          - Value - array of widget arrays OR SPECIAL VALUES:
+	 *             - 'coll_type': Include this container only for collection kinds separated by comma, first char "-" means to exclude,
+	 *             - 'type': Container type, empty - main container, other values: 'sub', 'page', 'shared', 'shared-sub',
+	 *             - 'name': Container name,
+	 *             - 'order': Container order,
+	 *             - widget data array():
+	 *                - 0: Widget order (*mandatory field*),
+	 *                - 1: Widget code (*mandatory field*),
+	 *                - 'params' - Widget params(array or serialized string),
+	 *                - 'type' - Widget type(default = 'core', another value - 'plugin'),
+	 *                - 'enabled' - Boolean value; default is TRUE; FALSE to install the widget as disabled,
+	 *                - 'coll_type': Include this widget only for collection types separated by comma, first char "-" means to exclude,
+	 *                - 'skin_type': Include this widget only for skin types separated by comma, first char "-" means to exclude,
+	 *                - 'install' - Boolean value; default is TRUE; FALSE to skip this widget on install.
+	 */
+	function get_default_widgets( $coll_type, $skin_type = 'normal', $context = array() )
+	{
+		global $DB;
+
+		$context = array_merge( array(
+				'current_coll_ID'       => NULL,
+				'coll_home_ID'          => NULL,
+				'coll_blog_a_ID'        => NULL,
+				'coll_photoblog_ID'     => NULL,
+				'init_as_home'          => false,
+				'init_as_blog_a'        => false,
+				'init_as_blog_b'        => false,
+				'init_as_forums'        => false,
+				'init_as_events'        => false,
+				'install_test_features' => false,
+			), $context );
+
+		$default_widgets = array();
+
+		/* Item in List */
+		$default_widgets['item_in_list'] = array(
+			array( 10, 'item_title' ),
+		);
+
+		/* Item Single Header */
+		$default_widgets['item_single_header'] = array(
+			array(  5, 'item_title' ),
+		);
+
+		/* Item Page */
+		$default_widgets['item_page'] = array(
+			array( 10, 'item_content' ),
+			array( 15, 'item_attachments' ),
+			array( 17, 'item_link' ),
+			array( 20, 'item_tags', 'install' => ! $context['init_as_blog_a'] && ! $context['init_as_events'] ),
+			array( 50, 'item_seen_by' ),
+			array( 60, 'item_vote' ),
+		);
+
+		return $default_widgets;
+	}
+
+
 	/*
 	 * What CSS framework does has this skin been designed with?
 	 *
@@ -163,7 +231,7 @@ class miniblog_Skin extends Skin
 				'section_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
+
 
 				'section_color_start' => array(
 					'layout' => 'begin_fieldset',
@@ -232,8 +300,8 @@ class miniblog_Skin extends Skin
 				'section_color_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_header_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Header Settings')
@@ -272,8 +340,8 @@ class miniblog_Skin extends Skin
 				'section_header_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_nav_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Menu Settings')
@@ -306,8 +374,8 @@ class miniblog_Skin extends Skin
 				'section_nav_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_posts_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Posts Page Settings')
@@ -344,8 +412,8 @@ class miniblog_Skin extends Skin
 				'section_posts_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_single_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Single Page Settings')
@@ -364,8 +432,8 @@ class miniblog_Skin extends Skin
 				'section_single_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_footer_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Footer Settings')
@@ -516,7 +584,7 @@ class miniblog_Skin extends Skin
 				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
 				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
-		
+
 		add_headline( '<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" rel="stylesheet">' );
 
 		// Skin specific initializations:
@@ -562,8 +630,8 @@ class miniblog_Skin extends Skin
 		{	// Custom link hover color on background image:
 			$custom_css .= '.evo_hasbgimg a:not(.btn):hover { color: '.$color." }\n";
 		}
-		
-		
+
+
 		if( ! in_array( $disp, array( 'single', 'page') ) ) {
 			// Display Logo only if it is set through customization option
 			$FileCache = & get_FileCache();
@@ -595,8 +663,8 @@ class miniblog_Skin extends Skin
 				$custom_css .= '.evo_container__header a:not([class*="ufld_"]), .evo_container__header .btn, .evo_container__header .btn:hover { color: '.$color." }\n";
 			}
 		}
-		
-		
+
+
 		if( $color = $this->get_setting( 'nav_bg_color' ) )
 		{ // Custom current tab text color:
 			$custom_css .= '.navbar { background-color: '.$color." }\n";
@@ -610,18 +678,18 @@ class miniblog_Skin extends Skin
 		{ // Custom current tab text color:
 			$custom_css .= '.navbar ul.nav li a.selected, .navbar-brand h3 > a { color: '.$color." }\n";
 		}
-		
-		
+
+
 		if( in_array( $disp, array( 'single', 'page') ) )
 		{
 			$custom_css .= "#special-cover-image_bg_pos { background-position: 50% 50%; }\n";
 		}
-		
+
 		if( $height = $this->get_setting( 'cover_image_height' ) )
 		{
 			$custom_css .= '.posts-cover-image, .no-cover-image-container { height: ' . $height . "px }\n";
 		}
-		
+
 
 		// Limit images by max height:
 		$max_image_height = intval( $this->get_setting( 'max_image_height' ) );
@@ -629,7 +697,7 @@ class miniblog_Skin extends Skin
 		{
 			$custom_css .= '.evo_image_block img { max-height: '.$max_image_height.'px; width: auto; }'." }\n";
 		}
-		
+
 		if( $color = $this->get_setting( 'footer_background_color' ) )
 		{ // Custom footer background color:
 			$custom_css .= '.skin-footer-single, .evo_container__footer a.btn.btn-default { background-color: '.$color." }\n";
@@ -645,14 +713,14 @@ class miniblog_Skin extends Skin
 			$custom_css .= '.evo_container__footer div.compact_search_form .input-group-btn input { border-color: '.$color.'; background-color: '.$color." }\n";
 			$custom_css .= '.evo_container__footer div.compact_search_form .search_field.form-control { border-color: '.$color." }\n";
 		}
-		
-		
-		
+
+
+
 		if( $this->get_setting( 'post_comments' ) == 0 )
 		{
 			$custom_css .= ".disp_comments main.main_disp_comments > h2 { display: none }\n";
 		}
-		
+
 
 		if( ! empty( $custom_css ) )
 		{	// Function for custom_css:

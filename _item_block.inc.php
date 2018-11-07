@@ -28,7 +28,7 @@ $params = array_merge( array(
 		// Controlling the title:
 		'disp_title'                 => true,
 		'item_title_line_before'     => '<div class="evo_post_title">',	// Note: we use an extra class because it facilitates styling
-			'item_title_before'          => '<h2>',	
+			'item_title_before'          => '<h2>',
 			'item_title_after'           => '</h2>',
 			'item_title_single_before'   => '<h1>',	// This replaces the above in case of disp=single or disp=page
 			'item_title_single_after'    => '</h1>',
@@ -38,15 +38,15 @@ $params = array_merge( array(
 		'image_class'                => 'img-responsive',
 		'image_size'                 => 'fit-1280x720',
 		'author_link_text'           => 'auto',
-		
+
 		// By default, this skin does not display comments, unless chosen in the b-o of the skin
 		'display_comments_bool'      => false,
-		
+
 		// Control the layout depending on existance of cover image in post
 		'post_before'                => '',
 		'post_after'                 => '',
 	), $params );
-	
+
 /**
  * Prepare boolean value depending on the result set by the user
  * We use this to enable/disable comments in the back-office of the skin
@@ -108,7 +108,7 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 
 <article id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>"<?php
 	echo empty( $params['item_style'] ) ? '' : ' style="'.format_to_output( $params['item_style'], 'htmlattr' ).'"' ?>>
-	
+
 	<?php
 		/**
 		 * Display cover images on disp posts left of the content - miniblog layout
@@ -119,17 +119,17 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				echo $cover_link_posts . '<figure class="posts-cover-image ' . $cover_pos_posts . '" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure></a>';
-				
+
 			// If there are NO cover images in this post, create special div block as a substitute to preserve miniblog layout
 			} else {
 				echo '<div class="no-cover-image-container"><i class="fa fa-picture-o" aria-hidden="true"></i></div>';
 			}
 			echo '<div class="clearfix"></div></div>';
-			
+
 			echo '<div class="col-lg-7 col-md-8 posts-content-block">';
 		}
 	?>
-	
+
 	<?php
 		/**
 		 * Display cover images on disp single left of the content - special miniblog layout
@@ -139,22 +139,22 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			// If there is AT LEAST ONE cover image
 			if( $Item->get_number_of_images( $image_position = 'cover' ) > 0 ) {
 				echo '<div class="col-md-6 special-cover-image-wrapper">';
-						
+
 					echo '
 					<a href="' . $Item->get_cover_image_url() . '" rel="lightbox[p' . $Item->ID . ']" id="link_' . $Item->ID . '" class="cboxElement">
 						<figure id="special-cover-image_bg_pos" class="' . $cover_pos_single . '" style="background-image:url(' . $Item->get_cover_image_url() . ');"></figure>
 					</a>';
-				
+
 				echo '<div class="clearfix"></div></div>';
-				
+
 				echo '<div class="col-md-6 col-md-offset-6" id="single-post-content-wrapper">';
-				
+
 			// If there are NO cover images in this post, place post content centered of the page
 			} else {
 				echo '<div class="single-no-cover-img-wrapper">';
 			}
-			
-			
+
+
 			// ------------------------- MESSAGES GENERATED FROM ACTIONS -------------------------
 			messages( array(
 					'block_start' => '<div class="action_messages">',
@@ -163,52 +163,176 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			// --------------------------------- END OF MESSAGES ---------------------------------
 		}
 	?>
-	
+
 	<header>
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
 
-		// ------- Title -------
-		if( $params['disp_title'] )
+		if( $disp == 'single' || $disp == 'page' )
 		{
-			echo $params['item_title_line_before'];
+			$title_before = $params['item_title_single_before'];
+			$title_after = $params['item_title_single_after'];
+		}
+		else
+		{
+			$title_before = $params['item_title_before'];
+			$title_after = $params['item_title_after'];
+		}
 
-			if( $disp == 'single' || $disp == 'page' )
+		if( ! $Item->is_intro() )
+		{
+			if( $disp == 'posts' )
 			{
-				$title_before = $params['item_title_single_before'];
-				$title_after = $params['item_title_single_after'];
+				// ------------------------- "Item in List" CONTAINER EMBEDDED HERE --------------------------
+				// Display container contents:
+				widget_container( 'item_in_list', array(
+					'widget_context' => 'item',	// Signal that we are displaying within an Item
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="evo_widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<h3>',
+					'block_title_end' => '</h3>',
+					'author_link_text' => $params['author_link_text'],
+					// Template params for "Item Title" widget:
+					'override_params_for_item_title' => array(
+						'block_start' => '<div class="evo_widget $wi_class$ evo_post_title">',
+					),
+					'widget_item_title_params'  => array(
+							'before'            => $title_before,
+							'after'             => $title_after,
+							'edit_link_display' => true,
+							'edit_link_text'    => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+						),
+					// Template params for "Item Visibility Badge" widget:
+					'widget_item_visibility_badge_display'  => ( ! $Item->is_intro() && $Item->status != 'published' ),
+					'widget_item_visibility_badge_params' => array(
+							'template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
+						),
+					// Template params for "Item Info Line" widget:
+					'widget_item_info_line_params' => array(
+							'before_flag'         => '',
+							'after_flag'          => ' ',
+							'before_permalink'    => '',
+							'after_permalink'     => ' ',
+							'before_author'       => 'by <span class="identity_link_username">',
+							'after_author'        => '</span>',
+							'before_post_time'    => 'Posted on <span>',
+							'after_post_time'     => '</span>',
+							'before_categories'   => 'in <span>',
+							'after_categories'    => '</span>',
+							'before_last_touched' => '<span class="text-muted"> &ndash; '.T_('Last touched').': ',
+							'after_last_touched'  => '</span>',
+							'before_last_updated' => '<span class="text-muted"> &ndash; '.T_('Contents updated').': ',
+							'after_last_updated'  => '</span>',
+							'before_edit_link'    => ' &bull; ',
+							'after_edit_link'     => '',
+							'format'              => '$flag$ $permalink$ $post_time$ $author$ $categories$ $edit_link$',
+						),
+				) );
+				// ----------------------------- END OF "Item in List" CONTAINER -----------------------------
+			}
+			elseif( $disp == 'single' )
+			{
+				// ------------------------- "Item Single - Header" CONTAINER EMBEDDED HERE --------------------------
+				// Display container contents:
+				widget_container( 'item_single_header', array(
+					'widget_context' => 'item',	// Signal that we are displaying within an Item
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="evo_widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<h3>',
+					'block_title_end' => '</h3>',
+					'author_link_text' => $params['author_link_text'],
+
+					// Template params for "Item Title" widget:
+					'override_params_for_item_title' => array(
+							'block_start' => '<div class="evo_widget $wi_class$ evo_post_title">',
+						),
+					'widget_item_title_params'  => array(
+							'before'            => $title_before,
+							'after'             => $title_after,
+							'edit_link_display' => true,
+							'edit_link_text'    => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+						),
+					// Template params for "Item Next/Previous" widget:
+					'widget_item_next_previous_params' => array(
+							'block_start' => '<nav><ul class="pager">',
+							'block_end'   => '</ul></nav>',
+							'prev_start'  => '<li class="previous">',
+							'prev_end'    => '</li>',
+							'next_start'  => '<li class="next">',
+							'next_end'    => '</li>',
+						),
+					// Template params for "Item Visibility Badge" widget:
+					'widget_item_visibility_badge_display' => ( ! $Item->is_intro() && $Item->status != 'published' ),
+					'widget_item_visibility_badge_params'  => array(
+							'template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
+						),
+				) );
+				// ----------------------------- END OF "Item Single - Header" CONTAINER -----------------------------
 			}
 			else
 			{
-				$title_before = $params['item_title_before'];
-				$title_after = $params['item_title_after'];
+				// ------- Title -------
+				if( $params['disp_title'] )
+				{
+					echo $params['item_title_line_before'];
+
+					// POST TITLE:
+					$Item->title( array(
+							'before'    => $title_before,
+							'after'     => $title_after,
+							'link_type' => '#'
+						) );
+
+					// EDIT LINK:
+					$Item->edit_link( array(
+								'before' => '<div class="'.button_class( 'group' ).'">',
+								'after'  => '</div>',
+								'text'   => '#',
+								'class'  => button_class( 'text' ),
+							) );
+
+					echo $params['item_title_line_after'];
+				}
 			}
+		}
+		else
+		{	// Intro Title
+			// ------- Title -------
+			if( $params['disp_title'] )
+			{
+				echo $params['item_title_line_before'];
 
-			// POST TITLE:
-			$Item->title( array(
-					'before'    => $title_before,
-					'after'     => $title_after,
-					'link_type' => '#'
-				) );
+				// POST TITLE:
+				$Item->title( array(
+						'before'    => $title_before,
+						'after'     => $title_after,
+						'link_type' => '#'
+					) );
 
-			// EDIT LINK:
-			//if( $Item->is_intro() )
-			//{ // Display edit link only for intro posts, because for all other posts the link is displayed on the info line.
+				// EDIT LINK:
 				$Item->edit_link( array(
 							'before' => '<div class="'.button_class( 'group' ).'">',
 							'after'  => '</div>',
-							'text'   => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+							'text'   => get_icon( 'edit' ).' '.T_('Edit Intro'),
 							'class'  => button_class( 'text' ),
 						) );
-			//}
 
-			echo $params['item_title_line_after'];
+				echo $params['item_title_line_after'];
+			}
 		}
 	?>
 	</header>
 
 	<?php
-	if( $disp == 'single' || $disp == 'page' )
+	if( $disp == 'single' )
 	{
 		// ------------------------- "Item Single" CONTAINER EMBEDDED HERE --------------------------
 		// Display container contents:
@@ -231,10 +355,9 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 			'widget_item_tags_after'     => '</div>',
 			// Params for skin file "_item_content.inc.php"
 			'widget_item_content_params' => array (
-				'image_limit'              => 1000,
-				'gallery_image_limit'      => 5,
-				
-			),
+					'image_limit'              => 1000,
+					'gallery_image_limit'      => 5,
+				),
 			// Template params for "Item Attachments" widget:
 			'widget_item_attachments_params' => array(
 					'limit_attach'       => 1000,
@@ -247,6 +370,56 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 				),
 		) );
 		// ----------------------------- END OF "Item Single" CONTAINER -----------------------------
+	}
+	elseif( $disp == 'page' )
+	{
+		// ------------------------- "Item Page" CONTAINER EMBEDDED HERE --------------------------
+		// Display container contents:
+		widget_container( 'item_page', array(
+			'widget_context' => 'item',	// Signal that we are displaying within an Item
+			// The following (optional) params will be used as defaults for widgets included in this container:
+			'container_display_if_empty' => false, // If no widget, don't display container at all
+			// This will enclose each widget in a block:
+			'block_start' => '<div class="evo_widget $wi_class$">',
+			'block_end' => '</div>',
+			// This will enclose the title of each widget:
+			'block_title_start' => '<h3>',
+			'block_title_end' => '</h3>',
+			// Template params for "Item Link" widget
+			'widget_item_link_before'    => '<p class="evo_post_link">',
+			'widget_item_link_after'     => '</p>',
+			// Template params for "Item Tags" widget
+			'widget_item_tags_before'    => '<div class="post_tags">',
+			'widget_item_tags_separator' => '',
+			'widget_item_tags_before_list'    => '',
+			'widget_item_tags_after'     => '</div>',
+			// Params for skin file "_item_content.inc.php"
+			'widget_item_content_params' => array (
+					'image_limit'              => 1000,
+					'gallery_image_limit'      => 5,
+				),
+			// Template params for "Item Attachments" widget:
+			'widget_item_attachments_params' => array(
+					'limit_attach'       => 1000,
+					'before'             => '<div class="evo_post_attachments"><h3>'.T_('Attachments').':</h3><ul class="evo_files">',
+					'after'              => '</ul></div>',
+					'before_attach'      => '<li class="evo_file">',
+					'after_attach'       => '</li>',
+					'before_attach_size' => ' <span class="evo_file_size">(',
+					'after_attach_size'  => ')</span>',
+				),
+			// Template params for "Item Title" widget
+			'override_params_for_item_title' => array(
+					'block_start' => '<div class="evo_widget $wi_class$ evo_post_title">',
+				),
+			'widget_item_title_params'  => array(
+					'before'            => $title_before,
+					'after'             => $title_after,
+					'edit_link_display' => true,
+					'edit_link_text'    => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+				),
+		) );
+		// ----------------------------- END OF "Item Page" CONTAINER -----------------------------
 	}
 	else
 	{
@@ -303,11 +476,11 @@ echo $params['post_before'] . '<div class="evo_content_block">'; // Beginning of
 						) );
 			echo '</nav>';
 			}
-		
+
 			echo '</footer>';
 		}
 		?>
-	
+
 	<?php
 	if( $disp == 'posts' ) {
 	echo '
