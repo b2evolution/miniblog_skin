@@ -15,19 +15,31 @@
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
-// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
-mainlist_page_links( array(
-		'block_start'           => '<div class="center"><ul class="pagination pagination_top">',
-		'block_end'             => '</ul></div>',
-		'page_item_before'      => '<li>',
-		'page_item_after'       => '</li>',
+// ------------------------- "Item List" CONTAINER EMBEDDED HERE --------------------------
+// Display container contents:
+widget_container( 'item_list', array(
+	// The following (optional) params will be used as defaults for widgets included in this container:
+	'container_display_if_empty' => false, // If no widget, don't display container at all
+	// This will enclose each widget in a block:
+	'block_start'           => '<div class="evo_widget $wi_class$">',
+	'block_end'             => '</div>',
+	// This will enclose the title of each widget:
+	'block_title_start'     => '<h3>',
+	'block_title_end'       => '</h3>',
+	// The following params will be used as default for widgets
+	'widget_coll_item_list_pages_params' => array(
+		'block_start'              => '<div class="center"><ul class="pagination pagination_top">',
+		'block_end'                => '</ul></div>',
+		'page_item_before'         => '<li>',
+		'page_item_after'          => '</li>',
 		'page_item_current_before' => '<li class="active">',
 		'page_item_current_after'  => '</li>',
-		'page_current_template' => '<span>$page_num$</span>',
-		'prev_text'             => '<i class="fa fa-angle-double-left"></i>',
-		'next_text'             => '<i class="fa fa-angle-double-right"></i>',
-	) );
-// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
+		'page_current_template'    => '<span>$page_num$</span>',
+		'prev_text'                => '<i class="fa fa-angle-double-left"></i>',
+		'next_text'                => '<i class="fa fa-angle-double-right"></i>',
+	)
+) );
+// ----------------------------- END OF "Item List" CONTAINER -----------------------------
 
 // --------------------------------- START OF POSTS -------------------------------------
 // Display message if no post:
